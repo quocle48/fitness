@@ -1,0 +1,40 @@
+@font-face {
+    font-family: Open Sans;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+.header-social{
+	background-color: #00bff0;
+}
+.detail-social.left .fa{
+	margin-right: 5px;
+	font-size: 16px;
+}
+.detail-social.right .fa{
+	margin-left: 10px;
+}
+.detail-social{
+	line-height: 40px;
+	color: #FFF;
+}
+.header-menu{
+	height: 100px;
+	background-color: #72d0f4;
+}
+.left{
+	float:left;
+}
+.right{
+	float: right;
+}
+a.glyphicon, a.fa{
+	font-size: 16px;
+	text-decoration: none;
+	cursor: pointer;
+	color: #FFF;
+}
+a.glyphicon:hover, a.fa:hover{
+	transform: scale(1.2);
+}
