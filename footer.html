@@ -1,63 +1,119 @@
 <!DOCTYPE html>
 <html lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Title Page</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Title Page</title>
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-		<link rel="stylesheet" type="text/css" href="css/fitness.css">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		<footer>
-			<div class="footer-top">
-				<div class="container">
-					<div class="col-md-7 col-xs-12 f-contact">
-						<div class="newsletter">
-							<span class="signup">NEWSLETTER SIGNUP</span>
-							<span>Sign up for our newsletter<br />and get the latest news.</span>
-							<input type="text" placeholder="INSERT EMAIL"/>
-							<button class="button"><span>SUBMIT EMAIL </span></button>
-						</div>
-						<div class="contact-info">
-						<a href="#">
-							<img src="img/fitness-logo.png"/>
-						</a>
-						<span>Something about ...</span>
-						<span>Phone:</span><span>0978938234</span>
-						<span>e-mail:</span><span>quoclee48@gmail.com</span>
-						</div>
-					</div>
-					<div class="col-md-5 col-xs-12 f-memu company">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/fitness.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<footer>
+	<div class="footer-information">
+		<div class="container">
+			<div class="footer-container">
+				<div class="col-lg-4">
+					<h4>NEWSLETTER SIGNUP</h4>
+					<div class="footer-content">
+						<p class="uppercase">Sign up for our newsletter and get the latest news.</p>
+						<form id="from-email">
+							<input type="text" value="INSERT EMAIL">
+						</form>
+						<br/>
+						<button form="from-email">SUBMIT EMAIL<img src="img/submit-icon.png" align="right"/></button>
 					</div>
 				</div>
-			</div>
-			<div class="footer-bot">
-				<div class="container">
-					<div class="f-copyright">
-						<span>© 2016 GYMSports</span>
-					</div>
-					<div class="f-social">
+				<div class="col-lg-4">
+					<center>
+						<!--<img src="img/logo.png">-->
+						<img src="img/fitness-logo.png" height="12%" width="12%"/>
+					</center>
+					<div class="footer-content">
+						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec.</p>
+						<br/>
+						<p>
+							<span>Phone:</span><span class="footer-contact"> 01662173153</span>
+						</p>
+						<p>
+							<span>E-mail:</span><span class="footer-contact"> loveme05ye@gmail.com</span>
+						</p>
 					</div>
 				</div>
+				<div class="col-lg-2">
+					<h4>MENU</h4>
+					<ul class="row footer-content footer-list">
+						<li>
+							<a>About</a>
+						</li>
+						<li>
+							<a>Trainers</a>
+						</li>
+						<li>
+							<a>Classes</a>
+						</li>
+						<li>
+							<a>Princing</a>
+						</li>
+						<li>
+							<a>Privacy</a>
+						</li>
+						<li>
+							<a>Contact</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-2">
+					<h4>COMMUNITY</h4>
+					<ul class="row footer-content footer-list">
+						<li>
+							<a>Blog</a>
+						</li>
+						<li>
+							<a>Forum</a>
+						</li>
+						<li>
+							<a>Support</a>
+						</li>
+						<li>
+							<a>Newsletter</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</footer>
-		
-		
-		
-		<!-- jQuery -->
-		<script src="js/jquery-1.12.0.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	</body>
+		</div>
+	</div>
+	<div class="header-social">
+		<div class="container">
+			<div class="detail-social left">
+				<span>&copy; 2016 GYMSport</span>
+			</div>
+			<div class="detail-social right">
+				<a class="fa fa-facebook"></a>
+				<a class="fa fa-twitter"></a>
+				<a class="fa fa-instagram"></a>
+				<a class="fa fa-google-plus"></a>
+				<a class="fa fa-youtube-play"></a>
+				<a class="fa fa-tumblr"></a>
+				<a class="fa fa-pinterest-p"></a>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- jQuery -->
+<script src="js/jquery-1.12.0.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
 </html>

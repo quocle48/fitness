@@ -84,3 +84,66 @@ a.glyphicon:hover, a.fa:hover{
 	height: 50px;
 	background-color: #00bff0;
 }
+
+/*-----------------------------------------------------------------------*/
+.footer-content{
+	margin: 25px 0px 0px 0px;
+}
+.footer-social{
+	background-color: #00bff0;
+}
+.footer-list
+{
+	letter-spacing: -1px;
+}
+.footer-list li{
+	background-image: url(../img/submit-icon.png);
+	background-size: 5px 10px;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 15px;
+	margin: 0px 0px 0px 10px;
+}
+.footer-information{
+	height: 300px;
+	background-color: #72d0f4;
+}
+.footer-container{
+	color: white;
+	margin: 30px 0px 30px 0px;
+}
+.footer-container a{
+	color: white;
+	display: block;
+}
+.footer-container form{
+	padding: 0px;
+}
+.footer-container button{
+	height: 32px;
+	width: 200px;
+	background: #E25050;
+	text-align: left;
+	border: solid 0px;
+}
+.footer-container form input[type=text]{
+	height: 32px;
+	width: 300px;
+	background: #B9E8FA;
+	color: #39BFF0;
+	border: solid 1px #39BFF0;
+}
+.footer-contact{
+	font-style: italic;
+	font-size: 18px;
+}
+ul{
+	line-height: 28px;
+	list-style-type: none;
+	padding: 0px;
+}
+.uppercase{
+	padding: 0px;
+	text-transform: uppercase;
+	width: 220px;
+}
