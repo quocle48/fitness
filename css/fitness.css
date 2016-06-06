@@ -46,3 +46,12 @@ a.glyphicon:hover, a.fa:hover{
 .main-menu{
 	margin-top: 30px; 
 }
+/*---------------------------------------------------------------*/
+.footer-top{
+	height: 300px;
+	background-color: #72d0f4;
+}
+.footer-bot{
+	height: 50px;
+	background-color: #00bff0;
+}
