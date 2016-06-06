@@ -47,9 +47,38 @@ a.glyphicon:hover, a.fa:hover{
 	margin-top: 30px; 
 }
 /*---------------------------------------------------------------*/
+
 .footer-top{
 	height: 300px;
 	background-color: #72d0f4;
+}
+.newsletter{
+	float: left;
+}
+.signup{
+	display: block;
+	color: white;
+	margin-top: 55px;
+}
+.newsletter span:nth-child(2){
+    display: block;
+	color: white;
+	margin-top: 35px;
+}
+.newsletter input{
+	display: block;
+    margin-top: 15px;
+    width: 335px;
+    background-color: #b9e8fa;
+    border: 1px solid;
+    color: #72d0f4;
+    font-size: 8px;
+    padding: 10px 10px 10px 15px;
+}
+.contact-info{
+}
+.contact-info a{
+	display: block;
 }
 .footer-bot{
 	height: 50px;
