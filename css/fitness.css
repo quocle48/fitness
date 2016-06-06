@@ -20,7 +20,6 @@ body{
 	color: #FFF;
 }
 .header-menu{
-	height: 100px;
 	background-color: #72d0f4;
 }
 .left{
@@ -38,6 +37,12 @@ a.glyphicon, a.fa{
 a.glyphicon:hover, a.fa:hover{
 	transform: scale(1.2);
 }
-.f-copyright span{
-	color: white;
+.home-logo a{
+	line-height: 100px;
+}
+.home-logo img{
+	height: 90px;
+}
+.main-menu{
+	margin-top: 30px; 
 }
