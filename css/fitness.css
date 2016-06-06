@@ -38,3 +38,6 @@ a.glyphicon, a.fa{
 a.glyphicon:hover, a.fa:hover{
 	transform: scale(1.2);
 }
+.f-copyright span{
+	color: white;
+}
