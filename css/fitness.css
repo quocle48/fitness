@@ -47,7 +47,7 @@ a.glyphicon:hover, a.fa:hover{
 	margin-top: 30px; 
 }
 /*---------------------------------------------------------------*/
-
+/*
 .footer-top{
 	height: 300px;
 	background-color: #72d0f4;
@@ -83,6 +83,10 @@ a.glyphicon:hover, a.fa:hover{
 .footer-bot{
 	height: 50px;
 	background-color: #00bff0;
+} */
+
+.datetime{
+	display: block;
 }
 
 /*-----------------------------------------------------------------------*/
@@ -125,6 +129,7 @@ a.glyphicon:hover, a.fa:hover{
 	background: #E25050;
 	text-align: left;
 	border: solid 0px;
+	padding-left: 15px;
 }
 .footer-container form input[type=text]{
 	height: 32px;
@@ -132,6 +137,10 @@ a.glyphicon:hover, a.fa:hover{
 	background: #B9E8FA;
 	color: #39BFF0;
 	border: solid 1px #39BFF0;
+	padding-left: 15px;
+}
+.footer-content img{
+	margin: 3px 15px 0px 0px;
 }
 .footer-contact{
 	font-style: italic;
