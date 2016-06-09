@@ -81,6 +81,48 @@ a.glyphicon:hover, a.fa:hover{
 	background-color:transparent;
 	border: 1px solid;
 }
+.main-menu.nav-pills a{
+	color: #FFF	;
+	transition: all 0.2s ease;
+	padding: 10px 15px;
+}
+.main-menu.nav-pills li:hover a,.main-menu.nav-pills a:focus{
+	color: #72D0F4	;
+	background-color: #FFF;
+	text-decoration: none;
+	border-radius:4px; 
+}
+.main-menu.nav-pills a:hover span{
+	visibility: visible;
+}
+.submenu{
+	position: absolute;
+	z-index: 1000;
+	min-width: 150px;
+	padding: 10px 5px;
+    background: #FFF;
+    border-radius: 4px;
+    display: none;
+}
+.main-menu.nav-pills .submenu a{
+	padding: 0 10px 0 5px;
+	color: #72D0F4;
+}
+li.has-submenu{
+	position: static;
+}
+li.has-submenu:hover ul{
+	display: block;
+}
+.has-submenu a span{
+	visibility: hidden;
+	font-size: 12px;
+	margin-left: 5px;
+	color: #72D0F4;
+}	
+.submenu span{
+	margin-right: 5px;
+}
 /*---------------------------------------------------------------*/
 /*
 .footer-top{
