@@ -59,6 +59,89 @@ body{
 .right{
 	float: right;
 }
+.account {
+	position:relative;
+}
+.form-account{
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	border-top: 5px solid #00BFF0;
+	position:absolute;
+	width: 250px;
+	right:0;
+	background: #FFF;
+	z-index:2;
+	color:#555;
+	text-align:center;
+	display:none;
+}
+.form-account span{
+	display:block;
+	text-align:center;
+}
+.form-account form{
+	padding:10px 30px;
+}
+.form-account form:nth-child(3){
+	display:none;
+}
+.form-account form span{
+	font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #00BFF0;
+    height: 40px;
+    text-align: left;
+	margin-bottom:15px;
+}
+.form-account input{
+	border:1px solid #d9d9d9;
+	color: #555;
+	font-size: 13px;
+	padding: 9px 13px;
+	width: 100%;
+	margin-bottom:15px;
+	transition: all 0.3s ease;
+}
+.form-account input:focus{
+	outline:none;
+	border:1px solid #00BFF0;
+}
+.form-account button{
+	border:none;
+	background:#00BFF0;
+	color: #FFF;
+	font-size: 14px;
+	height: 35px;
+	width: 100%;
+	line-height:1px;
+	transition: all 0.3s ease;
+}
+.toggle-account{
+	height:30px;
+	width:35px;
+	cursor: pointer;
+	background:#00BFF0;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.toggle-account.glyphicon:before{
+	font-size: 18px;
+	line-height: 23px;
+}
+.form-account button:hover{
+	background:#00BFF0;
+}
+.form-account a{
+	display: block;
+    width: 100%;
+    background: #DDD;
+    font-size: 14px;
+    line-height: 40px;
+}
+.form-account a:hover{
+    color: #00BFF0;
+    text-decoration: none;
+}
 a.glyphicon, a.fa{
 	font-size: 16px;
 	text-decoration: none;
@@ -75,22 +158,23 @@ a.glyphicon:hover, a.fa:hover{
 	height: 90px;
 }
 .main-menu{
-	margin-top: 25px; 
+	margin-top: 30px;
+	display: none;
 }
 .main-menu.nav-pills li.active a{
 	background-color:transparent;
-	border: 1px solid;
+	outline: 1px solid;
 }
 .main-menu.nav-pills a{
 	color: #FFF	;
 	transition: all 0.2s ease;
-	padding: 10px 15px;
+	padding: 7px 10px;
+	border-radius: 0;
 }
 .main-menu.nav-pills li:hover a,.main-menu.nav-pills a:focus{
 	color: #72D0F4	;
 	background-color: #FFF;
 	text-decoration: none;
-	border-radius:4px; 
 }
 .main-menu.nav-pills a:hover span{
 	visibility: visible;
@@ -101,8 +185,9 @@ a.glyphicon:hover, a.fa:hover{
 	min-width: 150px;
 	padding: 10px 5px;
     background: #FFF;
-    border-radius: 4px;
+    margin-top: 1px;
     display: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .main-menu.nav-pills .submenu a{
 	padding: 0 10px 0 5px;
@@ -122,6 +207,17 @@ li.has-submenu:hover ul{
 }	
 .submenu span{
 	margin-right: 5px;
+}
+.header-menu .navbar-toggle{
+	border-color: #FFF;
+	border-radius: 0;
+	margin-top: 30px;
+	color:#FFF;
+}
+@media (min-width: 992px){
+	.main-menu{
+		display: block;
+	}
 }
 /*---------------------------------------------------------------*/
 /*
@@ -165,10 +261,31 @@ li.has-submenu:hover ul{
 .datetime{
 	display: block;
 }
-
+.post{
+	height: 250px;
+	background-color: red;
+}
+.new-post{
+	height: 500px;
+	background-color: blue;
+}
+.video{
+	height: 250px;
+	background-color: yellow;
+	display: block;
+}
+.np-title{
+    margin: 400px 0px 0px 0px;
+}
+.p-title{
+    margin: 200px 0px 0px 0px;
+}
+.np-title a, .p-title a{
+	color: white;
+}
 /*-----------------------------------------------------------------------*/
 .footer-content{
-	margin: 25px 0px 0px 0px;
+	margin-top:5px;
 }
 .footer-social{
 	background-color: #00bff0;
@@ -224,9 +341,7 @@ li.has-submenu:hover ul{
 	font-size: 18px;
 }
 ul{
-	line-height: 28px;
-	list-style-type: none;
-	padding: 0px;
+	line-height: 26px;
 }
 .uppercase{
 	padding: 0px;

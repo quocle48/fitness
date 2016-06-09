@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Title Page</title>
-
+		<script src="js/jquery-1.12.0.js"></script>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -23,7 +23,43 @@
 						<a class="fa fa-youtube-play"></a>
 					</div>
 					<div class="account right">
-						<a href="#">Login or Register</a>
+						<a href="#" id="account">Login or Register</a>
+						<div class="form-account">
+							<div class="toggle-account glyphicon glyphicon-pencil">
+							</div>
+							<form action="" class="login">
+								<span>Login to your account</span>
+								<input type="text" placeholder="Username" required/>
+								<input type="password" placeholder="Password" required/>
+								<button>Login</button>
+							</form>
+							<form action="" class="register">
+								<span>Create an account</span>
+								<input type="text" placeholder="Username" required/>
+								<input type="password" placeholder="Password" required/>
+								<input type="email" placeholder="Email Address" required/>
+								<button>Register</button>
+							</form>
+							<a href="#">Forgot your password?</a>
+						</div>
+						<script type="text/javascript">
+							$('.toggle-account').click(function(){
+								$(this).toggleClass('glyphicon-log-in');
+								$('.form-account form').animate({
+									height: "toggle",
+									'padding-top': 'toggle',
+									'padding-bottom': 'toggle',
+									opacity: "toggle"
+								  }, 400);
+							});
+							$('#account').click(function(){
+								$('.form-account').slideToggle();
+							});
+							$(document).click(function(event){
+								if(!$(event.target).closest('.account').length)
+									$('.form-account').slideUp();
+							});
+						</script>
 					</div>
 					<div class="input-group search right">
 						<button type="button"  class="right"><span class="fa fa-search"></span></button>
@@ -38,6 +74,9 @@
 							<img src="img/fitness-logo.png"/>
 						</a>
 					</div>
+					<button type="button" class="navbar-toggle">
+							MENU
+					</button>
 					<ul class="main-menu nav nav-pills right">
 						<li><a href="#">HOME</a></li>
 						<li class="active"><a href="#">LESSON</a></li>
@@ -48,17 +87,24 @@
 								<li><a href="#"><span class="fa fa-chevron-right"></span>CƠ BỤNG</a></li>
 							</ul>
 						</li>
-						<li class="has-submenu"><a href="#">NUTRITION<span class="fa fa-chevron-down"></a></li>
+						<li class="has-submenu">
+							<a href="#">NUTRITION<span class="fa fa-chevron-down"></a>
+							<ul class="submenu nav nav-pills nav-stacked">
+								<li><a href="#"><span class="fa fa-chevron-right"></span>GIẢM CÂN</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right"></span>TĂNG CÂN</a></li>
+								<li><a href="#"><span class="fa fa-chevron-right"></span>TĂNG CƠ</a></li>
+							</ul>
+						</li>
 						<li><a href="#">SHOPPING</a></li>
 						<li class="has-submenu"><a href="#">UTILITIES<span class="fa fa-chevron-down"></a></li>
 						<li><a href="#">FAQ&</a></li>
-						<li><a href="#">CONTACTS</a></li>
 					</ul>
+						
 				</div>
 			</div>
 		</header>
 		<!-- jQuery -->
-		<script src="js/jquery-1.12.0.js"></script>
+		
 		<!-- Bootstrap JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
