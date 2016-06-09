@@ -9,25 +9,46 @@ body{
 	background-color: #00bff0;
 }
 .detail-social.left .fa{
-	margin-right: 5px;
-	font-size: 16px;
+	margin-right: 10px;
+    font-size: 18px;
 }
 .detail-social.right .fa{
 	margin-left: 10px;
 }
 .detail-social, .account a{
-	
 	line-height: 40px;
 	color: #FFF;
 }
-.search{
-	margin-top:5px;
+.input-group.search{
+	margin-top: 6px;
 	margin-right: 10px;
 }
 .search input{
-	padding: 5px 10px;
-    font-size: 14px;
-    border: none;
+	padding: 4px 7px;
+	font-size: 14px;
+	width: 130px;
+	border:none;
+	transition: all 0.5s ease;
+}
+.search input:focus{
+	width: 260px;
+	outline:none;
+}
+.search button{
+	font-size: 16px;
+	border: none;
+	height: 28px;
+	width: 28px;
+	color:#00BFF0;
+	background-color:#FFF;
+	transition: all 0.2s ease;
+}
+.search button:hover{
+	color: #FFF;
+	background-color: #72D0F4;
+}
+.search button:focus{
+	outline: none;
 }
 .header-menu{
 	background-color: #72d0f4;
@@ -54,7 +75,11 @@ a.glyphicon:hover, a.fa:hover{
 	height: 90px;
 }
 .main-menu{
-	margin-top: 30px; 
+	margin-top: 25px; 
+}
+.main-menu.nav-pills li.active a{
+	background-color:transparent;
+	border: 1px solid;
 }
 /*---------------------------------------------------------------*/
 /*
