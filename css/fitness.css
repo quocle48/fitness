@@ -98,6 +98,28 @@ a.glyphicon:hover, a.fa:hover{
 .datetime{
 	display: block;
 }
+.post{
+	height: 250px;
+	background-color: red;
+}
+.new-post{
+	height: 500px;
+	background-color: blue;
+}
+.video{
+	height: 250px;
+	background-color: yellow;
+	display: block;
+}
+.np-title{
+    margin: 400px 0px 0px 0px;
+}
+.p-title{
+    margin: 200px 0px 0px 0px;
+}
+.np-title a, .p-title a{
+	color: white;
+}
 
 /*-----------------------------------------------------------------------*/
 .footer-content{
