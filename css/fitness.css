@@ -285,6 +285,7 @@ li.has-submenu:hover ul{
 }
 /*-----------------------------------------------------------------------*/
 .footer-content{
+	list-style: none;
 	margin-top:5px;
 }
 .footer-social{
