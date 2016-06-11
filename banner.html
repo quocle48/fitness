@@ -1,3 +1,21 @@
 <div class="slider-banner">
-	<img src="img/johncena.jpg" width="100%" />
+	<div id="slider-banner" class="image-slider">
+		<div><a href="#"><img src="img/johncena.jpg" width="100%" alt="slider" /></a></div>
+		<div><a href="#"><img src="img/johncena.jpg" width="100%" alt="slider" /></a></div>
+		<div><a href="#"><img src="img/johncena.jpg" width="100%" alt="slider" /></a></div>
+		<div><a href="#"><img src="img/johncena.jpg" width="100%" alt="slider" /></a></div>
+	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#slider-banner").owlCarousel({
+			autoplay: true,
+			autoplayHoverPause:true,
+			items:1,
+			loop: true,
+			dots: true,
+			nav:true,
+			autoHeight : true,
+		});
+	});
+</script>

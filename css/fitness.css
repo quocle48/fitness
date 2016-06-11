@@ -185,7 +185,7 @@ a.glyphicon:hover, a.fa:hover{
 	min-width: 150px;
 	padding: 10px 5px;
     background: #FFF;
-    margin-top: 1px;
+    border-top: 2px solid #E25050;
     display: none;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
@@ -218,6 +218,21 @@ li.has-submenu:hover ul{
 	.main-menu{
 		display: block;
 	}
+}
+.owl-dots{
+	margin: 30px 0;
+	text-align: center;
+}
+#slider-banner .owl-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #EEE;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+#slider-banner .owl-dot.active {
+    background: #00BFF0;
 }
 /*---------------------------------------------------------------*/
 /*
@@ -283,7 +298,7 @@ li.has-submenu:hover ul{
 .np-title a, .p-title a{
 	color: white;
 }
-/*-----------------------------------------------------------------------*/
+/*--------------------------------QUỐC---------------------------------------*/
 .footer-content{
 	list-style: none;
 	margin-top:5px;
