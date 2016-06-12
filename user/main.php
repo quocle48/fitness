@@ -21,41 +21,47 @@
 	</head>
 	<body>
 	<div class="container">
-			<form action="add.php" method="GET" role="form">
-				<h1 style="text-align: center">THÔNG TIN USER</h1>
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>NAME</th>
-							<th>USERNAME</th>
-							<th>EMAIL</th>
-							<th>DATE CREATE</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							$sql="SELECT * FROM user";
-							$result = $conn->query($sql);
-							while($row=mysqli_fetch_array($result,MYSQLI_NUM)){
-								echo '<tr class="user_'.$row[5].'">';
-								echo "<td>$row[0]</td>";
-								echo "<td>$row[1]</td>";
-								echo "<td>$row[3]</td>";
-								echo "<td>$row[4]</td>";
-								echo '<td><input type="radio" name="user" value="'.$row[5].'"></td>';
-								echo '</tr>';
-							}
-						?>
-					</tbody>
-				</table>
-				<div style="text-align:center">
-					<button type="submit" class="btn btn-primary">THÊM</button>
-					<button type="submit" class="btn btn-primary" formaction="edit.php">SỬA</button>
-					<button type="submit" class="btn btn-primary" formaction="del.php">XÓA</button>
-				</div>
+		<form  method="GET" role="form">
+			<h1 style="text-align: center">THÔNG TIN USER</h1>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>NAME</th>
+						<th>USERNAME</th>
+						<th>EMAIL</th>
+						<th>DATE CREATE</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$sql="SELECT * FROM user";
+						$result = $conn->query($sql);
+						while($row=mysqli_fetch_array($result,MYSQLI_NUM)){
+							echo '<tr class="user_'.$row[5].'">';
+							echo "<td>$row[0]</td>";
+							echo "<td>$row[1]</td>";
+							echo "<td>$row[3]</td>";
+							echo "<td>$row[4]</td>";
+							echo '<td><input type="radio" name="user" value="'.$row[5].'"></td>';
+							echo '</tr>';
+						}
+					?>
+				</tbody>
+			</table>
+			<div style="text-align:center">
+				<button type="submit" class="btn btn-primary">THÊM</button>
+				<button type="submit" class="btn btn-primary">SỬA</button>
+				<button type="submit" class="btn btn-primary">XÓA</button>
+			</div>	
 		</form>
+		<h2>
+			<?php
+				if(isset($_GET["user"])) {
+					echo $_GET["user"];
+				}
+			?>
+		</h2>
 	</div>
 	</body>
 </html>
-	
