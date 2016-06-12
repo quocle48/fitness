@@ -62,6 +62,36 @@
 				}
 			?>
 		</h2>
+		<form action ="add.php" method="post">
+			<table style="margin: auto;" >
+				<tr> 
+					<td></td>
+					<td><h3>Thêm thành viên</h3></td>
+				</tr>
+				<tr> 
+					<td>Name</td>
+					<td><input type="text" size="25" name="txtname" /></td>
+				</tr>
+				<tr> 
+					<td>User</td>
+					<td><input type="text" size="25" name="txtusername" /></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" size="25" name="txtpass" /></td>
+					
+				</tr>
+				<tr> 
+					<td>Email</td>
+					<td><input type="text" size="25" name="txtemail" /></td>
+				</tr>
+		
+				<tr> 
+					<td></td>
+					<td><input type="submit" name="btnadd" value="Add" /></td>
+				</tr>
+			</table>
+	</form>
 	</div>
 	</body>
 </html>
