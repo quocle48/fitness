@@ -370,3 +370,9 @@ ul{
 	text-transform: uppercase;
 	width: 220px;
 }
+
+/*--------------------------------Bắc---------------------------------------*/
+
+.content-lesson {
+	border: solid 1px #39BFF0;
+}
