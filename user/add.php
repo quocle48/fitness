@@ -30,8 +30,8 @@
 			$u = $_POST["txtusername"];
 			$p = $_POST["txtpass"];
 			$e = $_POST["txtemail"];
-			 if($u & $p & $e)
-			 {
+			if($u & $p & $e)
+			{
 				$servername = "localhost";
 				$dbname = "fitness";
 				$conn=mysqli_connect($servername,"root","",$dbname);
@@ -39,30 +39,26 @@
 					die("Connection failed: " . mysqli_connect_error());
 				}
 				else {
-					
-					   $sql="select * from user where username='".$u."'";
-					   $result=$conn->query($sql);
-					   
-					   if( mysqli_num_rows($result) >0 )
-					   {
-						echo "Username nay da ton tai roi<br />";
-					   }
-					   else
-					   {
-						   $sql2="insert into user(name,username,password,email) values('".$n."','".$u."','".$p."','".$e."')";
-							$result2=$conn->query($sql2);
-						   if ($result2) {
-								echo "New record created successfully";
-							} else {
-								echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-							}
-
-							mysqli_close($conn);
-						
-					   }
+					$sql="select * from user where username='".$u."'";
+					$result=$conn->query($sql);
+					if( mysqli_num_rows($result) >0 )
+					{
+						echo "<script>alert('Tài khoản đã tồn tại');</script>";
+					}
+					else
+					{
+					   $sql2="insert into user(name,username,password,email,created) values('".$n."','".$u."','".$p."','".$e."','".date("Y/m/d")."')";
+						$result2=$conn->query($sql2);
+					   if ($result2) {
+							 echo "<script>alert('Thêm tài khoản thành công');</script>";
+						} else {	
+							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+						}
+						mysqli_close($conn);
+					}
 				}
-			   
-			 }
+			}
 		}
 	}
+	header('Refresh: 0.1; URL=main.php');
 ?>

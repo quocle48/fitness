@@ -21,7 +21,7 @@
 	</head>
 	<body>
 	<div class="container">
-		<form  method="GET" role="form">
+		<form  method="POST" role="form">
 			<h1 style="text-align: center">THÔNG TIN USER</h1>
 			<table class="table table-hover">
 				<thead>
@@ -57,41 +57,43 @@
 		</form>
 		<h2>
 			<?php
-				if(isset($_GET["user"])) {
-					echo $_GET["user"];
+				if(isset($_POST["user"])) {
+					echo $_POST["user"];
 				}
 			?>
 		</h2>
-		<form action ="add.php" method="post">
-			<table style="margin: auto;" >
-				<tr> 
-					<td></td>
-					<td><h3>Thêm thành viên</h3></td>
-				</tr>
-				<tr> 
-					<td>Name</td>
-					<td><input type="text" size="25" name="txtname" /></td>
-				</tr>
-				<tr> 
-					<td>User</td>
-					<td><input type="text" size="25" name="txtusername" /></td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td><input type="password" size="25" name="txtpass" /></td>
-					
-				</tr>
-				<tr> 
-					<td>Email</td>
-					<td><input type="text" size="25" name="txtemail" /></td>
-				</tr>
+		<form action ="add.php" method="post" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="control-label col-sm-3">Name:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" name="txtname" placeholder="Enter your name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3">Username:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" name="txtusername" placeholder="Enter username" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="pwd">Password:</label>
+				<div class="col-sm-6"> 
+				  	<input type="password" class="form-control" name="txtpass" placeholder="Enter password" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="email">Email:</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" name="txtemail" placeholder="Enter email" required>
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="col-sm-offset-3 col-sm-4">
+				  <button type="submit" class="btn btn-default" name="btnadd">Submit</button>
+				</div>
+			</div>
+		</form>
 		
-				<tr> 
-					<td></td>
-					<td><input type="submit" name="btnadd" value="Add" /></td>
-				</tr>
-			</table>
-	</form>
 	</div>
 	</body>
 </html>
