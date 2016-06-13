@@ -23,7 +23,7 @@
 	<div class="container">
 		<form  method="POST" role="form">
 			<h1 style="text-align: center">THÔNG TIN USER</h1>
-			<table class="table table-hover">
+			<table id="list-user" class="table table-hover">
 				<thead>
 					<tr>
 						<th>NAME</th>
@@ -43,26 +43,37 @@
 							echo "<td>$row[1]</td>";
 							echo "<td>$row[3]</td>";
 							echo "<td>$row[4]</td>";
-							echo '<td><input type="radio" name="user" value="'.$row[5].'"></td>';
+							echo '<td><input type="radio" name="choose_user" onclick="setvalue('.$row[5].')" value="'.$row[5].'"></td>';
 							echo '</tr>';
 						}
 					?>
 				</tbody>
 			</table>
-			<div style="text-align:center">
-				<button type="submit" class="btn btn-primary">THÊM</button>
-				<button type="submit" class="btn btn-primary">SỬA</button>
-				<button type="submit" class="btn btn-primary">XÓA</button>
-			</div>	
-		</form>
-		<h2>
-			<?php
-				if(isset($_POST["user"])) {
-					echo $_POST["user"];
+			<div style="text-align:center;margin-bottom: 10px">
+				<a class="btn btn-primary" onclick="showformadd()" >THÊM</a>
+				<a class="btn btn-primary" onclick="showformedit()" >SỬA</a>
+				<button type="submit" class="btn btn-primary" name="btndel" onclick="javascript: return confirm('Bạn muốn xóa user này?');" formaction="del.php">XÓA</button>
+			</div>
+			<script type="text/javascript">
+				function showformadd(){
+					$("#add_user").toggleClass("hide");
 				}
-			?>
-		</h2>
-		<form action ="add.php" method="post" class="form-horizontal" role="form">
+				function showformedit(){
+					$("#edit_user").toggleClass("hide");
+				}
+				function setvalue(id){
+					var data=$('tr.user_'+id);
+					var name=data.find(':nth-child(1)').text();
+					var username=data.find(':nth-child(2)').text();
+					var email=data.find(':nth-child(3)').text();
+					$('#inp_name').val(name)
+					$('#inp_username').val(username);
+					$('#inp_email').val(email);
+				}
+			</script>
+		</form>
+		
+		<form id="add_user" action ="add.php" method="post" class="form-horizontal hide" role="form" >
 			<div class="form-group">
 				<label class="control-label col-sm-3">Name:</label>
 				<div class="col-sm-6">
@@ -93,7 +104,37 @@
 				</div>
 			</div>
 		</form>
-		
+		<form id="edit_user" action ="edit.php" method="post" class="form-horizontal hide" role="form" >
+			<div class="form-group">
+				<label class="control-label col-sm-3">Name:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="inp_name" name="txtname" value="">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3">Username:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="inp_username" name="txtusername" disabled value="">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="pwd">New Password:</label>
+				<div class="col-sm-6"> 
+				  	<input type="password" class="form-control" name="txtpass">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="email">Email:</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" id="inp_email" name="txtemail" value="">
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="col-sm-offset-3 col-sm-4">
+				  <button type="submit" class="btn btn-default" name="btnadd">Submit</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	</body>
 </html>
