@@ -9,25 +9,46 @@ body{
 	background-color: #00bff0;
 }
 .detail-social.left .fa{
-	margin-right: 5px;
-	font-size: 16px;
+	margin-right: 10px;
+    font-size: 18px;
 }
 .detail-social.right .fa{
 	margin-left: 10px;
 }
 .detail-social, .account a{
-	
 	line-height: 40px;
 	color: #FFF;
 }
-.search{
-	margin-top:5px;
+.input-group.search{
+	margin-top: 6px;
 	margin-right: 10px;
 }
 .search input{
-	padding: 5px 10px;
-    font-size: 14px;
-    border: none;
+	padding: 4px 7px;
+	font-size: 14px;
+	width: 130px;
+	border:none;
+	transition: all 0.5s ease;
+}
+.search input:focus{
+	width: 260px;
+	outline:none;
+}
+.search button{
+	font-size: 16px;
+	border: none;
+	height: 28px;
+	width: 28px;
+	color:#00BFF0;
+	background-color:#FFF;
+	transition: all 0.2s ease;
+}
+.search button:hover{
+	color: #FFF;
+	background-color: #72D0F4;
+}
+.search button:focus{
+	outline: none;
 }
 .header-menu{
 	background-color: #72d0f4;
@@ -37,6 +58,89 @@ body{
 }
 .right{
 	float: right;
+}
+.account {
+	position:relative;
+}
+.form-account{
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	border-top: 5px solid #00BFF0;
+	position:absolute;
+	width: 250px;
+	right:0;
+	background: #FFF;
+	z-index:2;
+	color:#555;
+	text-align:center;
+	display:none;
+}
+.form-account span{
+	display:block;
+	text-align:center;
+}
+.form-account form{
+	padding:10px 30px;
+}
+.form-account form:nth-child(3){
+	display:none;
+}
+.form-account form span{
+	font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #00BFF0;
+    height: 40px;
+    text-align: left;
+	margin-bottom:15px;
+}
+.form-account input{
+	border:1px solid #d9d9d9;
+	color: #555;
+	font-size: 13px;
+	padding: 9px 13px;
+	width: 100%;
+	margin-bottom:15px;
+	transition: all 0.3s ease;
+}
+.form-account input:focus{
+	outline:none;
+	border:1px solid #00BFF0;
+}
+.form-account button{
+	border:none;
+	background:#00BFF0;
+	color: #FFF;
+	font-size: 14px;
+	height: 35px;
+	width: 100%;
+	line-height:1px;
+	transition: all 0.3s ease;
+}
+.toggle-account{
+	height:30px;
+	width:35px;
+	cursor: pointer;
+	background:#00BFF0;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.toggle-account.glyphicon:before{
+	font-size: 18px;
+	line-height: 23px;
+}
+.form-account button:hover{
+	background:#00BFF0;
+}
+.form-account a{
+	display: block;
+    width: 100%;
+    background: #DDD;
+    font-size: 14px;
+    line-height: 40px;
+}
+.form-account a:hover{
+    color: #00BFF0;
+    text-decoration: none;
 }
 a.glyphicon, a.fa{
 	font-size: 16px;
@@ -54,7 +158,87 @@ a.glyphicon:hover, a.fa:hover{
 	height: 90px;
 }
 .main-menu{
-	margin-top: 30px; 
+	margin-top: 30px;
+	display: none;
+}
+.main-menu.nav-pills li.active a{
+	background-color:transparent;
+	outline: 1px solid;
+}
+.main-menu.nav-pills a{
+	color: #FFF	;
+	transition: all 0.2s ease;
+	padding: 7px 10px;
+	border-radius: 0;
+}
+.main-menu.nav-pills li:hover a,.main-menu.nav-pills a:focus{
+	color: #72D0F4	;
+	background-color: #FFF;
+	text-decoration: none;
+}
+.main-menu.nav-pills a:hover span{
+	visibility: visible;
+}
+.submenu{
+	position: absolute;
+	z-index: 1000;
+	min-width: 150px;
+	padding: 10px 5px;
+    background: #FFF;
+    border-top: 2px solid #E25050;
+    display: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.main-menu.nav-pills .submenu a{
+	padding: 0 10px 0 5px;
+	color: #72D0F4;
+}
+li.has-submenu{
+	position: static;
+}
+li.has-submenu:hover ul{
+	display: block;
+}
+.has-submenu a span{
+	visibility: hidden;
+	font-size: 12px;
+	margin-left: 5px;
+	color: #72D0F4;
+}	
+.submenu span{
+	margin-right: 5px;
+}
+.header-menu .navbar-toggle{
+	border-color: #FFF;
+	border-radius: 0;
+	margin-top: 30px;
+	color:#FFF;
+}
+@media (min-width: 768px){
+	.main-menu{
+		display: block;
+	}
+}
+.owl-dots{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	bottom: 30px;
+}
+#slider-banner .owl-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: rgba(238,238,238,0.7);
+    border-radius: 50%;
+    margin: 0 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+#slider-banner .owl-dot.active {
+    background: #00BFF0;
+}
+.owl-nav{
+	position: absolute;
 }
 /*---------------------------------------------------------------*/
 /*
@@ -120,10 +304,10 @@ a.glyphicon:hover, a.fa:hover{
 .np-title a, .p-title a{
 	color: white;
 }
-
-/*-----------------------------------------------------------------------*/
+/*--------------------------------QUỐC---------------------------------------*/
 .footer-content{
-	margin: 25px 0px 0px 0px;
+	list-style: none;
+	margin-top:5px;
 }
 .footer-social{
 	background-color: #00bff0;
@@ -179,12 +363,16 @@ a.glyphicon:hover, a.fa:hover{
 	font-size: 18px;
 }
 ul{
-	line-height: 28px;
-	list-style-type: none;
-	padding: 0px;
+	line-height: 26px;
 }
 .uppercase{
 	padding: 0px;
 	text-transform: uppercase;
 	width: 220px;
+}
+
+/*--------------------------------Bắc---------------------------------------*/
+
+.content-lesson {
+	border: solid 1px #39BFF0;
 }
