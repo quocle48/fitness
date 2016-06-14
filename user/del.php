@@ -1,13 +1,12 @@
 <?php 
 	if(isset($_POST["btndel"])==True)
 	{
-		if($_POST["choose_user"]==NULL)
+		if(isset($_POST["choose_user"])!=true)
 		{
 			echo "<script>alert('Chưa chọn tài khoản');</script>";
 		}
 		else 
 		{
-
 			$servername = "localhost";
 			$dbname = "fitness";
 			$conn=mysqli_connect($servername,"root","",$dbname);

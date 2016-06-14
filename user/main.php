@@ -57,9 +57,11 @@
 			<script type="text/javascript">
 				function showformadd(){
 					$("#add_user").toggleClass("hide");
+					if(!$("#edit_user").hasClass("hide")) $("#edit_user").addClass("hide");
 				}
 				function showformedit(){
 					$("#edit_user").toggleClass("hide");
+					if(!$("#add_user").hasClass("hide")) $("#add_user").addClass("hide");
 				}
 				function setvalue(id){
 					var data=$('tr.user_'+id);
