@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 		<?php
-			for(int i=0;i<5;i++)
+			for($i=0;$i<5;$i++)
 				include("thum-post.html");
 		?>
 	</div>
@@ -14,4 +14,4 @@
 		?>
 	</div>
 </div>
-<?php include("footer.html"); ?>
+<?php include("../footer.html"); ?>
