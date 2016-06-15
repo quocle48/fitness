@@ -430,7 +430,7 @@ ul{
 }
 
 /*--------------------------------Bắc---------------------------------------*/
-
+/*---- lesson---- */
 .content-lesson {
 	margin:0px;
 	padding:0px;
@@ -469,5 +469,47 @@ ul{
 }
 .lesson-caption p{
 	padding-right:10px;
+	
+}
+/*---- post---- */
+.thum-post {
+	margin-top: 40px;
+	margin-bottom: 60px;
+	margin-right: 50px;
+	text-align: justify;
+}
+.title-post{
+	height: 100px;
+	margin-left: 30px ;
+	margin-right: 80px;
+}
+.title-post h3{
+	padding:0px;
+	font-size: 24px;
+}
+
+.img-post{
+	height: 250px;
+	background: #e5e1d1;
+}
+.content-post{
+	height: 80px;
+	
+}
+.content-post p{
+	margin-left: 30px ;
+	margin-right: 40px;
+}
+.submit-post{
+	height: 90px;
+}
+.bottom-post{
+	height: 60px;
+	border-bottom: solid 3px #39BFF0;
+}
+.button-post{
+	float: left;
+	width: 80px;
+	margin-right: 5px;
 	
 }
