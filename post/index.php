@@ -1,5 +1,6 @@
-<?php include("header.html"); ?>
-<?php include("banner.html"); ?>
+<?php
+	include("../header.html"); 
+	include("banner.html"); ?>
 <div class="container">
 	<div class="row ">
 		<div class="col-xs-12 col-md-8 ">
