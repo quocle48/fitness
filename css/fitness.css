@@ -492,8 +492,11 @@ ul{
 .banner{
 	height: 300px;
 	border-bottom: solid 10px #2c343b;
-	background: #e5e1d1;
+	background: url("../img/banner.jpg") no-repeat center;
+
+    background-size: cover;
 	padding-left: 100px;
+	opacity: 0.8;
 }
 .title-banner{
 	margin-top: 150px;
@@ -501,9 +504,13 @@ ul{
 }
 .title-banner h1{
 	text-transform: uppercase;
+	text-style: bold;
 }
 .title-banner p{
 	font-style: italic;
+	margin-top: 10px;
+	color:#ffffff;
+	font-size: 16px;
 }
 /*---- post---- */
 .thum-post {
@@ -585,10 +592,10 @@ ul{
 	text-decoration: none;
 }
 .categories h2{
-	font-size: 20px;
+	font-size: 22px;
 }
 .categories h3 {
-	font-size: 16px;
+	font-size: 18px;
 }
 .categories a:hover {
 	color: #c44741;
@@ -598,11 +605,11 @@ ul{
 	height: 50px;
 	margin-left:80px;
 }
-
-/*---- categories---- */
 .tag-categories {
 	margin-left:100px;
 }
+/*---- statistical---- */
+
 .statistical{
 	height: 350px;
 	margin-top: 20px;
