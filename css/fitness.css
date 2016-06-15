@@ -442,12 +442,12 @@ ul{
 	margin-top: 10px;
 }
 .lesson-tag{
-	border-bottom: solid 3px #39BFF0;
+	border-bottom: solid 2px #c44741;
 }
 .lesson-tag h2{
 	font-size: 20px;
 	font-style: italic;
-	color: #39BFF0;
+	color: #c44741;
 }
 .lesson-img{
 	margin-right: 10px;
@@ -470,16 +470,27 @@ ul{
 .lesson-caption h3{
 	padding-left: 15px;
 	font-size: 20px;
+	color: #2c343b;
 	
+}
+.lesson-caption h3:hover{
+	color: #c44741;
+	text-decoration: none;
+	border-bottom: solid 1px #c44741; 
+	
+}
+.lesson-caption a{
+	text-decoration: none;
 }
 .lesson-caption p{
 	padding-right:10px;
-	
+	color: #52616d;
+	font-style: italic;
 }
 /*---- post---- */
 .thum-post {
-	margin-top: 40px;
-	margin-bottom: 60px;
+	margin-top: 20px;
+	margin-bottom: 40px;
 	margin-right: 50px;
 	text-align: justify;
 }
@@ -491,8 +502,15 @@ ul{
 .title-post h3{
 	padding:0px;
 	font-size: 24px;
+	color: #c44741;
 }
-
+.title-post h3:hover{
+	
+	color: #52616d;
+}
+.title-post a{
+	text-decoration: none;
+}
 .img-post{
 	height: 250px;
 	background: #e5e1d1;
@@ -502,19 +520,35 @@ ul{
 	
 }
 .content-post p{
+	margin-top:10px;
 	margin-left: 30px ;
 	margin-right: 40px;
+	
 }
+
 .submit-post{
 	height: 90px;
 }
-.bottom-post{
-	height: 60px;
-	border-bottom: solid 3px #39BFF0;
+.submit-post a {
+	text-decoration: none;
+	color: #c44741;
+	text-align: left;
 }
+.submit-post a:hover {
+	color: #72d0f4;
+}
+.bottom-post{
+	height: 40px;
+	border-bottom: solid 3px #e5e1d1;
+}
+
 .button-post{
 	float: left;
 	width: 80px;
+	position:relative;
 	margin-right: 5px;
-	
+	text-align: center;
+}
+.button-post button{
+	border: none;
 }
