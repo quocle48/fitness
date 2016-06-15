@@ -299,6 +299,21 @@ li.has-submenu:hover ul{
 #new-post a:hover .info p{
 	display: block;
 }
+@media (max-width: 768px){
+	.image-slider .img{
+		height: 300px;
+	}
+}
+@media (min-width: 768px){
+	.image-slider .img{
+		height: 370px;
+	}
+}
+@media (min-width: 992px){
+	.image-slider .img{
+		height: 450px;
+	}
+}
 .image-slider .img{
 	height: 450px;
 	overflow: hidden;
