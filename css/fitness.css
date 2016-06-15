@@ -4,6 +4,7 @@
 }
 body{
 	font-family: 'Open Sans', sans-serif;
+	background: #f3f3f3;
 }
 .header-social{
 	background-color: #2C343B;
@@ -299,9 +300,10 @@ li.has-submenu:hover ul{
 #new-post a:hover .info p{
 	display: block;
 }
-.image-slider .img{
+.image-slider{
 	height: 450px;
 	overflow: hidden;
+	position: relative;
 }
 /*---------------------------------------------------------------*/
 /*
@@ -500,8 +502,13 @@ ul{
 	font-size: 16px;
 }
 /*---- post---- */
+.thum-post{
+	background: #FFF;
+	border-bottom: 4px solid #c44741;
+	margin-bottom: 30px;
+}
 .post{
-	margin-top: 30px;
+	margin-top: 40px;
 }
 /*.thum-post {
 	margin-top: 20px;
@@ -509,12 +516,15 @@ ul{
 	margin-right: 50px;
 	text-align: justify;
 }*/
-.title-post{
-
+.title-post,.content-post{
+    padding: 20px 30px;
+}
+.title-post h3{
+	margin: 0;
 }
 .title-post a{
 	text-decoration: none;
-	color: #52616D;
+	color: #00BCD4;
 }
 .title-post a:hover{
 	color: #c44741;
@@ -522,24 +532,22 @@ ul{
 .img-post{
 	height: 250px;
 	background: #52616D;
+	overflow: hidden;
+	position: relative;
 }
-.content-post{
-	height: 80px;
-	
+.img-post img{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
 }
-.content-post p{
-	margin-top:10px;
-	margin-left: 30px ;
-	margin-right: 40px;
-}
-
 .submit-post{
-	height: 90px;
+	height: 70px;
 }
 .submit-post a {
 	text-decoration: none;
 	color: #52616D;
-	text-align: left;
 }
 .submit-post .fa{
 	font-size: 30px;
@@ -548,21 +556,28 @@ ul{
 	color: #E5E1D1;
 }
 .bottom-post{
-	height: 40px;
-	border-bottom: solid 3px #e5e1d1;
+	margin: 30px 0;
+	border-bottom: 2px solid #C44741;
 }
-
 .status-post{
-	float: left;
-	width: 80px;
-	position:relative;
-	margin-right: 5px;
 	text-align: center;
 }
 .status-post button{
 	border: none;
 }
-
+.read-more{
+	text-align: center;
+}
+.read-more a{
+	color: #C44741;
+	font-size: 16px;
+	font-weight: bold;
+}
+.read-more a:hover{
+	color: #00BCD4;
+	font-size: 16px;
+	font-weight: bold;
+}
 /*---- categories---- */
 .categories {
 	height: 200px;
