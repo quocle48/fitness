@@ -299,21 +299,6 @@ li.has-submenu:hover ul{
 #new-post a:hover .info p{
 	display: block;
 }
-@media (max-width: 768px){
-	.image-slider .img{
-		height: 300px;
-	}
-}
-@media (min-width: 768px){
-	.image-slider .img{
-		height: 370px;
-	}
-}
-@media (min-width: 992px){
-	.image-slider .img{
-		height: 450px;
-	}
-}
 .image-slider .img{
 	height: 450px;
 	overflow: hidden;
@@ -595,8 +580,8 @@ ul{
 
 /*---- categories---- */
 .categories {
-	height: 230px;
-	margin-top: 20px;
+	height: 200px;
+	margin-top: 40px;
 	background: #52616d;
 	color: #e5e1d1;
 	font-size: 14px;
@@ -606,6 +591,7 @@ ul{
 	color: #e5e1d1;
 	text-decoration: none;
 }
+
 .categories h2{
 	font-size: 20px;
 }
@@ -615,18 +601,21 @@ ul{
 .categories a:hover {
 	color: #c44741;
 	text-decoration: none;
+	border-bottom: solid 2px #c44741;
 }
 .title-categories {
-	height: 50px;
+	height: 30px;
 	margin-left:80px;
+	margin-right: 50px;
 }
 .tag-categories {
 	margin-left:100px;
+	margin-right: 80px;
 }
 /*---- statistical---- */
 
 .statistical{
-	height: 350px;
+	height: 200px;
 	margin-top: 20px;
 	background: #52616d;
 	color: #e5e1d1;
