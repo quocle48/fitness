@@ -436,11 +436,19 @@ ul{
 	padding:0px;
 	margin-top: 10px;
 }
-
+.lesson-tag{
+	border-bottom: solid 3px #39BFF0;
+}
+.lesson-tag h2{
+	font-size: 20px;
+	font-style: italic;
+	color: #39BFF0;
+}
 .lesson-img{
 	margin-right: 10px;
 }
 .lesson-img img {
+	
 	width: 100%;
     height: auto;
 	opacity: 1.0;
