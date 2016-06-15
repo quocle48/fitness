@@ -436,6 +436,7 @@ ul{
 
 /*--------------------------------Bắc---------------------------------------*/
 /*---- lesson---- */
+
 .content-lesson {
 	margin:0px;
 	padding:0px;
@@ -485,6 +486,23 @@ ul{
 .lesson-caption p{
 	padding-right:10px;
 	color: #52616d;
+	font-style: italic;
+}
+/*---- banner---- */
+.banner{
+	height: 300px;
+	border-bottom: solid 10px #2c343b;
+	background: #e5e1d1;
+	padding-left: 100px;
+}
+.title-banner{
+	margin-top: 150px;
+	color: #ffffff;
+}
+.title-banner h1{
+	text-transform: uppercase;
+}
+.title-banner p{
 	font-style: italic;
 }
 /*---- post---- */
@@ -551,4 +569,48 @@ ul{
 }
 .button-post button{
 	border: none;
+}
+
+/*---- categories---- */
+.categories {
+	height: 230px;
+	margin-top: 20px;
+	background: #52616d;
+	color: #e5e1d1;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.categories a {
+	color: #e5e1d1;
+	text-decoration: none;
+}
+.categories h2{
+	font-size: 20px;
+}
+.categories h3 {
+	font-size: 16px;
+}
+.categories a:hover {
+	color: #c44741;
+	text-decoration: none;
+}
+.title-categories {
+	height: 50px;
+	margin-left:80px;
+}
+
+/*---- categories---- */
+.tag-categories {
+	margin-left:100px;
+}
+.statistical{
+	height: 350px;
+	margin-top: 20px;
+	background: #52616d;
+	color: #e5e1d1;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.tag-statistical{
+	
 }
