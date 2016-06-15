@@ -1,6 +1,6 @@
 <?php 
 include("header.html");
-include("banner.html"); 
+include("slider.html"); 
 include("content.html");
 include("footer.html");
 ?>
