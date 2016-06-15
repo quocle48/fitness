@@ -17,6 +17,7 @@
 	<div class="col-xs-6 col-md-4">
 	<?php
 		include("categories.html");
+		include("practice.html");
 		include("statistical.html");
 	?>
 	</div>

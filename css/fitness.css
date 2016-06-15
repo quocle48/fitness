@@ -480,16 +480,14 @@ ul{
 /*---- banner---- */
 .banner{
 	height: 300px;
-	border-bottom: solid 10px #2c343b;
 	background: url("../img/banner.jpg") no-repeat center;
-
     background-size: cover;
 	padding-left: 100px;
 	opacity: 0.8;
 }
 .title-banner{
 	margin-top: 150px;
-	color: #ffffff;
+	color: #fff;
 }
 .title-banner h1{
 	text-transform: uppercase;
@@ -580,33 +578,47 @@ ul{
 }
 /*---- categories---- */
 .categories {
+	padding-top: 8 px;
 	height: 200px;
-	margin-top: 40px;
-	background: #52616d;
-	color: #e5e1d1;
+	line-height:200px;
+	background: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
+	border-top: solid 10px #2C343B ;
+	margin-bottom: 30px;
 }
 .categories a {
-	color: #e5e1d1;
+	color: #2C343B ;
 	text-decoration: none;
 }
-
-.categories h2{
-	font-size: 20px;
+.categories ul {
+	padding: 0px;
 }
-.categories h3 {
-	font-size: 16px;
+.categories ul li {
+	list-style-type:none;
+	font-size:16px;
+	padding: 5px;
+}
+.categories span {
+	visibility: hidden;
+	padding-right: 5px;
+}
+.categories a:hover span{
+	visibility: visible;
 }
 .categories a:hover {
 	color: #c44741;
 	text-decoration: none;
-	border-bottom: solid 2px #c44741;
+	border-bottom: solid 2px #c44741 ;
+	padding-bottom: 5px;
 }
 .title-categories {
-	height: 30px;
-	margin-left:80px;
-	margin-right: 50px;
+	padding-left: 20px;
+	margin: 10px 90px 10px 70px;
+	border-bottom: solid 3px #c44741;
+}
+.title-categories h2{
+	font-size: 20px;
 }
 .tag-categories {
 	margin-left:100px;
@@ -616,12 +628,9 @@ ul{
 
 .statistical{
 	height: 200px;
-	margin-top: 20px;
-	background: #52616d;
-	color: #e5e1d1;
-	font-size: 14px;
-	text-transform: uppercase;
-}
-.tag-statistical{
 	
+}
+/*---- practice---- */
+.practice {
+	height: 280px;
 }
