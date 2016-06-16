@@ -308,7 +308,7 @@ li.has-submenu:hover ul{
 	overflow: hidden;
 	position: relative;
 }
-/*---------------------------------------------------------------*/
+/*----------------------------QUOC-----------------------------------*/
 /*
 .footer-top{
 	height: 300px;
@@ -359,7 +359,32 @@ li.has-submenu:hover ul{
 .np-title a, .p-title a{
 	color: white;
 }
-/*--------------------------------QUỐC---------------------------------------*/
+/*--------------HOT-MEM------------------*/
+
+.member{
+	padding: 5px;
+}
+.mem-info{
+	text-align: center;
+	max-width: 150px;
+}
+.mem-info span{
+	display: block;
+}
+.name{
+	font-weight: bold;
+    font-size: 20px;
+    color: #5BC0EB;
+}
+.rank{
+	font-size: 13px;
+    color: #5BC0EB;
+    font-style: italic;
+}
+
+
+
+/*-----------------------------------------------------------------------*/
 .footer-content{
 	list-style: none;
 	margin-top:5px;
@@ -434,14 +459,13 @@ ul{
 	padding:0px;
 	margin-top: 10px;
 }
-.lesson-tag{
-	border-bottom: solid 2px #c44741;
-}
 .lesson-tag h2{
 	font-size: 20px;
-	font-style: italic;
+	text-align: center;
 	color: #c44741;
 	text-transform: uppercase;
+	border-bottom: solid 2px #c44741;
+	padding: 10px 0;
 }
 .lesson-img{
 	margin-right: 10px;
