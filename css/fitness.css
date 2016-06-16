@@ -364,12 +364,15 @@ li.has-submenu:hover ul{
 .member{
 	padding: 5px;
 }
+.member img{
+	border-radius: 50%;
+}
 .mem-info{
-	text-align: center;
 	max-width: 150px;
 }
 .mem-info span{
 	display: block;
+	text-align: center;
 }
 .name{
 	font-weight: bold;
@@ -381,8 +384,31 @@ li.has-submenu:hover ul{
     color: #5BC0EB;
     font-style: italic;
 }
-
-
+.status{
+	font-size: 13px;
+    font-style: italic;
+    color: #52616D;
+}
+.mem-like, .mem-love{
+	float: left;
+}
+.mem-contact{
+	float: right;
+}
+.mem-like a, .mem-love a{
+	margin: 10px 0px 0px 10px;
+	color: #52616D;
+}
+.mem-like a:hover{
+	color: #C44741;
+}
+.mem-love a:hover{
+	color: #5BC0EB;
+}
+.mem-contact a{
+	margin: 10px 0px 0px 5px;
+	color: #5BC0EB;
+}
 
 /*-----------------------------------------------------------------------*/
 .footer-content{
