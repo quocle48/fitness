@@ -536,7 +536,7 @@ ul{
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
 }
 .post{
-	margin-top: 40px;
+	margin-top: 60px;
 }
 /*.thum-post {
 	margin-top: 20px;
@@ -575,8 +575,13 @@ ul{
 }
 .submit-post a {
 	text-decoration: none;
-	color: #52616D;
+	color: #5BC0EB;
 }
+.submit-post p {
+	font-style: italic;
+	color: #5BC0EB ;
+}
+
 .submit-post .fa{
 	font-size: 30px;
 }
@@ -617,6 +622,7 @@ ul{
 	border-top: solid 10px #2C343B ;
 	border-bottom: solid 2px #c44741 ;
 	margin-bottom: 30px;
+	margin-left: 20px;
 }
 .categories a {
 	color: #2C343B ;
@@ -665,3 +671,132 @@ ul{
 .practice {
 	height: 280px;
 }
+/*---- Detail-POST---- */
+h3{
+	padding: 20px 50px 20px 50px;
+	font-size: 20px;
+	color:#5BC0EB;
+	font-style:bold;
+}
+.detail-post {
+}
+.detail-post h2{
+ margin: 0px;
+ margin: 10px 0px 10px 20px;
+}
+.submit-post-detail{
+	margin:10px;
+	padding: 5px;
+}
+.img-post-detail{
+	height: 360px;
+	background: #52616D;
+	margin-bottom: 40px;
+}
+.content-post-detail{
+	
+}
+.content-post-detail p{
+	margin: 10px;
+	text-indent: 50px;
+	font-size: 14px;
+	line-height: 1.8;
+	text-align: justify;
+	margin: 15px 30px 15px 30px;
+}
+.share-post{
+	padding:5px;
+	height: 70px;
+	background: #52616D;
+	font-size:15px;
+	margin:auto;
+	margin-top: 150px;
+}
+.share-post span{
+	text-transform: uppercase;
+}
+
+.share-post a{
+	font-size:25px;
+	padding: 5px;
+}
+.control{
+	text-align: right;
+	padding-right: 20px;
+	
+}
+.comment-post{
+	margin:auto;
+}
+.comment-post h3{
+	padding:0px;
+	margin-left: 40px;
+}
+.comment {
+	
+}
+.title-comment{
+	height:30px;
+	line-height: 30px;
+	
+}
+.title-comment h4 {
+	margin:0px;
+	margin-left: 16px;
+	padding-top: 7px;
+	font-size: 14px;
+	font-weight: bold;
+	float:left;
+}
+.time-comment{
+	margin-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+}
+.reply {
+	font-size: 12px;
+	padding-top: 7px;
+	text-align: right;
+	
+}
+.reply span {
+	margin-right: 5px;
+}
+.reply a {
+	text-transform: uppercase;
+	padding-right: 20px;
+	
+}
+.reply a:hover {
+	color: #C44741;
+	text-decoration: none;
+}
+.body-comment{
+	height: 80px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.avartar-comment{
+	margin-left: 30px;
+	width:70px;
+	height:70px;
+	background: #52616D ;
+	
+}
+.content-comment{
+	background:#F3F3F3;
+	margin-left: 10px;
+	height: 70px;
+	width: 80%;
+	border-bottom: solid 2px  #52616D  ;
+}
+.content-comment p{
+	margin: 5px;
+}
+
+
+.send-comment{
+	height: 300px;
+
+}
+

@@ -4,7 +4,7 @@
 <div class="container post">
 	<div class="col-xs-12 col-md-8 ">
 	<?php
-		$t=1;
+		$t=2;
 		if($t==1){
 			for($i=0;$i<4;$i++)
 			include("thum-post.html");
