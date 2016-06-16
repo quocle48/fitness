@@ -20,6 +20,9 @@ body{
 	line-height: 40px;
 	color: #FFF;
 }
+.account > a:hover,.account > a:focus{
+	text-decoration: none;
+}
 .input-group.search{
 	margin-top: 6px;
 	margin-right: 10px;

@@ -1,0 +1,41 @@
+
+<div id="slider-product">
+	<?php 
+		for($i=0;$i<6;$i++){
+	 		echo '<div class="item">';
+	 		include("product.html"); 
+	 		echo '</div>';
+		}
+	?>
+</div>
+<style type="text/css">
+	#slider-product{
+		background: #5BC0EB;
+		padding: 10px 0;
+	}
+	.item{
+		//width: 300px;
+		padding: 0 5px;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#slider-product").owlCarousel({
+			autoplay: true,
+			autoplayHoverPause:true,
+			responsive:{
+		        0:{
+		            items:2,
+		        },
+		        600:{
+		            items:4,
+		        },
+		        1000:{
+		            items:6,
+		        }
+		    },
+			loop: true,
+			nav:true
+		});
+	});
+</script>
