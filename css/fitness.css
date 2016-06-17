@@ -704,10 +704,7 @@ ul{
 .practice {
 	height: 280px;
 }
-/*---- intrerested---- */
-.interested{
-	
-}
+
 
 /*---- Detail-POST---- */
 h3{
@@ -834,6 +831,40 @@ h3{
 .send-comment{
 	height: 300px;
 
+}
+/*----List post interested-------*/
+.interested {
+	margin-bottom: 50px;
+}
+.interested h3{
+	margin: 0px;
+	padding-bottom: 0px;
+	border-top: 8px solid  #2C343B  ;
+}
+.interested-post{
+	width: inline;
+	background: #f3f3f3;
+	margin: auto;
+	transition: all 0.2s ease;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+	text-align: center;
+	position: relative;
+	padding: 5px ;
+	margin: 5px;
+	margin-top: 0px;
+	
+}
+.interested-post:hover{
+	border: solid 3px  #52616D;
+	transform: n;
+	box-shadow: 0 2px 3px 3px rgba(0,0,0,0.2);
+}
+
+#slider-interested-post{
+	
+}
+
+.interested-post img{
 }
 /*----HOME-PRODUCT-------*/
 .home-product{
