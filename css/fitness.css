@@ -819,10 +819,145 @@ h3{
 .content-comment p{
 	margin: 5px;
 }
-
-
 .send-comment{
 	height: 300px;
 
 }
-
+/*----HOME-PRODUCT-------*/
+.home-product{
+	background: #FFF;
+	text-align: center;	
+}
+.header-sl-product{
+	padding-top: 20px;
+}
+.header-sl-product a{
+	font-size: 22px;
+	color: #5BC0EB;
+	margin: 10px;
+	padding: 5px;
+}
+.header-sl-product a:hover,.header-sl-product a:focus{
+	border-bottom: 2px solid #C44741;
+	text-decoration:none;
+}
+#slider-product{
+	padding: 10px 0px;
+}
+.item{
+	margin: 15px 0;
+}
+.footer-sl-product{
+	padding-bottom: 20px;
+	font-size: 22px;
+	color:#C44741;
+}
+.footer-sl-product button{
+	color:#FFF;
+	padding: 10px 15px;
+	background: #C44741;
+	transition: all 0.5s ease;
+	border: 2px solid #C44741;
+}
+.footer-sl-product button:hover{
+	color: #C44741 ;
+	background: none;
+}
+.footer-sl-product button:focus{
+	outline: none;
+}
+/*----PRODUCT-------*/
+.product{
+	width: 240px;
+	background: #f3f3f3;
+	margin: auto;
+	height: 360px;
+	transition: all 0.2s ease;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+	border-bottom: 3px solid #C44741;	
+	text-align: center;
+	position: relative;
+}
+.product:hover{
+	transform: scale(1.05);
+	box-shadow: 0 2px 3px 3px rgba(0,0,0,0.2);
+}
+.product img{
+	height: 240px;
+}
+.hot-sell{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background: #5BC0EB;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	color: #FFF;
+}
+.hot-sell span{
+	font-size: 17px;
+	position: relative;
+	top:25%;
+	left:2px;
+}
+.info-item{
+	margin-top:5px; 
+	text-align: center;
+}
+.info-item a{
+	color: #52616D;
+	cursor: pointer;
+	font-size: 16px;
+}
+.info-item a:hover,.info-item a:focus{
+	text-decoration: none;
+}
+.info-item .price-item{
+	display: table-cell;
+	vertical-align: middle;
+	height: 46px;
+	color: #C44741;
+	font-size: 18px;
+	position: relative;
+	left: 60%;
+}
+.info-item .sell-price{
+	margin-bottom: -2px;
+	font-size: 13px;
+	text-decoration: line-through;
+	color:#2C343B;
+}
+.buy-now{
+	font-size: 14px;
+	height: 30px;
+	width: 90px;
+	border: none;
+	color: #FFF;
+	background: #52616D;
+	position: relative;
+	transition: all 0.2s ease;
+}
+.buy-now:hover{
+	background: #f3f3f3;
+	color: #52616D;
+}
+.buy-now:before,.buy-now:after{
+    content: '';
+    height: 2px;
+    width: 0px;
+    position: absolute;
+    background: #52616D;
+    transition: all 0.5s ease;
+}
+.buy-now:after{
+	bottom: 0;
+	left: 0;
+}
+.buy-now:before{
+	right: 0;
+	top: 0;
+}
+.buy-now:hover:before,.buy-now:hover:after{
+	width: 100%;
+}

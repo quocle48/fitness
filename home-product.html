@@ -1,0 +1,42 @@
+<div class="home-product">
+	<div class="header-sl-product">
+		<a href="#">SẢN PHẨM MỚI NHẤT</a>
+		<a href="#">SẢN PHẨM BÁN CHẠY</a>
+		<a href="#">SẢN PHẨM KHUYẾN MÃI</a>
+	</div>
+	<div id="slider-product">
+		<?php 
+			for($i=0;$i<6;$i++){
+		 		echo '<div class="item">';
+		 		include("product.html"); 
+		 		echo '</div>';
+			}
+		?>
+	</div>
+	<div class="footer-sl-product">
+		<button>MUA SẮM NGAY</button>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#slider-product").owlCarousel({
+			autoplay: true,
+			autoplayHoverPause:true,
+			responsive:{
+				0:{
+		            items:2,
+		        },
+		        768:{
+		            items:3,
+		        },
+		        992:{
+		            items:4,
+		        },
+		        1200:{
+		            items:5,
+		        }
+		    },
+			loop: true,
+		});
+	});
+</script>
