@@ -646,16 +646,12 @@ ul{
 
 /*---- categories---- */
 .categories {
-	padding-top: 8 px;
-	height: 200px;
-	line-height:200px;
 	background: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
 	border-top: solid 10px #2C343B ;
 	border-bottom: solid 2px #c44741 ;
 	margin-bottom: 30px;
-	margin-left: 30px;
 }
 .categories a {
 	color: #2C343B ;
@@ -667,42 +663,45 @@ ul{
 }
 .categories ul li {
 	list-style-type:none;
-	font-size:16px;
+	font-size:14px;
 	padding: 5px;
 }
 .categories span {
 	visibility: hidden;
 	padding-right: 5px;
 }
-.categories a:hover span{
+.tag-categories a:hover span{
 	visibility: visible;
+	
 }
-.categories a:hover {
+.tag-categories a:hover {
 	color: #c44741;
 	text-decoration: none;
-	border-bottom: solid 2px #c44741 ;
 	padding-bottom: 5px;
+	margin-left:20px;
+	border-bottom: solid 2px #c44741 ;
+	
 }
 .title-categories {
-	padding-left: 20px;
-	margin: 10px 90px 10px 70px;
+	padding-bottom:10px;
+	margin: 15px 70px;
 	border-bottom: solid 3px #c44741;
 }
 .title-categories h2{
-	font-size: 20px;
+	margin:0px;
+	font-size: 16px;
+	text-align:center;
 }
 .tag-categories {
-	margin-left:60px;
+	margin-left:100px;
 	margin-right: 80px;
 }
 /*---- statistical---- */
 
 .statistical{
-	height: 200px;
 }
 /*---- practice---- */
 .practice {
-	height: 280px;
 }
 
 
