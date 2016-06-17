@@ -637,6 +637,13 @@ ul{
 	font-size: 16px;
 	font-weight: bold;
 }
+/*---- number-page ---- */
+.page-number{
+	text-align: center;
+	margin-bottom:20px;
+}
+
+
 /*---- categories---- */
 .categories {
 	padding-top: 8 px;
@@ -697,6 +704,11 @@ ul{
 .practice {
 	height: 280px;
 }
+/*---- intrerested---- */
+.interested{
+	
+}
+
 /*---- Detail-POST---- */
 h3{
 	padding: 20px 50px 20px 50px;

@@ -4,10 +4,11 @@
 <div class="container post">
 	<div class="col-xs-12 col-md-8 ">
 	<?php
-		$t=2;
+		$t=1;
 		if($t==1){
 			for($i=0;$i<4;$i++)
-			include("thum-post.html");
+				include("thum-post.html");
+			include("page-number.html");
 		}
 		if($t==2){
 			include("post-detail-1.html");
@@ -19,6 +20,10 @@
 		include("categories.html");
 		include("practice.html");
 		include("statistical.html");
+		if($t==2){
+			include("interested.html");
+		}
+		
 	?>
 	</div>
 </div>
