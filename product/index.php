@@ -2,7 +2,7 @@
 	include("../header.html"); 
 	include("../banner.html"); ?>
 <div class="container post">
-	<div class="col-xs-12 col-md-8 ">
+	<div class="col-xs-12 col-md-9 ">
 	<?php
 		$list=!isset($_GET["id"]);
 		if($list){
@@ -11,11 +11,11 @@
 			include("page-number.html");
 		}
 		else{
-			include("product-detai.html");
+			include("product-detail.html");
 		}
 	?>
 	</div>
-	<div class="col-xs-6 col-md-4">
+	<div class="col-xs-6 col-md-3">
 	<?php
 		include("../categories.html");
 		include("../practice.html");

@@ -652,6 +652,20 @@ ul{
 	border-top: solid 10px #2C343B ;
 	border-bottom: solid 2px #c44741 ;
 	margin-bottom: 30px;
+	
+}
+.title-categories {
+	padding-bottom:15px;
+	padding-top:15px;
+	width: 110px;
+	border-bottom: solid 3px #c44741;
+	text-align:center;
+	margin: auto;
+}
+.title-categories h2{
+	margin:0px;
+	font-size: 16px;
+	
 }
 .categories a {
 	color: #2C343B ;
@@ -670,6 +684,12 @@ ul{
 	visibility: hidden;
 	padding-right: 5px;
 }
+
+
+.tag-categories {
+	margin:auto;
+	width: 160px;
+}
 .tag-categories a:hover span{
 	visibility: visible;
 	
@@ -682,20 +702,8 @@ ul{
 	border-bottom: solid 2px #c44741 ;
 	
 }
-.title-categories {
-	padding-bottom:10px;
-	margin: 15px 70px;
-	border-bottom: solid 3px #c44741;
-}
-.title-categories h2{
-	margin:0px;
-	font-size: 16px;
-	text-align:center;
-}
-.tag-categories {
-	margin-left:100px;
-	margin-right: 80px;
-}
+
+
 /*---- statistical---- */
 
 .statistical{
@@ -764,7 +772,6 @@ ul{
 }
 .comment-post h3{
 	padding:0px;
-	margin-left: 40px;
 }
 .comment {
 	
@@ -828,16 +835,20 @@ ul{
 	margin: 5px;
 }
 .send-comment{
-	height: 300px;
-
+	padding-left: 15px;
+	padding-bottom: 20px;
 }
+
 /*----List post interested-------*/
 .interested {
+	margin-top: 20p;
 	margin-bottom: 50px;
+	
 }
 .interested h3{
 	margin: 0px;
 	padding-bottom: 0px;
+	padding: 15px;
 	border-top: 8px solid  #2C343B  ;
 }
 .interested-post{
