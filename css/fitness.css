@@ -914,7 +914,7 @@ ul{
 }
 /*----PRODUCT-------*/
 .product{
-	width: 240px;
+	width: 230px;
 	background: #f3f3f3;
 	margin: auto;
 	height: 360px;
@@ -925,11 +925,13 @@ ul{
 	position: relative;
 }
 .product:hover{
+	z-index: 10;
 	transform: scale(1.05);
 	box-shadow: 0 2px 3px 3px rgba(0,0,0,0.2);
 }
 .product img{
 	height: 240px;
+	width: 100%;	
 }
 .hot-sell{
 	height: 50px;
@@ -1006,4 +1008,8 @@ ul{
 }
 .buy-now:hover:before,.buy-now:hover:after{
 	width: 100%;
+}
+/*---------------LIST PRODUCT-------------------*/
+.list-items .product{
+
 }
