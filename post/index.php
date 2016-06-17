@@ -4,13 +4,13 @@
 <div class="container post">
 	<div class="col-xs-12 col-md-8 ">
 	<?php
-		$t=2;
-		if($t==1){
+		$list=!isset($_GET["id"]);
+		if($list){
 			for($i=0;$i<4;$i++)
 				include("thum-post.html");
 			include("page-number.html");
 		}
-		if($t==2){
+		else{
 			include("post-detail-1.html");
 		}
 	?>

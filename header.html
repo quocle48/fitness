@@ -1,6 +1,6 @@
 <?php 
 	$home="http://".$_SERVER['SERVER_NAME']."/"; 
-	function getBaseUrl() 
+	function baseurl() 
 	{
 		$currentPath = $_SERVER['PHP_SELF']; 
 		$pathInfo = pathinfo($currentPath); 
@@ -83,7 +83,7 @@
 			<div class="header-menu">
 				<div class="container">
 					<div class="home-logo left">
-						<a href="#">
+						<a href="<?php echo $home; ?>">
 							<img src="<?php echo $home; ?>img/fitness-logo.png"/>
 						</a>
 					</div>
