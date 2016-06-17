@@ -706,12 +706,12 @@ ul{
 
 
 /*---- Detail-POST---- */
-h3{
+/*h3{
 	padding: 20px 50px 20px 50px;
 	font-size: 20px;
 	color:#5BC0EB;
 	font-style:bold;
-}
+}*/
 .detail-post {
 }
 .detail-post h2{
@@ -894,19 +894,23 @@ h3{
 	font-size: 22px;
 	color:#C44741;
 }
-.footer-sl-product button{
+.footer-sl-product a{
+	display: inline-block;
 	color:#FFF;
 	padding: 10px 15px;
 	background: #C44741;
 	transition: all 0.5s ease;
 	border: 2px solid #C44741;
+	cursor: pointer;
 }
-.footer-sl-product button:hover{
+.footer-sl-product a:hover{
 	color: #C44741 ;
 	background: none;
+	text-decoration:none;
 }
-.footer-sl-product button:focus{
+.footer-sl-product a:focus{
 	outline: none;
+	text-decoration:none;
 }
 /*----PRODUCT-------*/
 .product{

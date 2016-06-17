@@ -1,6 +1,6 @@
 <?php
 	include("../header.html"); 
-	include("banner.html"); ?>
+	include("../banner.html"); ?>
 <div class="container post">
 	<div class="col-xs-12 col-md-8 ">
 	<?php
@@ -17,10 +17,9 @@
 	</div>
 	<div class="col-xs-6 col-md-4">
 	<?php
-		include("categories.html");
-		include("practice.html");
-		include("statistical.html");
-		
+		include("../categories.html");
+		include("../practice.html");
+		include("../statistical.html");
 	?>
 	</div>
 </div>
