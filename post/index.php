@@ -24,4 +24,3 @@
 	</div>
 </div>
 <?php include("../footer.html"); ?>
-<?php include("../fixed-menu.html");?>

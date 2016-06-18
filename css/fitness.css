@@ -479,22 +479,23 @@ ul{
 
 /*--------------------------------Bắc---------------------------------------*/
 /*---- fixed menu---- */ 
-.fixed-menu{
+.go-top{
 	width: 50px;
 	position:fixed;
 	right:0px;
 	bottom: 50px;
 	text-align:center;
 	margin:5px;
+	z-index: 100;
 }
-.fixed-menu a{
+.go-top a{
 	font-size: 20px;
 	padding:10px;
 	color: #fff;
 	background: #c44741;
-	z-index: -1;
+	
 }
-.fixed-menu a:hover {
+.go-top a:hover {
 	background: #52616D;
     transition: all 0.5s ease;
 }
