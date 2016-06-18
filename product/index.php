@@ -2,35 +2,34 @@
 	include("../header.html"); 
 	include("../banner.html"); ?>
 <div class="container post">
-<<<<<<< HEAD
 	<div class="col-xs-12 col-md-9 ">
-=======
->>>>>>> 24905e5085e4592aae5ceff559e79080caf681e0
 	<?php
 		$list=!isset($_GET["id"]);
 		if(!$list)	include("product-detail.html");
 		else{
-<<<<<<< HEAD
-			include("product-detail.html");
-		}
-=======
 			for($i=0;$i<10;$i++){
->>>>>>> 24905e5085e4592aae5ceff559e79080caf681e0
 	?>
-	<div class="list-items col-xs-12 col-sm-6 col-md-6 col-lg-3">
-	<?php include("product.html");?>
+		<div class="list-items col-xs-12 col-sm-4 col-md-4 col-lg-3">
+		<?php include("product.html");?>
+		</div>
+	<?php }} ?>
 	</div>
-<<<<<<< HEAD
-	<div class="col-xs-6 col-md-3">
+	<div class="block-right col-md-3">
+		<div class="categories">
+			<div class="title-categories">
+				<a href="#" ><h2>MẶT HÀNG</h2></a>
+			</div>
+			<div class="tag-categories">
+				<ul>
+					<li><a href="#"><span class="fa fa-check-square-o "></span>TRANG PHỤC</a></li>
+					<li><a href="#"><span class="fa fa-check-square-o "></span>DỤNG CỤ</a></li>
+					<li><a href="#"><span class="fa fa-check-square-o "></span>THỰC PHẨM</a></li>
+				</ul>
+			</div>
+		</div>
 	<?php
-		include("../categories.html");
-		include("../practice.html");
 		include("../statistical.html");
-=======
-	<?php		
-			}
-		}
->>>>>>> 24905e5085e4592aae5ceff559e79080caf681e0
 	?>
+	</div>
 </div>
 <?php include("../footer.html"); ?>

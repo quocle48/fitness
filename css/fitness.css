@@ -925,10 +925,9 @@ ul{
 }
 /*----PRODUCT-------*/
 .product{
-	width: 230px;
+	width: 200px;
 	background: #f3f3f3;
 	margin: auto;
-	height: 360px;
 	transition: all 0.2s ease;
 	box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
 	border-bottom: 3px solid #C44741;	
@@ -941,12 +940,12 @@ ul{
 	box-shadow: 0 2px 3px 3px rgba(0,0,0,0.2);
 }
 .product img{
-	height: 240px;
+	height: 200px;
 	width: 100%;	
 }
 .hot-sell{
-	height: 50px;
-	width: 50px;
+	height: 45px;
+	width: 45px;
 	border-radius: 50%;
 	background: #5BC0EB;
 	position: absolute;
@@ -955,7 +954,7 @@ ul{
 	color: #FFF;
 }
 .hot-sell span{
-	font-size: 17px;
+	font-size: 16px;
 	position: relative;
 	top:25%;
 	left:2px;
@@ -979,7 +978,7 @@ ul{
 	color: #C44741;
 	font-size: 18px;
 	position: relative;
-	left: 60%;
+	width: 200px;
 }
 .info-item .sell-price{
 	margin-bottom: -2px;
@@ -988,6 +987,8 @@ ul{
 	color:#2C343B;
 }
 .buy-now{
+	margin-top: 3px;
+	margin-bottom: 13px;
 	font-size: 14px;
 	height: 30px;
 	width: 90px;
@@ -1021,6 +1022,12 @@ ul{
 	width: 100%;
 }
 /*---------------LIST PRODUCT-------------------*/
-.list-items .product{
-
+.list-items{
+	padding: 0;
+	margin-bottom: 10px; 
+}
+@media (max-width: 992px){
+	.block-right{
+		display:none;
+	}
 }
