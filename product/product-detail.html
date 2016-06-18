@@ -1,0 +1,69 @@
+<div class="thum-post product-detail row">
+	<div class="img col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<img src="<?php echo $home; ?>img/product.jpg">
+	</div>
+	<div class="info-detail col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<div class="title">
+			<span>Giày Underamour - Hàng US</span>
+		</div>
+		<hr>
+		<div class="sell-price">620.000 VNĐ</div>
+		<div class="price">520.000 VNĐ</div>
+		<hr>
+		<div class="description">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec.
+			</p>
+		</div>
+		<hr>
+		<div class="buy-product">
+			<div class="size">
+				<label>Size</label>
+				<select name="size" id="inputSize" class="form-control" required>
+					<option value="38">38</option>
+					<option value="39">39</option>
+					<option value="40">40</option>
+					<option value="41">41</option>
+					<option value="42">42</option>
+				</select>
+			</div>
+			<div class="quantily">
+				<label>Số lượng</label>
+				<input type="number" name="quantily" id="input" class="form-control" value="1" min="1" max="100" required="required">
+			</div>
+			<button class="buy">MUA NGAY</button>
+		</div>
+	</div>
+</div>
+<div class="related-product row">
+	<div class="title">SẢN PHẨM LIÊN QUAN<hr></div>
+	<div id="slider-product-detail">
+			<?php 
+				for($i=0;$i<6;$i++){
+			 		echo '<div class="item">';
+			 		include("product.html"); 
+			 		echo '</div>';
+				}
+			?>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#slider-product-detail").owlCarousel({
+			autoplay: true,
+			autoplayHoverPause:true,
+			responsive:{
+				0:{
+		            items:1,
+		        },
+		        700:{
+		            items:3,
+		        },
+		        1200:{
+		            items:4,
+		        }
+		    },
+			loop: true,
+		});
+	});
+</script>
