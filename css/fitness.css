@@ -478,6 +478,25 @@ ul{
 }
 
 /*--------------------------------Bắc---------------------------------------*/
+/*---- fixed menu---- */ 
+.fixed-menu{
+	width: 50px;
+	position:fixed;
+	right:0px;
+	top:540px;;
+	text-align:center;
+	margin:5px;
+}
+.fixed-menu a{
+	font-size: 20px;
+	padding:10px;
+	color: #fff;
+	background: #c44741;
+}
+.fixed-menu a:hover {
+	background: #52616D;
+    transition: all 0.5s ease;
+}
 /*---- lesson---- */
 
 .content-lesson {
@@ -485,6 +504,7 @@ ul{
 	padding:0px;
 	margin-top: 10px;
 }
+
 .lesson-tag h2{
 	font-size: 20px;
 	text-align: center;
