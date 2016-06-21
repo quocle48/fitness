@@ -40,18 +40,19 @@
 						<div class="form-account">
 							<div class="toggle-account glyphicon glyphicon-pencil">
 							</div>
-							<form action="" class="login">
+							<form method="post" action="<?php echo $home.'application/user/login.php'; ?>" class="login">
 								<span>Login to your account</span>
-								<input type="text" placeholder="Username" required/>
-								<input type="password" placeholder="Password" required/>
-								<button>Login</button>
+								<input type="text" placeholder="Username" name="user" required/>
+								<input type="password" placeholder="Password" name="pass" required/>
+								<button type="submit">Login</button>
 							</form>
-							<form action="" class="register">
+							<form method="post" action="<?php echo $home.'application/user/register.php'; ?>" class="register">
 								<span>Create an account</span>
-								<input type="text" placeholder="Username" required/>
-								<input type="password" placeholder="Password" required/>
-								<input type="email" placeholder="Email Address" required/>
-								<button>Register</button>
+								<input type="text" placeholder="Username" name="user"  required/>
+								<input type="password" placeholder="Password" name="pass"  required/>
+								<input type="email" placeholder="Email Address" name="mail" required/>
+								<p class="error"></p>
+								<button type="submit">Register</button>
 							</form>
 							<a href="#">Forgot your password?</a>
 						</div>
