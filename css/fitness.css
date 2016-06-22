@@ -1165,3 +1165,9 @@ hr{
 .product-detail .img img{
 	max-width: 100%;
 }
+.notice{
+	font-size: 30px;
+	color: #C44741;
+	margin: 50px; 
+	text-align: center;
+}

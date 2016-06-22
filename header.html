@@ -1,14 +1,4 @@
-<?php 
-	$home="http://".$_SERVER['SERVER_NAME']."/"; 
-	function baseurl() 
-	{
-		$currentPath = $_SERVER['PHP_SELF']; 
-		$pathInfo = pathinfo($currentPath); 
-		$hostName = $_SERVER['HTTP_HOST']; 
-		$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
-		return $protocol.$hostName.$pathInfo['dirname']."/";
-	}
-?>
+<?php	include("application/config.php")	?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -44,7 +34,7 @@
 								<span>Login to your account</span>
 								<input type="text" placeholder="Username" name="user" required/>
 								<input type="password" placeholder="Password" name="pass" required/>
-								<button type="submit">Login</button>
+								<button type="submit" name='log-click'>Login</button>
 							</form>
 							<form method="post" action="<?php echo $home.'application/user/register.php'; ?>" class="register">
 								<span>Create an account</span>
@@ -52,7 +42,7 @@
 								<input type="password" placeholder="Password" name="pass"  required/>
 								<input type="email" placeholder="Email Address" name="mail" required/>
 								<p class="error"></p>
-								<button type="submit">Register</button>
+								<button type="submit" name="reg-click">Register</button>
 							</form>
 							<a href="#">Forgot your password?</a>
 						</div>
