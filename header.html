@@ -1,4 +1,4 @@
-<?php	include("application/config.php")	?>
+<?php include("application/config.php")	?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -26,7 +26,17 @@
 						<a class="fa fa-youtube-play"></a>
 					</div>
 					<div class="account right">
-						<a href="#" id="account">Login or Register</a>
+						<?php
+							
+							if(isset($_SESSON['username'])){
+								echo "<a href='#' class='username'>".$_SESSON['username'] ."</a>";
+							
+							}
+							else {
+								echo "<a href='#' id='account'>Login or Register</a>";
+							}
+						?>
+						
 						<div class="form-account">
 							<div class="toggle-account glyphicon glyphicon-pencil">
 							</div>

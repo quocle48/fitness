@@ -11,7 +11,7 @@
             $mail = $_POST["mail"];
         else $Err=true;
         if(strlen($_POST["pass"])>=6 && !empty($_POST["pass"]))
-            $pass= password_hash($_POST["pass"], PASSWORD_DEFAULT);
+            $pass= password_hash($_POST["pass"], PASSWORD_BCRYPT);
         else $Err=true;
         if($Err) echo "<div class='notice'>Thông tin tài khoản khởi tạo chưa chính xác. Xin vui lòng thử lại.";
         else{
