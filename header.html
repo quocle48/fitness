@@ -1,4 +1,6 @@
-<?php include("application/config.php")	?>
+<?php include("application/config.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -27,16 +29,13 @@
 					</div>
 					<div class="account right">
 						<?php
-							
-							if(isset($_SESSON['username'])){
-								echo "<a href='#' class='username'>".$_SESSON['username'] ."</a>";
-							
+							if(isset($_SESSION['username'])){
+								echo "<a href='#' class='username'>".$_SESSION['username']."</a>";
 							}
 							else {
 								echo "<a href='#' id='account'>Login or Register</a>";
 							}
 						?>
-						
 						<div class="form-account">
 							<div class="toggle-account glyphicon glyphicon-pencil">
 							</div>
