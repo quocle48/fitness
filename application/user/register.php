@@ -11,18 +11,18 @@
             $mail = $_POST["mail"];
         else $Err=true;
         if(strlen($_POST["pass"])>=6 && !empty($_POST["pass"]))
-            $pass= $_POST["pass"];
+            $pass= password_hash($_POST["pass"], PASSWORD_DEFAULT);
         else $Err=true;
         if($Err) echo "<div class='notice'>Thông tin tài khoản khởi tạo chưa chính xác. Xin vui lòng thử lại.";
         else{
             $conn=connectDb();
             $sql="select * from user where username='".$user."' OR email='".$mail."'";
-            $result=$conn->query($sql);
-            if(mysqli_num_rows($result) >0)
+            $result= $conn->query($sql);
+            if( $result->fetchColumn() >0)
                 echo "<div class='notice'>Username hoặc Email đã được sử dụng. Xin vui lòng thử lại.";
             else{
                 $sql2="insert into user(username,password,email) values('".$user."','".$pass."','".$mail."')";
-                $result2=$conn->query($sql2);
+                $result2=$conn->exec($sql2);
                 if($result2)
                     echo "<div class='notice'>Tạo tài khoản thành công.";
                 else echo "<div class='notice'>Tạo tài khoản không thành công.";

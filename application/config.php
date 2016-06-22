@@ -1,6 +1,7 @@
 <?php
 	/*--------------Database--------------*/
 	function connectDb(){
+		
 		$database = array(
 			'servername' => "localhost",
 			'username' => "root",
@@ -8,12 +9,25 @@
 			'dbname' => "fitness",
 			'charset' => "utf8"
 		);
-		$conn=mysqli_connect($database['servername'],$database['username'],$database['password'],$database['dbname']);
-		mysqli_set_charset($conn,$database['charset']);
-		return $conn;
+		try {
+			$conn = new PDO("mysql:host={$database['servername']};dbname={$database['dbname']}",$database['username'],$database['password'] );
+			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $conn;
+			}
+		catch(PDOException $e)
+			{
+			echo "Connection failed: " . $e->getMessage();
+			return null;
+			}
+		
+		// set the PDO error mode to exception
+		// $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		// $conn=mysqli_connect($database['servername'],$database['username'],$database['password'],$database['dbname']);
+		// mysqli_set_charset($conn,$database['charset']);
+		
 	}
 	function disconnectDb($conn){
-		mysqli_close($conn);
+		$conn=null;
 	}
 	/*----------------------------*/
 	$home="http://".$_SERVER['SERVER_NAME']."/"; 
