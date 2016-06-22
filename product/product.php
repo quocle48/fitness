@@ -1,7 +1,7 @@
 <?php 
 	Class Product{
-		$id = "";
-		$title = ""; //Thuộc tính
+		var $id;
+		var $title; //Thuộc tính
 		
 
 		function Product($id,$title){ //Hàm tạo
@@ -15,4 +15,9 @@
 	}
 
 	//Nếu có phân loại hay kế thừa thì viết thêm dưới ni
+
+
+	//Ví dụ về cách sử dụng
+	$pro1=new Product(1,"Giày Undermour");
+	echo $pro1->getId();
 ?>
