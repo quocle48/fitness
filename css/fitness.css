@@ -1171,3 +1171,15 @@ hr{
 	margin: 50px; 
 	text-align: center;
 }
+.account .dropdown-menu{
+	right: 0;
+	left:unset;
+	text-align: center;
+	min-width: 120px;
+	border-radius: 0;
+	color: # 
+}
+.account .dropdown-menu > li > a:hover{
+	background: #C44741;
+	color: #FFF;
+}

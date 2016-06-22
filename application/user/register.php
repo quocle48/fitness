@@ -30,15 +30,15 @@
             disconnectDb($conn);
             
         } 
-        echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 5s)</a>';
+        echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 3s)</a>';
         echo '</div>';
-        echo "<script>window.setTimeout('history.back()',5000);</script>";
+        echo "<script>window.setTimeout('history.back()',3000);</script>";
     }
     else{
         echo "<div class='notice'>Có lỗi trong quá trình tạo tài khoản. Xin vui lòng thử lại.";
-        echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 5s)</a>';
+        echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 3s)</a>';
         echo '</div>';
-        echo "<script>window.setTimeout('history.back()',5000);</script>";
+        echo "<script>window.setTimeout('history.back()',3000);</script>";
     }
     include("../../footer.html");
 ?>
