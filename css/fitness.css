@@ -33,6 +33,7 @@ body{
 	width: 130px;
 	border:none;
 	transition: all 0.5s ease;
+	height: 28px;
 }
 .search input:focus{
 	width: 260px;
