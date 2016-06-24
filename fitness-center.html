@@ -37,31 +37,11 @@
 	</li>
 	</ul>
 	<script type="text/javascript">
-	
-	(function(){
-		var bx_slider_list = $('.list-bxslider'),
-			min_slides = 5;
-		if(bx_slider_list.length) {
-			min_slides = bx_slider_list.attr('data-count');
-			if(min_slides > 5) {
-				bx_slider_list.bxSlider({
-					mode: 'vertical',
-					infiniteLoop: true,
-					pager: false,
-					minSlides: 5,
-					auto: true,
-					controls: false,
-					useCSS: false,
-					speed: 2000,
-					pause: 6000,
-					moveSlides: 1
-				});
-			}
-		}
-	})();
-	
 	$(document).ready(function(){
-		$('.bxslider').bxSlider();
+		$('.bxslider').bxSlider({
+		  mode: 'vertical',
+		  slideMargin: 5
+		});
 	});
 	
 	//http://hocwp.net/guide/tao-slide-voi-bxslider/
