@@ -375,11 +375,13 @@ li.has-submenu:hover ul{
 	display: block;
 	text-align: center;
 }
-.name{
+.mem-info a{
 	font-weight: bold;
     font-size: 20px;
     color: #C44741;
 	margin: 10px 0px 0px 0px;
+	display: block;
+	text-align: center;
 }
 .rank{
 	font-size: 13px;
@@ -414,21 +416,20 @@ li.has-submenu:hover ul{
 }
 /*-------------------fitness-center------------------------*/
 .center{
-	background-color: #5BC0EB;
+	background-color: #52616D;
 	padding: 0px 0px 20px 0px;
+	border-bottom: solid 2px #c44741;
 }
-.center-name{
+.center-info{
 	text-align: center;
 }
-.center-name a{
+.center-info a{
 	font-size: 18px;
     font-weight: bold;
     color: #F3F3F3;
-	margin: 20px;
 }
-.center-name img{
+.center-info img{
 	display: block;
-	
 }
 .center-detail{
 	text-align: center;
@@ -440,23 +441,24 @@ li.has-submenu:hover ul{
 }
 .center-time{
 	text-transform: lowercase;
-    color: #C44741;
+    color: #5BC0EB;
     font-weight: bold;
 	margin: 40px 0px 0px 0px;
 }
 .center-main{
 	font-size: 20px;
     font-weight: bold;
-    color: #2C343B;
+    color: #F3F3F3;
 }
 .center-note{
-	color: #2C343B;
+	color: #F3F3F3;
 }
 .center-detail button{
 	background: #5BC0EB;
-	color: #2C343B;
-    border: 1px solid #2C343B;
+	background-color: #52616D;
+    border: 1px solid #F3F3F3;
     margin: 10px 0px 0px 0px;
+	color: #F3F3F3;
 }
 
 /*-----------------------------------------------------------------------*/

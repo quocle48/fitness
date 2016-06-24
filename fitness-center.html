@@ -1,11 +1,15 @@
 <div class="fitness-center">
 	<a href="#" class="title">
-		<h3>FITNESS CENTER</h3>
+		<h3 style="text-align: center">FITNESS CENTER</h3>
 	</a>
+	<ul class="bxslider">
+	<li> 
 	<div class="center row">
-		<div class="center-name col-md-6 col-xs-6">
+		<div class="center-info col-md-6 col-xs-6">
 			<a href="#">FITNESS CLUB</a>
-			<img src="img/center.jpg"/>
+			<a href="#">
+				<img src="img/center.jpg"/>
+			</a>
 		</div>
 		<div class="center-detail col-md-6 col-xs-6">
 			<span class="center-time">5:00 A.M - 9:00 P.M</span>
@@ -14,4 +18,52 @@
 			<button>DETAIL</button>
 		</div>
 	</div>
+	</li>
+	<li> 
+	<div class="center row">
+		<div class="center-info col-md-6 col-xs-6">
+			<a href="#">FITNESS CLUB</a>
+			<a href="#">
+				<img src="img/center.jpg"/>
+			</a>
+		</div>
+		<div class="center-detail col-md-6 col-xs-6">
+			<span class="center-time">5:00 A.M - 9:00 P.M</span>
+			<span class="center-main">GYM & KICK BOXING</span>
+			<span class="center-note">Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit</span>
+			<button>DETAIL</button>
+		</div>
+	</div>
+	</li>
+	</ul>
+	<script type="text/javascript">
+	
+	(function(){
+		var bx_slider_list = $('.list-bxslider'),
+			min_slides = 5;
+		if(bx_slider_list.length) {
+			min_slides = bx_slider_list.attr('data-count');
+			if(min_slides > 5) {
+				bx_slider_list.bxSlider({
+					mode: 'vertical',
+					infiniteLoop: true,
+					pager: false,
+					minSlides: 5,
+					auto: true,
+					controls: false,
+					useCSS: false,
+					speed: 2000,
+					pause: 6000,
+					moveSlides: 1
+				});
+			}
+		}
+	})();
+	
+	$(document).ready(function(){
+		$('.bxslider').bxSlider();
+	});
+	
+	//http://hocwp.net/guide/tao-slide-voi-bxslider/
+	</script>
 </div>
