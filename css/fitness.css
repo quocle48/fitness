@@ -143,9 +143,10 @@ body{
     background: #E5E1D1;
     font-size: 14px;
     line-height: 40px;
+    color: #52616D;
 }
 .form-account a:hover{
-    color: #52616D;
+    color: #5BC0EB;
     text-decoration: none;
 }
 a.glyphicon, a.fa{
@@ -1185,4 +1186,26 @@ hr{
 .account .dropdown-menu > li > a:hover{
 	background: #C44741;
 	color: #FFF;
+}
+/*------------Admin--------------*/
+.login-admin{
+	background: #52616D;
+	text-align: center;
+}
+.login-box{
+	display: block;
+	width: 400px;
+    margin: 7% auto;
+    position: inherit;
+}
+.error{
+	color: #C44741;
+}
+.login-box input{
+	text-align: center;
+	margin: 10px 0;
+}
+.sidebar{
+	background: #2C343B;
+	min-height: 100%;
 }

@@ -1,131 +1,106 @@
-<?php 
+<?php
+	Class Store{
+		
+	}
 	Class Product{
 		var $id;
 		var $name;
 		var $type;
-		var $manufacturer; //Nhà sản xuất
+		var $brand; //Nhà sản xuất
+		var $size; // array size
 		var $content;
 		var $price;
 		var $off; //Số % giảm giá
-		var $quantity; //Số lượng
-		
-		function Product($id, $name, $type, $manufacturer, $content, $price, $off, $status){ //Hàm tạo
+		var $quantity; //array Số lượng với size tương ứng 
+
+		function Product(){}
+		function Product($id, $name, $type, $brand, $content, $price, $off, $status){ //Hàm tạo
 			$this->id=$id;
 			$this->name=$name;
 			$this->type=$type;
-			$this->manufacturer=$manufacturer;
+			$this->brand=$brand;
 			$this->content=$content;
 			$this->price=$price;
 			$this->off=$off;
 			$this->status=$status;
 		}
 
-		function getId(){ //Các hàm thành phần
+		function getId(){
 			return $this->id;
 		}
-		function setId(var $id){
+		function setId($id){
 			$this->id = $id;
 		}
 		
-		function getName(){ //Các hàm thành phần
+		function getName(){
 			return $this->name;
 		}
-		function setName(var $name){
+		function setName($name){
 			$this->name = $name;
 		}
 		
-		function get_Type(){ //Các hàm thành phần
+		function getType(){
 			return $this->type;
 		}
-		function set_Type(var $type){
+		function setType($type){
 			$this->type = $type;
 		}
 		
-		function getManufacturer(){ //Các hàm thành phần
-			return $this->manufacturer;
+		function getBrand(){
+			return $this->brand;
 		}
-		function setManufacturer(var $manufacturer){
-			$this->manufacturer = $manufacturer;
+		function setBrand($brand){
+			$this->brand = $brand;
 		}
 		
-		function getContent(){ //Các hàm thành phần
+		function getContent(){
 			return $this->content;
 		}
-		function setContent(var $content){
+		function setContent($content){
 			$this->content = $content;
 		}
 		
-		function getPrice(){ //Các hàm thành phần
+		function getPrice(){
 			return $this->price;
 		}
-		function setPrice(var $price){
+		function setPrice($price){
 			$this->price = $price;
 		}
 		
-		function getOff(){ //Các hàm thành phần
+		function getOff(){
 			return $this->off;
 		}
-		function setOff(var $off){
+		function setOff($off){
 			$this->off = $off;
 		}
 		
-		function getQuantity(){ //Các hàm thành phần
+		function getQuantity(){
 			return $this->quantity;
 		}
-		function setQuantity(var $quantity){
+		function setQuantity($quantity){
 			$this->quantity = $quantity;
 		}
 		
-		function Price_Off(var $price, var $off){
-			return $price*($off/100);
+		function getPriceOff(){
+			return $this->price*(1-$this->off/100);
 		}
 		
-		function Product_Status(var $quantity){
-			if($quantity == 0) echo "Hết hàng";
-			else echo "Số lượng: $quantity";
+		function getStatus(){
+			return $this->quantity>0?"Còn hàng":"Hết hàng";
 		}
 		
-		function Product_Sell(var $quantity_sell){
-			//Hàm bán còn thiếu
-			$quantity -= $quantity_sell;
+		function Sell($value){
+			if($this->quantity<$value) return false;
+			else $this->quantity -= $value;
 		}
 		
-		function Product_In(var $quantity_in){
+		function Import($value){
 			//Hàm nhập hàng còn thiếu
-			$quantity += $quantity_in;
-		}
-	}
-
-	//Nếu có phân loại hay kế thừa thì viết thêm dưới ni
-	Class Phu_kien extends Product{
-		
-	}
-	Class Trang_phuc extends Product{
-		var $size;
-		
-		function getSize(){ //Các hàm thành phần
-			return $this->size;
-		}
-		function setSize(var $size){
-			$this->size = $size;
-		}
-	}
-	Class TPBS extends Product{
-		var $dosage; //Số liều dùng
-		
-		function getDosage(){ //Các hàm thành phần
-			return $this->dosage;
-		}
-		function setDosage(var $dosage){
-			$this->dosage = $dosage;
-		}
-		
-		function Dosage_Price(var $price, var $dosage){ //Giá liều dùng
-			return $price/$dosage;
+			 $this->quantity += $value;
 		}
 	}
 
 	//Ví dụ về cách sử dụng
-	$pro1=new Product(1,"Giày Undermour");
+	$pro1=;
 	echo $pro1->getId();
 ?>
