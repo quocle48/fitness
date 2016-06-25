@@ -1,6 +1,6 @@
 <?php
 	/*--------------Database--------------*/
-	
+	session_start();
 	function connectDb(){
 		
 		$database = array(

@@ -31,9 +31,9 @@
         include("../../banner.html");
         if($Err!="") echo "<div class='notice'>".$Err." không chính xác. Xin vui lòng thử lại! ";
         else echo "<div class='notice'> Đăng nhập thành công. ";
-        // echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 3s)</a>';
-         echo '</div>';
-        // echo "<script>window.setTimeout('history.back()',3000);</script>";
+        echo '<a href = "javascript:history.back()" style="font-size: 20px;display:block;margin-top: 10px">Back to previous page (auto after 3s)</a>';
+        echo '</div>';
+        echo "<script>window.setTimeout('history.back()',3000);</script>";
        
     }
     else{
