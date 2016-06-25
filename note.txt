@@ -1,0 +1,17 @@
+------------18/06/2016------------
+login: -> sesson -> cookies
+user: -> to chuc database
+         -> phan quyen
+password MD5 ???
+nghien cuu Laravel
+PDO
+CHECK responsive
+Ajax
+
+------------25/06/2016------------
+nested set model - menu
+done database: tuesday
+mo hinh mvc
+add, update, delete 1 table -> thursday: night
+5 tables
+done PHP thuan: friday
