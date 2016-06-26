@@ -4,5 +4,10 @@ $logout=$home."application/user/logout.php";
 <ul class="dropdown-menu">
 	<li><a href="#">Profile</a></li>
 	<li><a href="#">Setting</a></li>
+	<?php 
+	if($_SESSION['level']>0){
+		echo "<li><a href='".$home."admin'>Admin</a></li>";
+	}
+	?>
 	<li><a href="javascript:window.location.href='<?php echo $logout; ?>'" id="logout">Logout</a></li>
 </ul>
