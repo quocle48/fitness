@@ -13,6 +13,7 @@
 		try {
 			$conn = new PDO("mysql:host={$database['servername']};dbname={$database['dbname']}",$database['username'],$database['password'] );
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   
 			return $conn;
 			}
 		catch(PDOException $e)

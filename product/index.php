@@ -8,12 +8,10 @@
 				$list=!isset($_GET["id"]);
 				if(!$list)	include("product-detail.html");
 				else{
-					for($i=0;$i<10;$i++){
-			?>
-				<div class="list-items col-xs-12 col-sm-4 col-md-4 col-lg-3">
-				<?php include("product.html");?>
-				</div>
-			<?php }} ?>
+				
+				 include("product_list.php");
+				}
+				 ?>
 		
 		</div>
 		<div class="page-number">
