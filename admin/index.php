@@ -8,8 +8,36 @@
 		<?php include("../head.html"); ?>
 	</head>
 	<body>
-		<h2>QUẢN TRỊ HỆ THỐNG</h2>
-		<div class="sidebar col-sx-3"></div>
-		<div class="admin-content"></div>
+		
+		<aside class="menu-bar">
+			<ul class="nav nav-pills nav-stacked">
+
+			    <li class="active"><a href="#">Home</a></li>
+			    <li><a href="#">Menu 1</a></li>
+			    <li><a href="#">Menu 2</a></li>
+			    <li><a href="#">Menu 3</a></li>
+			    <li><a href="logout.php">Logout</a></li>
+			  </ul>
+		</aside>
+		<div class="admin-content">
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			<h2>QUẢN TRỊ HỆ THỐNG</h2>
+			
+			<div class="content">
+				ABCSDASDASDAS
+			</div>
+		</div>
 	</body>
 </html>
