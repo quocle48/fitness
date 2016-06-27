@@ -8,8 +8,7 @@
 				$list=!isset($_GET["id"]);
 				if(!$list)	include("product-detail.html");
 				else{
-				
-				 include("product_list.php");
+					include("product_list.php");
 				}
 				 ?>
 		
