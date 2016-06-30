@@ -1,5 +1,5 @@
 <?php 
-	if(isset($_POST["btndel"])==True)
+	if(isset($_POST["btnedit"])==True)
 	{
 		if(isset($_POST["choose_user"])!=true)
 		{
@@ -14,7 +14,6 @@
 				die("Connection failed: " . mysqli_connect_error());
 			}
 			else{
-				$n = $_POST["txtname"];
 				$p = $_POST["txtpass"];
 				$e = $_POST["txtemail"];
 				if($n & $p & $e){
@@ -25,7 +24,7 @@
 						die("Connection failed: " . mysqli_connect_error());
 					}
 					else{
-						$sql2="update user(name, password, email) values('".$n."','".$p."','".$e."')";
+						$sql2="update user(password, email) values('".$p."','".$e."')";
 						$result2=$conn->query($sql2);
 						if ($result2) {
 							 echo "<script>alert('Chinh sua tai khoan thanh cong');</script>";
