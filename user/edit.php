@@ -1,5 +1,5 @@
 <?php 
-	if(isset($_POST["btndel"])==True)
+	if(isset($_POST["btnedit"])==True)
 	{
 		if(isset($_POST["choose_user"])!=true)
 		{
