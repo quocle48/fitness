@@ -1215,6 +1215,11 @@ hr{
 }
 .admin-content{
 	margin-left:230px; 
+
+}
+.admin-content h3{
+	text-align: center;
+	color:  #C44741;
 }
 .content{
 	padding: 15px;
