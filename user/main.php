@@ -26,10 +26,11 @@
 			<table id="list-user" class="table table-hover">
 				<thead>
 					<tr>
-						<th>NAME</th>
+						<th>ID</th>
 						<th>USERNAME</th>
+						<th>PASSWORD</th>
 						<th>EMAIL</th>
-						<th>DATE CREATE</th>
+						<th>LEVEL</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -41,6 +42,7 @@
 							echo '<tr class="user_'.$row[5].'">';
 							echo "<td>$row[0]</td>";
 							echo "<td>$row[1]</td>";
+							echo "<td>$row[2]</td>";
 							echo "<td>$row[3]</td>";
 							echo "<td>$row[4]</td>";
 							echo '<td><input type="radio" name="choose_user" onclick="setvalue('.$row[5].')" value="'.$row[5].'"></td>';
