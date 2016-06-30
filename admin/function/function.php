@@ -39,49 +39,19 @@
 <!DOCTYPE html>
 <html lang="">
 	<head>
-		<?php include("../../head.html"); ?>
+		<?php include_once("../../head.html"); ?>
 	</head>
 	<body>
-		
-		<aside class="menu-bar">
+		<aside class="menu-bar ">
 			<ul class="nav nav-pills nav-stacked">
-
 			    <li class="active"><a href="#">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
-			    <li>
-			    	
-			    </li>
 			    <li><a href="#">Logout</a></li>
-			  </ul>
+		  	</ul>
 		</aside>
-
-
-		<script type="text/javascript">
-				function showformadd(){
-					$("#add_function").toggleClass("hide");
-					if(!$("#edit_function").hasClass("hide")) $("#edit_funtion").addClass("hide");
-				}
-				function showformedit(){
-					$("#edit_function").toggleClass("hide");
-					if(!$("#add_function").hasClass("hide")) $("#add_function").addClass("hide");
-				}
-				function setvalue(id){
-					var data=$('tr.user_'+id);
-					var name=data.find(':nth-child(1)').text();
-					var username=data.find(':nth-child(2)').text();
-					var email=data.find(':nth-child(3)').text();
-					$('#inp_name').val(name)
-					$('#inp_username').val(username);
-					$('#inp_email').val(email);
-				}
-			</script>
-		<!-- FORM THÊM -->
-		
 		
 		<div class="admin-content">
-
 			<!-- Phần form thêm được ẩn -->
-			
 			<form id="add_function" action ="function.php" method="post" class="form-horizontal hide" role="form" >
 				<h3> ADD FUNCTION </h3>
 				
@@ -99,8 +69,10 @@
 				</div>
 				<div class="form-group"> 
 					<div class="col-sm-offset-3 col-sm-4">
-					  <button type="submit" class="btn btn-default" name="btn_addfunc"> ADD  </button>
+					  <button type="submit" class="buy-now" name="btn_addfunc"> ADD  </button>
 					</div>
+				</div>
+				<div class="form-end "> 
 				</div>
 			</form>
 
@@ -132,36 +104,34 @@
 								
 								<div class="form-group"> 
 									<div class="col-sm-offset-3 col-sm-4">
-									  <button type="submit" class="btn btn-primary" name="btn_editfunc" value ="<?php echo $row['id']; ?>" >Edit </button>
+									  <button type="submit" class="buy-now" name="btn_editfunc" value ="<?php echo $row['id']; ?>" >Edit </button>
 									</div>
 								</div>
-								
+								<div class="form-end "> 
+								</div>
 							</form>
 
 							<?php
 						}
 					}
-				  
-
-				    
+			
 					disconnectDb($conn);
 				}
 			 ?>
 
 			<h2>LIST FUNCTION </h2>
 			<div class="content">
-				<table class="table table-hover">
+				<table class="table table-hover ">
 					<form action="function.php" method="post">
 				    	<thead>
 							<tr>
 								<th>ID</th>
 								<th>FUNCTION NAME</th>
 								<th>DESCRIPTION</th>
-								<th>
-									<input type="submit" name ="btn_delete" value="Delete" />	
-								</th>
-								
 								<th></th>
+								<th>
+									<input type="submit" name ="btn_delete" class="btnedit btndelete" value="Delete" />	
+								</th>	
 							</tr>
 						</thead>
 						<tbody>
@@ -178,8 +148,8 @@
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[name]</td>";
 										echo "<td>$row[description]</td>";
-										echo '<td><button type="submit" class="btn btn-primary" name="btn_edit" value="'.$row['id'].'" >Edit</button></td>';
-										echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
+										echo '<td><button type="submit" class="btnedit" name="btn_edit" value="'.$row['id'].'" >Edit</button></td>';
+										echo '<td> <input  name="checkfunc[]" type="checkbox" style="text-align: center;" value="'.$row['id'].'"> </td>';
 										echo '</tr>';
 		   
 						            }
@@ -193,6 +163,32 @@
 				
 				</table>
 			</div>
-		</div>
+		
+		
+
+		
+
+		<script type="text/javascript">
+				function showformadd(){
+					$("#add_function").toggleClass("hide");
+					if(!$("#edit_function").hasClass("hide")) $("#edit_funtion").addClass("hide");
+				}
+				function showformedit(){
+					$("#edit_function").toggleClass("hide");
+					if(!$("#add_function").hasClass("hide")) $("#add_function").addClass("hide");
+				}
+				function setvalue(id){
+					var data=$('tr.user_'+id);
+					var name=data.find(':nth-child(1)').text();
+					var username=data.find(':nth-child(2)').text();
+					var email=data.find(':nth-child(3)').text();
+					$('#inp_name').val(name)
+					$('#inp_username').val(username);
+					$('#inp_email').val(email);
+				}
+			</script>
+		<!-- FORM THÊM -->
+		
+		
 	</body>
 </html>
