@@ -110,9 +110,9 @@
 		</form>
 		<form id="edit_user" action ="edit.php" method="post" class="form-horizontal hide" role="form" >
 			<div class="form-group">
-				<label class="control-label col-sm-3">Name:</label>
+				<label class="control-label col-sm-3">ID:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="inp_name" name="txtname" value="">
+					<input type="text" class="form-control" id="inp_id" name="txtid" disabled value="">
 				</div>
 			</div>
 			<div class="form-group">
