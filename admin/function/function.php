@@ -42,15 +42,10 @@
 		<?php include("../../head.html"); ?>
 	</head>
 	<body>
-		
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
-
 			    <li class="active"><a href="#">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
-			    <li>
-			    	
-			    </li>
 			    <li><a href="#">Logout</a></li>
 			  </ul>
 		</aside>
