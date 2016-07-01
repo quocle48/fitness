@@ -1206,6 +1206,7 @@ hr{
 	text-align: center;
 	margin: 10px 0;
 }
+
 .menu-bar{
 	background: #2C343B;
 	width: 230px;
@@ -1214,27 +1215,27 @@ hr{
 	top: 0;
 	left: 0;
 }
-
-.admin-content {
-	margin-top: 20px;
-	margin-left: 280px;
-	margin-right: 50px;
+.admin-page{
+	background: #F3F3F3;
+}
+.page-content{
+	margin-left: 230px;
+	padding: 20px;
+}
+.content {
+	padding: 5px;
+	margin-bottom:20px; 
 	background: #fff;
-	border-top: solid 15px #2C343B ;
-	border-bottom: solid 5px #c44741 ;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	border-top: solid 10px #2C343B ;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	z-index:2;
 	text-align:center;
 }
-
-
-.admin-content form span{
-	height: 35px;
-	font-size: 15px;
-    font-weight: bold;
-    border-bottom: 1px solid #5BC0EB;
-    line-height: auto;
+.content table > tbody > tr > td{
+	vertical-align: middle;
 }
+/* -------------Bắc --------------*/
+
 .admin-content input{
 	outline:none;
 	font-size: 13px;
@@ -1256,17 +1257,11 @@ hr{
 	margin: 5px;
 }
 
-.admin-content h2, .admin-content h3{
-	text-align: center;
-	color:  #5BC0EB ;
-	font-weight: bold;
-	margin: 20px;
+.content h2, .content h3{
+	color:  #C44741 ;
+	margin-bottom: 20px;
 }
-.content{
-	padding: 15px;
-	margin: 0 auto;
-	vertical-align: inherit;
-}
+
 .table  thead  tr  th {
     vertical-align: inherit;
 }
@@ -1357,4 +1352,55 @@ hr{
 	background:  #fff;
 	height: 200px;
 	
+}
+
+
+/* -------------Đức --------------*/
+.admin-page a{
+	color: #FFF;
+	text-decoration: none;
+}
+.admin-page a:hover,.admin-page a:focus{
+	color: #FFF;
+	text-decoration: none;
+}
+.btn-fit{
+	display: inline-block;
+	border: none;
+	font-size: 14px;
+	padding: 6px 12px;
+	color: #FFF;
+	transition: all 0.2s ease;
+}
+.btn-fit:hover,.btn-fit:focus{
+	background: #2C343B;
+	outline: none;
+}
+.btn-pri{
+	background: #c44741;
+}
+.btn-dan{
+	background: #52616D;
+}
+.btn-dan:hover,.btn-dan:focus{
+	background: #c44741;
+}
+.btn-inf{
+	background: #5BC0EB;
+}
+.btn-fit span{
+	width: 20px;
+}
+.input-fit{
+	text-align: center;
+	border-radius: 0;
+	border: 1px solid #E5E1D1;
+	transition: all 0.2s ease;
+}
+.input-fit:focus{
+	box-shadow: none;
+	border: 1px solid #c44741;
+}
+.content .form-group{
+	margin-left: 0;
 }

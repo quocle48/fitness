@@ -49,7 +49,7 @@
 	<head>
 		<?php include("../../head.html"); ?>
 	</head>
-	<body>
+	<body class="admin-page">
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
 			    <li class="active"><a href="user.php">Home</a></li>
@@ -57,8 +57,6 @@
 			    <li><a href="#">Logout</a></li>
 			  </ul>
 		</aside>
-
-
 		<script type="text/javascript">
 				function showformadd(){
 					$("#add-user").toggleClass("hide");
@@ -70,32 +68,31 @@
 				}
 			</script>
 		<!-- FORM THÊM -->
-		
-		<div class="admin-content">
+		<div class="page-content">
+		<div class="content hide" id="add-user">
 
 			<!-- Phần form thêm được ẩn -->
-			
-			<form id="add-user" action ="user.php" method="post" class="form-horizontal hide " role="form" >
+			<form  action ="user.php" method="post" class="form-horizontal" role="form" >
 				<h3> ADD USER </h3>
-				<div class="row form-admin">
+				<div class="form-group">
 					<label class="control-label col-sm-3">Username:</label>
 					<div class="col-sm-6">
-						<input type="text" class="input-admin " name="txt_username" placeholder="Enter username" required>
+						<input type="text" class="form-control input-fit " name="txt_username" placeholder="Enter username" required>
 					</div>
 				</div>
-				<div class="row form-admin">
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Password:</label>
 					<div class="col-sm-6"> 
-					  	<input type="password" class="input-admin " name="txt_pass" placeholder="Enter password" required>
+					  	<input type="password" class="form-control input-fit " name="txt_pass" placeholder="Enter password" required>
 					</div>
 				</div>
-				<div class="row form-admin">
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Email:</label>
 					<div class="col-sm-6"> 
-					  	<input type="email" class="input-admin" name="txt_email" placeholder="Enter email" required>
+					  	<input type="email" class="form-control input-fit" name="txt_email" placeholder="Enter email" required>
 					</div>
 				</div>
-				<div class="row form-group">
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Group:</label>
 					<div class="col-sm-6"> 
 					  	<?php 
@@ -111,139 +108,134 @@
 					  	?>
 					</div>
 				</div>
-				<div class="row form-admin">
+				<div class="form-group">
 					<label class="control-label col-sm-3" ></label>
 					<div class="col-sm-6"> 
-					  	<button type="submit" class="btnadd" name="btn_add">ADD</button>
+					  	<button type="submit" class="btn-fit btn-pri"  name="btn_add" value ="<?php echo $row['id']; ?>" >Submit
+						</button>
+						<a href="user.php" class="btn-fit btn-dan">Cancel</a>
 					</div>
 				</div>
-				<div class="form-end "> 
-								</div>
 			</form>
-
-
-			<?php 
-				if(isset($_GET["edit"])){
-					$conn=connectDb();
-					$result = $conn->prepare("select * from user where id =".$_GET["edit"].""); 
-					$result->execute();
-					if($result->rowCount()>0) {
-						while($row=$result->fetch(PDO::FETCH_ASSOC))
-						{
-							?>
-							<form id="edit-user" action ="user.php" method="post" class="form-horizontal " role="form" >
-								<h3> EDIT USER </h3>
-								<div class="row form-admin">
-									<label class="control-label col-sm-3">Username:</label>
-									<div class="col-sm-6">
-										<input type="text" class="input-admin" name="txt_username" value="<?php echo $row['username']; ?>">
-									</div>
+		</div>
+		<?php if(isset($_GET["edit"])){ ?>
+		<div class="content" id="edit-user">
+			<?php
+				$conn=connectDb();
+				$result = $conn->prepare("select * from user where id =".$_GET["edit"].""); 
+				$result->execute();
+				if($result->rowCount()>0) {
+					while($row=$result->fetch(PDO::FETCH_ASSOC))
+					{
+			?>
+						<form action ="user.php" method="post" class="form-horizontal" role="form" >
+							<h3> EDIT USER </h3>
+							<div class="form-group">
+								<label class="control-label col-sm-3">Username:</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control input-fit" name="txt_username" value="<?php echo $row['username']; ?>">
 								</div>
-								<div class="row form-admin">
-									<label class="control-label col-sm-3" >New password:</label>
-									<div class="col-sm-6"> 
-									  	<input type="password" class="input-admin" name="txt_pass" placeholder="Enter new password" >
-									</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >New password:</label>
+								<div class="col-sm-6"> 
+								  	<input type="password" class="form-control input-fit" name="txt_pass" placeholder="Enter new password" >
 								</div>
-								<div class="row form-admin">
-									<label class="control-label col-sm-3" >Email:</label>
-									<div class="col-sm-6"> 
-									  	<input type="email" class="input-admin" name="txt_email" value="<?php echo $row['email']; ?>" required>
-									</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Email:</label>
+								<div class="col-sm-6"> 
+								  	<input type="email" class="form-control input-fit" name="txt_email" value="<?php echo $row['email']; ?>" required>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-3" >Group:</label>
-									<div class="col-sm-6"> 
-									  	<?php 
-									  		$conn=connectDb();
-											$result2 = $conn->prepare("SELECT * FROM `group`");
-											$result2->execute();
-											if($result2->rowCount()>0) {
-												while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-													$result3 = $conn->prepare("SELECT group_id FROM `user_group` where user_id='".$_GET["edit"]."' and group_id='".$row2['id']."'");
-													$result3->execute();
-													$str="";
-													if($result3->rowCount()>0){ $str="checked"; }
-													echo '<label class="checkbox-inline"><input name="group[]" type="checkbox" value="'.$row2['id'].'" '.$str.'>'.$row2['name'].'</label>';
-												}
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Group:</label>
+								<div class="col-sm-6"> 
+								  	<?php 
+								  		$conn=connectDb();
+										$result2 = $conn->prepare("SELECT * FROM `group`");
+										$result2->execute();
+										if($result2->rowCount()>0) {
+											while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+												$result3 = $conn->prepare("SELECT group_id FROM `user_group` where user_id='".$_GET["edit"]."' and group_id='".$row2['id']."'");
+												$result3->execute();
+												$str="";
+												if($result3->rowCount()>0){ $str="checked"; }
+												echo '<label class="checkbox-inline"><input name="group[]" type="checkbox" value="'.$row2['id'].'" '.$str.'>'.$row2['name'].'</label>';
 											}
-											disconnectDb($conn);
-									  	?>
-									</div>
+										}
+										disconnectDb($conn);
+								  	?>
 								</div>
-								<div class="row form-admin">
-									<label class="control-label col-sm-3" ></label>
-									<div class="col-sm-6"> 
-										<div class="col-xs-6">
-											<button type="submit" class="btnadd"  name="btn_edit" value ="<?php echo $row['id']; ?>" >OK
-											</button></div>
-  										<div class="col-xs-6"><div class="btncancel"> 
-									  		<a href="user.php">Cancel</a></div>
-										</div>
-									</div> 	
-								</div>
-								<div class="form-end "> 
-								</div>
-							</form>
-							<?php
-						}
-					}	    
-					disconnectDb($conn);
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" ></label>
+								<div class="col-sm-6"> 
+										<button type="submit" class="btn-fit btn-pri"  name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit
+										</button>
+										<a href="user.php" class="btn-fit btn-dan">Cancel</a>
+								</div> 	
+							</div>
+						</form>
+			<?php
+					}
+				}	    
+				disconnectDb($conn);
+					echo "</div>";
 				}
 			?>
-
-			<h3>LIST USER </h3>
-			<div class="content">
+		<div class="content">
+			<form action="user.php" method="get">
+				<h3>LIST USER </h3>
 				<table class="table table-hover">
-					<form action="user.php" method="get">
-				    	<thead>
-							<tr>
-								<th></th>
-								<th>ID</th>
-								<th>USERNAME</th>
-								<th>EMAIL</th>
-								<th>GROUP</th>
-								<th>ACTION</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-								$conn=connectDb();
-								$conn->exec("set names utf8");
-								$result = $conn->prepare("select * from user"); 
-					            $result->execute();
-								if($result->rowCount()>0)
-						    	{
-						            while($row=$result->fetch(PDO::FETCH_ASSOC))
-						            {
-						            	echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
-										echo "<td>$row[id]</td>";
-										echo "<td>$row[username]</td>";
-										echo "<td>$row[email]</td>";
-										echo "<td>";
-										$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
-					            		$result2->execute();
-					            		$list_gr;
-					            		$x=0;
-					            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-					            			$list_gr[$x++]=$row2["name"];
-					            			$list_gr[$x++]=", ";
-					            		}
-					            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
-										echo "</td>";
-										echo '<td><div class="btn-group"><button type="submit" class="btnedit" name="edit" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-pencil-square-o"></span></button>';
-										echo '<button type="submit" class="btndelete" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-trash"></span></button></div></td>';									
-										echo '</tr>';
-						            }
-							    }
-							    else
-							        echo "<div class='notice'>No data!</div>";
-								disconnectDb($conn);
-							?>
-						</tbody>
-				
+			    	<thead>
+						<tr>
+							<th></th>
+							<th>ID</th>
+							<th>USERNAME</th>
+							<th>EMAIL</th>
+							<th>GROUP</th>
+							<th>ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							$conn=connectDb();
+							$conn->exec("set names utf8");
+							$result = $conn->prepare("select * from user"); 
+				            $result->execute();
+							if($result->rowCount()>0)
+					    	{
+					            while($row=$result->fetch(PDO::FETCH_ASSOC))
+					            {
+					            	echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
+									echo "<td>$row[id]</td>";
+									echo "<td>$row[username]</td>";
+									echo "<td>$row[email]</td>";
+									echo "<td>";
+									$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
+				            		$result2->execute();
+				            		$list_gr;
+				            		$x=0;
+				            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+				            			$list_gr[$x++]=$row2["name"];
+				            			$list_gr[$x++]=", ";
+				            		}
+				            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
+									echo "</td>";
+									echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-pencil-square-o"></span></button>';
+									echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-trash"></span></button></div></td>';									
+									echo '</tr>';
+					            }
+						    }
+						    else
+						        echo "<div class='notice'>No data!</div>";
+							disconnectDb($conn);
+						?>
+					</tbody>	
 				</table>
-			</div>
+			</form>
+		</div>
 		</div>
 	</body>
 </html>
