@@ -6,6 +6,14 @@
 		$conn->exec("set names utf8");
 		$result = $conn->prepare("insert into user(username,password,email) values('".$_POST["txt_username"]."','".password_hash($_POST["txt_pass"], PASSWORD_BCRYPT)."','".$_POST["txt_email"]."')"); 
         $result->execute();
+        $result = $conn->prepare("select id from user where username='".$_POST["txt_username"]."'"); 
+        $result->execute();
+        $user_id=$result->fetchAll()[0]['id'];
+        $list_group=$_POST['group'];
+        foreach ($list_group as $id) {
+        	$result = $conn->prepare("insert into user_group(user_id,group_id) values('".$user_id."','".$id."')"); 
+        	$result->execute();
+        }
 	    header('Location: user.php');
 		disconnectDb($conn);
 	}
@@ -17,6 +25,13 @@
 		else $pass="";
 		$result = $conn->prepare("update user set username ='".$_POST["txt_username"]."',".$pass." email ='".$_POST["txt_email"]."' where id='".$_POST['btn_edit']."' "); 
         $result->execute();
+        $result = $conn->prepare("delete from user_group where user_id =".$_POST["btn_edit"]);
+		$result->execute();
+        $list_group=$_POST['group'];
+        foreach ($list_group as $id) {
+        	$result = $conn->prepare("insert into user_group(user_id,group_id) values('".$_POST["btn_edit"]."','".$id."')"); 
+        	$result->execute();
+        }
 	    header('Location: user.php');
 		disconnectDb($conn);
 	}
@@ -89,9 +104,25 @@
 					  	<input type="email" class="form-control" name="txt_email" placeholder="Enter email" required>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" >Group:</label>
+					<div class="col-sm-6"> 
+					  	<?php 
+					  		$conn=connectDb();
+							$result2 = $conn->prepare("SELECT * FROM `group`");
+							$result2->execute();
+							if($result2->rowCount()>0) {
+								while($row=$result2->fetch(PDO::FETCH_ASSOC)){
+									echo '<label class="checkbox-inline"><input name="group[]" type="checkbox" value="'.$row['id'].'">'.$row['name'].'</label>';
+								}
+							}
+							disconnectDb($conn);
+					  	?>
+					</div>
+				</div>
 				<div class="form-group"> 
 					<div class="col-sm-offset-3 col-sm-4">
-					  <button type="submit" class="btn btn-default" name="btn_add">ADD</button>
+					  <button type="submit" class="btn btn-default" name="btn_add">Submit</button>
 					</div>
 				</div>
 			</form>
@@ -126,6 +157,26 @@
 									  	<input type="email" class="form-control" name="txt_email" value="<?php echo $row['email']; ?>" required>
 									</div>
 								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3" >Group:</label>
+									<div class="col-sm-6"> 
+									  	<?php 
+									  		$conn=connectDb();
+											$result2 = $conn->prepare("SELECT * FROM `group`");
+											$result2->execute();
+											if($result2->rowCount()>0) {
+												while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+													$result3 = $conn->prepare("SELECT group_id FROM `user_group` where user_id='".$_GET["edit"]."' and group_id='".$row2['id']."'");
+													$result3->execute();
+													$str="";
+													if($result3->rowCount()>0){ $str="checked"; }
+													echo '<label class="checkbox-inline"><input name="group[]" type="checkbox" value="'.$row2['id'].'" '.$str.'>'.$row2['name'].'</label>';
+												}
+											}
+											disconnectDb($conn);
+									  	?>
+									</div>
+								</div>
 								<div class="form-group"> 
 									<div class="col-sm-offset-3 col-sm-4">
 									  <button type="submit" class="btn btn-primary" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
@@ -151,6 +202,7 @@
 								<th>ID</th>
 								<th>USERNAME</th>
 								<th>EMAIL</th>
+								<th>GROUP</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
@@ -158,7 +210,7 @@
 							<?php
 								$conn=connectDb();
 								$conn->exec("set names utf8");
-								$result = $conn->prepare("select * from user"); 
+								$result = $conn->prepare("select * from user order by id"); 
 					            $result->execute();
 								if($result->rowCount()>0)
 						    	{
@@ -168,6 +220,17 @@
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[username]</td>";
 										echo "<td>$row[email]</td>";
+										echo "<td>";
+										$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
+					            		$result2->execute();
+					            		$list_gr;
+					            		$x=0;
+					            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+					            			$list_gr[$x++]=$row2["name"];
+					            			$list_gr[$x++]=", ";
+					            		}
+					            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
+										echo "</td>";
 										echo '<td><div class="btn-group"><button type="submit" class="btn btn-default" name="edit" value="'.$row['id'].'" formaction="user.php">Edit</button>';
 										echo '<button type="submit" class="btn btn-danger" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php">Delete</button></div></td>';									
 										echo '</tr>';

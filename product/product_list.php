@@ -1,7 +1,7 @@
 <?php 
     $conn=connectDb();
     $conn->exec("set names utf8");
-    $sProduct = $conn->prepare("select * from product p ,store s , type_product t_p where p.id_product = s.id_product and p.id_type = t_p.id_type "); 
+    $sProduct = $conn->prepare("select * from product p ,store s , type_product t_p where p.id_product = s.id_product and p.id_type = t_p.id "); 
     $sProduct->execute();
 
     function getName($name){
