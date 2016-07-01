@@ -14,7 +14,7 @@
 
 			    <li class="active"><a href="#">Home</a></li>
 			    <li><a href="user/user.php">User</a></li>
-			    <li><a href="#">Menu 2</a></li>
+			    <li><a href="user/group.php">Group</a></li>
 			    <li><a href="#">Menu 3</a></li>
 			    <li><a href="logout.php">Logout</a></li>
 			  </ul>

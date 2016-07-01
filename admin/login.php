@@ -31,7 +31,7 @@
     			}
                 else $Err="Mật khẩu chưa đúng.";  
             }
-            else $Err="Tài khoản chưa đúng.";
+            else $Err="Tài khoản chưa đăng ký.";
         }
     }
 ?>
