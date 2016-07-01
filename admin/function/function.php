@@ -42,11 +42,8 @@
 		<?php include_once("../../head.html"); ?>
 	</head>
 	<body>
-<<<<<<< HEAD
-		<aside class="menu-bar ">
-=======
+
 		<aside class="menu-bar">
->>>>>>> d179d2f247b37d7f9079e573d0861cc7a91a8034
 			<ul class="nav nav-pills nav-stacked">
 			    <li class="active"><a href="#">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
