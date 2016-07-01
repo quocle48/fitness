@@ -68,15 +68,7 @@
 					$("#edit-user").toggleClass("hide");
 					if(!$("#add-user").hasClass("hide")) $("#add-user").addClass("hide");
 				}
-				function setvalue(id){
-					var data=$('tr.user_'+id);
-					var name=data.find(':nth-child(1)').text();
-					var username=data.find(':nth-child(2)').text();
-					var email=data.find(':nth-child(3)').text();
-					$('#inp_name').val(name)
-					$('#inp_username').val(username);
-					$('#inp_email').val(email);
-				}
+
 			</script>
 		<!-- FORM THÊM -->
 		
@@ -126,8 +118,8 @@
 					</div>
 				</div>
 			</form>
-
-
+	
+			<!-- Phần form edit cho user có id= được ẩn -->
 			<?php 
 				if(isset($_GET["edit"])){
 					$conn=connectDb();
