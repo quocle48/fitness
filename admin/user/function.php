@@ -6,7 +6,6 @@
 		$conn->exec("set names utf8");
 		$result = $conn->prepare("insert into function(name,description) values('".$_POST["txt_funcname"]."','".$_POST["txt_desc"]."')"); 
         $result->execute();
-	    echo "New records created successfully";
 	    header('Location: function.php');
 		disconnectDb($conn);
 	}
@@ -16,21 +15,20 @@
 		$conn->exec("set names utf8");
 		$result = $conn->prepare("update function set name ='".$_POST["txt_funcname"]."', description='".$_POST["txt_desc"]."' where id='".$_POST['btn_editfunc']."' "); 
         $result->execute();
-	    echo "Updated successfully";
 	    header('Location: function.php');
 		disconnectDb($conn);
 
 	}
 	if(isset($_GET["delete"])){
 		$conn=connectDb();
-		$result = $conn->prepare("delete from user where id =".$_GET["delete"]);
+		$result = $conn->prepare("delete from function where id =".$_GET["delete"]);
 		$result->execute();
-		header('Location: user.php');
+		header('Location: function.php');
 		disconnectDb($conn);
 	}
-	if(isset($_POST["btn_delete"])==True ){
+	if(isset($_GET["btn_delete"])==True ){
 		$conn=connectDb();
-		$check = $_POST["checkfunc"];
+		$check = $_GET["checkfunc"];
 		if($check!=null){
 			foreach ($check as $id) {
 				$result = $conn->prepare("delete from function where id =".$id."");
@@ -50,7 +48,6 @@
 		<?php include_once("../../head.html"); ?>
 	</head>
 	<body>
-		
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
 			    <li class="active"><a href="#">Home</a></li>
@@ -62,20 +59,11 @@
 		<script type="text/javascript">
 			function showformadd(){
 				$("#add_function").toggleClass("hide");
-				if(!$("#edit_function").hasClass("hide")) $("#edit_funtion").addClass("hide");
+				if(!$("#edit_function").hasClass("hide")) $("#edit_function").addClass("hide");
 			}
 			function showformedit(){
 				$("#edit_function").toggleClass("hide");
 				if(!$("#add_function").hasClass("hide")) $("#add_function").addClass("hide");
-			}
-			function setvalue(id){
-				var data=$('tr.user_'+id);
-				var name=data.find(':nth-child(1)').text();
-				var username=data.find(':nth-child(2)').text();
-				var email=data.find(':nth-child(3)').text();
-				$('#inp_name').val(name)
-				$('#inp_username').val(username);
-				$('#inp_email').val(email);
 			}
 		</script>
 		<!-- FORM THÊM -->
@@ -99,7 +87,12 @@
 				<div class="row form-admin"> 
 					<label class="control-label col-sm-3" ></label>
 					<div class="col-sm-6"> 
-					  	<button type="submit" class="btnadd" name="btn_addfunc"> ADD  </button>
+						<div class="col-xs-6">
+					  		<button type="submit" class="btnadd" name="btn_addfunc"> ADD  </button>
+					  	</div>
+					  	<div class="col-xs-6">
+					  		<button type="button" class="btncancel" onclick="showformadd()">Cancel</button>
+						</div>
 					</div>
 				</div>
 				<div class="form-end "> 
@@ -108,10 +101,10 @@
 
 
 			<?php 
-				if(isset($_POST["btn_edit"])==True){
+				if(isset($_GET["btn_edit"])==True){
 					$conn=connectDb();
 					$conn->exec("set names utf8");
-					$result = $conn->prepare("select * from function where id =".$_POST["btn_edit"].""); 
+					$result = $conn->prepare("select * from function where id =".$_GET["btn_edit"].""); 
 					$result->execute();
 					if($result->rowCount()>0) {
 						while($row=$result->fetch(PDO::FETCH_ASSOC))
@@ -128,7 +121,7 @@
 								<div class="row form-admin">
 									<label class="control-label col-sm-3" >Description:</label>
 									<div class="col-sm-6"> 
-									  	<input type="text" class="input-admin" name="txt_desc" placeholder="<?php echo $row['description']; ?>" >
+									  	<input type="text" class="input-admin" name="txt_desc" value="<?php echo $row['description']; ?>" >
 									</div>
 								</div>
 								
@@ -158,12 +151,12 @@
 			<h2>LIST FUNCTION </h2>
 			<div class="content">
 				<table class="table table-hover ">
-					<form action="function.php" method="post">
+					<form action="function.php" method="GET">
 				    	<thead>
 							<tr>
 								<th>
 									<div class="btn-group">
-										<button type="submit" class="btnedit" onclick="showformadd()" formaction="function.php">
+										<button type="button" class="btnedit" onclick="showformadd()">
 											<span class="fa fa-plus-square"></span>
 										</button>
 										<button type="submit" name ="btn_delete" class="btndelete" formaction="function.php">
