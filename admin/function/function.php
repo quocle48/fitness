@@ -7,6 +7,7 @@
 		$result = $conn->prepare("insert into function(name,description) values('".$_POST["txt_funcname"]."','".$_POST["txt_desc"]."')"); 
         $result->execute();
 	    echo "New records created successfully";
+	    header('Location: function.php');
 		disconnectDb($conn);
 	}
 
@@ -16,11 +17,17 @@
 		$result = $conn->prepare("update function set name ='".$_POST["txt_funcname"]."', description='".$_POST["txt_desc"]."' where id='".$_POST['btn_editfunc']."' "); 
         $result->execute();
 	    echo "Updated successfully";
+	    header('Location: function.php');
 		disconnectDb($conn);
 
 	}
-
-
+	if(isset($_GET["delete"])){
+		$conn=connectDb();
+		$result = $conn->prepare("delete from user where id =".$_GET["delete"]);
+		$result->execute();
+		header('Location: user.php');
+		disconnectDb($conn);
+	}
 	if(isset($_POST["btn_delete"])==True ){
 		$conn=connectDb();
 		$check = $_POST["checkfunc"];
@@ -33,6 +40,7 @@
 		    echo "Delete successfully";
 		}
 		else echo "Chọn một function mà bạn muốn xóa";
+		header('Location: function.php');
 		disconnectDb($conn);
 	}
 ?>
@@ -42,7 +50,7 @@
 		<?php include_once("../../head.html"); ?>
 	</head>
 	<body>
-
+		
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
 			    <li class="active"><a href="#">Home</a></li>
@@ -51,26 +59,47 @@
 		  	</ul>
 		</aside>
 		
+		<script type="text/javascript">
+			function showformadd(){
+				$("#add_function").toggleClass("hide");
+				if(!$("#edit_function").hasClass("hide")) $("#edit_funtion").addClass("hide");
+			}
+			function showformedit(){
+				$("#edit_function").toggleClass("hide");
+				if(!$("#add_function").hasClass("hide")) $("#add_function").addClass("hide");
+			}
+			function setvalue(id){
+				var data=$('tr.user_'+id);
+				var name=data.find(':nth-child(1)').text();
+				var username=data.find(':nth-child(2)').text();
+				var email=data.find(':nth-child(3)').text();
+				$('#inp_name').val(name)
+				$('#inp_username').val(username);
+				$('#inp_email').val(email);
+			}
+		</script>
+		<!-- FORM THÊM -->
 		<div class="admin-content">
 			<!-- Phần form thêm được ẩn -->
 			<form id="add_function" action ="function.php" method="post" class="form-horizontal hide" role="form" >
 				<h3> ADD FUNCTION </h3>
 				
-				<div class="form-group">
+				<div class="row form-admin">
 					<label class="control-label col-sm-3">Function name:</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="txt_funcname" placeholder="Enter function name" required>
+						<input type="text" class="input-admin" name="txt_funcname" placeholder="Enter function name" required>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="row form-admin">
 					<label class="control-label col-sm-3" >Description:</label>
 					<div class="col-sm-6"> 
-					  	<input type="text" class="form-control" name="txt_desc" placeholder="Enter description" >
+					  	<input type="text" class="input-admin" name="txt_desc" placeholder="Enter description" >
 					</div>
 				</div>
-				<div class="form-group"> 
-					<div class="col-sm-offset-3 col-sm-4">
-					  <button type="submit" class="buy-now" name="btn_addfunc"> ADD  </button>
+				<div class="row form-admin"> 
+					<label class="control-label col-sm-3" ></label>
+					<div class="col-sm-6"> 
+					  	<button type="submit" class="btnadd" name="btn_addfunc"> ADD  </button>
 					</div>
 				</div>
 				<div class="form-end "> 
@@ -90,23 +119,30 @@
 							?>
 							<form id="edit_function" action ="function.php" method="post" class="form-horizontal " role="form" >
 								<h3> EDIT FUNCTION </h3>
-								<div class="form-group">
+								<div class="row form-admin">
 									<label class="control-label col-sm-3">Function name:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" name="txt_funcname" value="<?php echo $row['name']; ?>">
+										<input type="text" class="input-admin" name="txt_funcname" value="<?php echo $row['name']; ?>">
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="row form-admin">
 									<label class="control-label col-sm-3" >Description:</label>
 									<div class="col-sm-6"> 
-									  	<input type="text" class="form-control" name="txt_desc" placeholder="<?php echo $row['description']; ?>" >
+									  	<input type="text" class="input-admin" name="txt_desc" placeholder="<?php echo $row['description']; ?>" >
 									</div>
 								</div>
 								
-								<div class="form-group"> 
-									<div class="col-sm-offset-3 col-sm-4">
-									  <button type="submit" class="buy-now" name="btn_editfunc" value ="<?php echo $row['id']; ?>" >Edit </button>
-									</div>
+								<div class="row form-admin"> 
+									<label class="control-label col-sm-3" ></label>
+									<div class="col-sm-6"> 
+										<div class="col-xs-6">
+											<button type="submit" class="btnadd" style="width:100px; float:right;" name="btn_editfunc" value ="<?php echo $row['id']; ?>" >OK </button>
+										</div>
+  										<div class="col-xs-6"><div class="btncancel"> 
+									  		<a href="function.php">Cancel</a></div>
+										</div>
+									</div> 	
+									
 								</div>
 								<div class="form-end "> 
 								</div>
@@ -115,7 +151,6 @@
 							<?php
 						}
 					}
-			
 					disconnectDb($conn);
 				}
 			 ?>
@@ -126,13 +161,21 @@
 					<form action="function.php" method="post">
 				    	<thead>
 							<tr>
+								<th>
+									<div class="btn-group">
+										<button type="submit" class="btnedit" onclick="showformadd()" formaction="function.php">
+											<span class="fa fa-plus-square"></span>
+										</button>
+										<button type="submit" name ="btn_delete" class="btndelete" formaction="function.php">
+											<span class="fa fa-trash-o"></span>
+										</button>  	
+									</div>
+								</th>
+
 								<th>ID</th>
 								<th>FUNCTION NAME</th>
 								<th>DESCRIPTION</th>
-								<th></th>
-								<th>
-									<input type="submit" name ="btn_delete" class="btnedit btndelete" value="Delete" />	
-								</th>	
+								<th> ACTION	</th>	
 							</tr>
 						</thead>
 						<tbody>
@@ -146,11 +189,13 @@
 						    	{
 						            while($row=$result->fetch(PDO::FETCH_ASSOC))
 						            {
+						            	echo '<td> <input  name="checkfunc[]" type="checkbox" style="text-align: center;" value="'.$row['id'].'"> </td>';
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[name]</td>";
 										echo "<td>$row[description]</td>";
-										echo '<td><button type="submit" class="btnedit" name="btn_edit" value="'.$row['id'].'" >Edit</button></td>';
-										echo '<td> <input  name="checkfunc[]" type="checkbox" style="text-align: center;" value="'.$row['id'].'"> </td>';
+										echo '<td><div class="btn-group"><button type="submit" class="btnedit" name="btn_edit" value="'.$row['id'].'" formaction="function.php"><span class="fa fa-pencil-square-o"></span></button>';
+										echo '<button type="submit" class="btndelete" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="function.php"><span class="fa fa-trash"></span></button></div></td>';	
+
 										echo '</tr>';
 		   
 						            }
@@ -165,31 +210,7 @@
 				</table>
 			</div>
 		
-		
-
-		
-
-		<script type="text/javascript">
-				function showformadd(){
-					$("#add_function").toggleClass("hide");
-					if(!$("#edit_function").hasClass("hide")) $("#edit_funtion").addClass("hide");
-				}
-				function showformedit(){
-					$("#edit_function").toggleClass("hide");
-					if(!$("#add_function").hasClass("hide")) $("#add_function").addClass("hide");
-				}
-				function setvalue(id){
-					var data=$('tr.user_'+id);
-					var name=data.find(':nth-child(1)').text();
-					var username=data.find(':nth-child(2)').text();
-					var email=data.find(':nth-child(3)').text();
-					$('#inp_name').val(name)
-					$('#inp_username').val(username);
-					$('#inp_email').val(email);
-				}
-			</script>
-		<!-- FORM THÊM -->
-		
+	
 		
 	</body>
 </html>

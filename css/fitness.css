@@ -8,6 +8,7 @@ body{
 }
 .header-social{
 	background-color: #2C343B;
+
 }
 .detail-social.left .fa{
 	margin-right: 10px;
@@ -79,7 +80,7 @@ body{
 	text-align:center;
 	display:none;
 }
-.form-account span{
+.form-account span {
 	display:block;
 	text-align:center;
 }
@@ -1221,6 +1222,38 @@ hr{
 	background: #fff;
 	border-top: solid 15px #2C343B ;
 	border-bottom: solid 5px #c44741 ;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	z-index:2;
+	text-align:center;
+}
+
+
+.admin-content form span{
+	height: 35px;
+	font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #5BC0EB;
+    line-height: auto;
+}
+.admin-content input{
+	outline:none;
+	font-size: 13px;
+	width: 100%;
+	transition: all 0.3s ease;
+	text-align:center;
+}
+
+.admin-content input:focus{
+	outline:none;
+	border:1px solid  #2C343B  ;
+
+}
+.form-admin {
+	width: auto;
+}
+.input-admin {
+	height: 35px;
+	margin: 5px;
 }
 
 .admin-content h2, .admin-content h3{
@@ -1240,9 +1273,44 @@ hr{
 .content th, .content td {
 	text-align: center;
 }
+.btnadd{
+	border: none;
+	position: relative;
+	transition: all 0.2s ease;
+	background:  #C44741 ;
+	width: 200px;
+	height: 30px;
+	margin-top: 10px;
+	color: #fff;
+}
+.btnadd:hover{
+	transition: all 0.2s ease;
+	background:    #2C343B  ;
+
+}
+.btncancel{
+	border: none;
+	position: relative;
+	transition: all 0.2s ease;
+	background:  #52616D  ;
+	width: 100px;
+	height: 30px;
+	margin-top: 10px;
+	color: #fff;
+	text-decoration: none;
+}
+.btncancel:hover{
+	background:   #2C343B ;
+}
+.btncancel a{
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	text-decoration: none;
+}
 
 .btnedit{
-	background:  #52616D ;
+	background:  #5BC0EB  ;
 	color: #fff;
 	width: 50px;
 	height: 30px;
@@ -1251,25 +1319,42 @@ hr{
 	transition: all 0.2s ease;
 }
 .btnedit:hover{
-	background:  #5BC0EB  ;
-	color:  #2C343B ;
+	background:   #2C343B   ;
 	position: relative;
 	transition: all 0.2s ease;
 }
 .btndelete {
-	background:  #52616D ;
+	border: none;
+	background:  #C44741  ;
 	color: #fff;
-	width: 70px;
-	height: 40px;
+	width: 50px;
+	height: 30px;
 }
 .btndelete:hover {
-	background:   #C44741   ;
-	color:  #2C343B ;
+	background:   #2C343B  ;
 }
 
 .form-end {
+	margin-top: 20px;
 	background: #F3F3F3 ;
 	height: 50px;
 	border-top: solid 3px #c44741 ;
 	border-bottom: solid 10px #52616D  ;
+}
+.admin-banner h3{
+	background:   #52616D ;
+	padding: 0px ;
+	margin:0px ;	
+	height: 50px;
+	line-height: 50px;
+}
+.user-banner{
+	background:  #F3F3F3 ;
+	height: 300px;
+	padding: 10px;
+}
+.user-banner p{
+	background:  #fff;
+	height: 200px;
+	
 }

@@ -69,31 +69,34 @@
 
 			<!-- Phần form thêm được ẩn -->
 			
-			<form id="add-user" action ="user.php" method="post" class="form-horizontal hide" role="form" >
+			<form id="add-user" action ="user.php" method="post" class="form-horizontal hide " role="form" >
 				<h3> ADD USER </h3>
-				<div class="form-group">
+				<div class="row form-admin">
 					<label class="control-label col-sm-3">Username:</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="txt_username" placeholder="Enter username" required>
+						<input type="text" class="input-admin " name="txt_username" placeholder="Enter username" required>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="row form-admin">
 					<label class="control-label col-sm-3" >Password:</label>
 					<div class="col-sm-6"> 
-					  	<input type="password" class="form-control" name="txt_pass" placeholder="Enter password" required>
+					  	<input type="password" class="input-admin " name="txt_pass" placeholder="Enter password" required>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="row form-admin">
 					<label class="control-label col-sm-3" >Email:</label>
 					<div class="col-sm-6"> 
-					  	<input type="email" class="form-control" name="txt_email" placeholder="Enter email" required>
+					  	<input type="email" class="input-admin" name="txt_email" placeholder="Enter email" required>
 					</div>
 				</div>
-				<div class="form-group"> 
-					<div class="col-sm-offset-3 col-sm-4">
-					  <button type="submit" class="btn btn-default" name="btn_add">ADD</button>
+				<div class="row form-admin">
+					<label class="control-label col-sm-3" ></label>
+					<div class="col-sm-6"> 
+					  	<button type="submit" class="btnadd" name="btn_add">ADD</button>
 					</div>
 				</div>
+				<div class="form-end "> 
+								</div>
 			</form>
 
 
@@ -108,31 +111,37 @@
 							?>
 							<form id="edit-user" action ="user.php" method="post" class="form-horizontal " role="form" >
 								<h3> EDIT USER </h3>
-								<div class="form-group">
+								<div class="row form-admin">
 									<label class="control-label col-sm-3">Username:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" name="txt_username" value="<?php echo $row['username']; ?>">
+										<input type="text" class="input-admin" name="txt_username" value="<?php echo $row['username']; ?>">
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="row form-admin">
 									<label class="control-label col-sm-3" >New password:</label>
 									<div class="col-sm-6"> 
-									  	<input type="password" class="form-control" name="txt_pass" placeholder="Enter new password" >
+									  	<input type="password" class="input-admin" name="txt_pass" placeholder="Enter new password" >
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="row form-admin">
 									<label class="control-label col-sm-3" >Email:</label>
 									<div class="col-sm-6"> 
-									  	<input type="email" class="form-control" name="txt_email" value="<?php echo $row['email']; ?>" required>
+									  	<input type="email" class="input-admin" name="txt_email" value="<?php echo $row['email']; ?>" required>
 									</div>
 								</div>
-								<div class="form-group"> 
-									<div class="col-sm-offset-3 col-sm-4">
-									  <button type="submit" class="btn btn-primary" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
-									  <a href="user.php" class="btn btn-default" >Cancel</a>
-									</div>
+								<div class="row form-admin">
+									<label class="control-label col-sm-3" ></label>
+									<div class="col-sm-6"> 
+										<div class="col-xs-6">
+											<button type="submit" class="btnadd" style="width:100px; float:right;" name="btn_edit" value ="<?php echo $row['id']; ?>" >OK
+											</button></div>
+  										<div class="col-xs-6"><div class="btncancel"> 
+									  		<a href="user.php">Cancel</a></div>
+										</div>
+									</div> 	
 								</div>
-								
+								<div class="form-end "> 
+								</div>
 							</form>
 							<?php
 						}
@@ -168,8 +177,8 @@
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[username]</td>";
 										echo "<td>$row[email]</td>";
-										echo '<td><div class="btn-group"><button type="submit" class="btn btn-default" name="edit" value="'.$row['id'].'" formaction="user.php">Edit</button>';
-										echo '<button type="submit" class="btn btn-danger" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php">Delete</button></div></td>';									
+										echo '<td><div class="btn-group"><button type="submit" class="btnedit" name="edit" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-pencil-square-o"></span></button>';
+										echo '<button type="submit" class="btndelete" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-trash"></span></button></div></td>';									
 										echo '</tr>';
 						            }
 							    }
