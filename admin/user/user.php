@@ -52,7 +52,7 @@
 	<body class="admin-page">
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
-			    <li class="active"><a href="user.php">Home</a></li>
+			    <li class="active"><a href="<?php echo $home.'admin' ?>">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
 			    <li><a href="#">Logout</a></li>
 			  </ul>

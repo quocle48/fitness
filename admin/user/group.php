@@ -34,10 +34,10 @@
 	<head>
 		<?php include("../../head.html"); ?>
 	</head>
-	<body>
+	<body class="admin-page">
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
-			    <li class="active"><a href="group.php">Home</a></li>
+			    <li class="active"><a href="<?php echo $home.'admin' ?>">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
 			    <li><a href="#">Logout</a></li>
 			  </ul>
@@ -55,28 +55,32 @@
 		</script>
 		
 		<!-- FORM THÊM -->
-		<div class="admin-content">
-
+		<div class="page-content">
 			<!-- Phần form thêm được ẩn -->
-			<form id="add-group" action ="group.php" method="post" class="form-horizontal hide" role="form" >
-				<h3> ADD GROUP </h3>
-				<div class="form-group">
-					<label class="control-label col-sm-3">Name:</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" name="txt_name" placeholder="Enter group's name" required>
+			<div class="content hide" id="add-group">
+				<form  action ="group.php" method="post" class="form-horizontal" role="form" >
+					<h3> ADD GROUP </h3>
+					<div class="form-group">
+						<label class="control-label col-sm-3">Name:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-fit" name="txt_name" placeholder="Enter group's name" required>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group"> 
-					<div class="col-sm-offset-3 col-sm-4">
-					  <button type="submit" class="btn btn-default" name="btn_add">ADD</button>
+					<div class="form-group"> 
+						<label class="control-label col-sm-3"></label>
+						<div class="col-sm-6">
+							<button type="submit" class="btn-fit btn-pri" name="btn_add">Submit</button>
+							<a href="group.php" class="btn-fit btn-dan">Cancel</a>
+						</div>
 					</div>
-				</div>
-			</form>
-	
+				</form>
+			</div>
 			<!-- Phần form edit cho group có id= được ẩn -->
 			<?php 
-				if(isset($_GET["edit"])){
+				if(isset($_GET["edit"])){	?>
+				<div class="content" id="edit-group">
+				<?php
 					$conn=connectDb();
 					$result = $conn->prepare("select * from `group` where id =".$_GET["edit"].""); 
 					$result->execute();
@@ -84,33 +88,32 @@
 						while($row=$result->fetch(PDO::FETCH_ASSOC))
 						{
 							?>
-							<form id="edit-group" action ="group.php" method="post" class="form-horizontal " role="form" >
-								<h3> EDIT GROUP </h3>
-								<div class="form-group">
-									<label class="control-label col-sm-3">Name:</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" name="txt_name" value="<?php echo $row['name']; ?>">
+								<form action ="group.php" method="post" class="form-horizontal " role="form" >
+									<h3> EDIT GROUP </h3>
+									<div class="form-group">
+										<label class="control-label col-sm-3">Name:</label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control input-fit" name="txt_name" value="<?php echo $row['name']; ?>">
+										</div>
 									</div>
-								</div>
-						
-								<div class="form-group"> 
-									<div class="col-sm-offset-3 col-sm-4">
-									  <button type="submit" class="btn btn-primary" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
-									  <a href="group.php" class="btn btn-default" >Cancel</a>
+									<div class="form-group"> 
+										<div class="col-sm-offset-4 col-sm-4">
+										  <button type="submit" class="btn-fit btn-pri" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
+										  <a href="group.php" class="btn-fit btn-dan" >Cancel</a>
+										</div>
 									</div>
-								</div>
-							</form>
-							<?php
-						}
-					}	    
-					disconnectDb($conn);
-				}
+								</form>
+								<?php
+							}
+						}	    
+						disconnectDb($conn);
+						echo "</div>";
+					}
 			?>
-
-			<h3>LIST GROUP </h3>
 			<div class="content">
-				<table class="table table-hover">
-					<form action="group.php" method="get">
+				<h3>LIST GROUP </h3>
+				<form action="group.php" method="get">
+					<table class="table table-hover">
 				    	<thead>
 							<tr>
 								<th></th>
@@ -132,8 +135,8 @@
 						            	echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[name]</td>";
-										echo '<td><div class="btn-group"><button type="submit" class="btn btn-default" name="edit" value="'.$row['id'].'" formaction="group.php">Edit</button>';
-										echo '<button type="submit" class="btn btn-danger" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa group này?\');" value="'.$row['id'].'" formaction="group.php">Delete</button></div></td>';									
+										echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-pencil-square-o"></span></button>';
+										echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa group này?\');" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-trash"></span></button></div></td>';									
 										echo '</tr>';
 						            }
 							    }
@@ -142,7 +145,8 @@
 								disconnectDb($conn);
 							?>
 						</tbody>
-				</table>
+					</table>
+				</form>
 			</div>
 		</div>
 	</body>
