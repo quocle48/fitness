@@ -30,11 +30,7 @@
 			</div>	
 		</aside>
 		<div class="page-content">
-<<<<<<< HEAD
 			<h2>QUẢN TRỊ HỆ THỐNG</h2>
-			
-=======
->>>>>>> b30cc6584c92d868af4dc9814ff6b2877e0ec8b1
 			<div class="content">
 				<h2>QUẢN TRỊ HỆ THỐNG</h2>				
 				<div class="row">
@@ -54,11 +50,7 @@
 				  		
 				  		
 				  	</div>
-<<<<<<< HEAD
-
-=======
 				  </div>
->>>>>>> b30cc6584c92d868af4dc9814ff6b2877e0ec8b1
 				  <div class="col-xs-6 col-md-4"> 
 				  	<h3>Quản trị Group	</h3>
 				  </div>
