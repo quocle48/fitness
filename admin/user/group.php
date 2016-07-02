@@ -92,6 +92,7 @@
 						<div class="col-sm-6"> 
 					  	<?php 
 					  		$conn=connectDb();
+					  		$conn->exec("set names utf8");
 							$result2 = $conn->prepare("SELECT * FROM function");
 							$result2->execute();
 							if($result2->rowCount()>0) {

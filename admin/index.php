@@ -16,16 +16,28 @@
 						<img src="<?php echo $home.'img/mem1.jpg'; ?>"/>
 					</div>
 					<div class="user-info">
-						<span><?php echo $_SESSION['username'];?></span>
+						<div><?php echo $_SESSION['username'];?></div>
 						<a href="logout.php">Logout</a>
 					</div>
 				</div>
 				<ul class="menu-bar">
 					<li class="label-header">Management</li>
-					<li class="active"><a href="<?php echo $home.'admin' ?>">Home</a></li>
-				    <li><a href="user/user.php">User</a></li>
-				    <li><a href="user/group.php">Group</a></li>
-				    <li><a href="user/function.php">Function</a></li>
+				    <li class="active">
+				    	<a href="">User<span class="fa fa-angle-left"></span></a>
+				    	
+				    	<ul class="sub-menu">
+				    		<li><a href="">Info User</a></li>
+				    		<li><a href="">Group</a></li>
+				    		<li><a href="">Function</a></li>
+				    	</ul>
+
+				    </li>
+				    <li>
+				    	<a href="user/group.php">Group</a>
+				    </li>
+				    <li>
+				    	<a href="user/function.php">Function</a>
+				    </li>
 				</ul>
 			</div>	
 		</aside>
