@@ -1489,18 +1489,44 @@ hr{
 	padding: 10px 5px 10px 15px;
 	border-left: 3px solid transparent;
 }
-.menu-bar li>a:hover,.menu-bar li>a:focus,.menu-bar li.active>a{
+.menu-bar li>a:hover,.menu-bar li.active>a{
 	background: #f3f3f3;
 	border-left: 3px solid #c44741;
 	color: #000;
 
 }
-.menu-bar li>a .fa{
+.menu-bar li>a .fa-angle-left{
 	font-size: 18px;
 	position: absolute;
     right: 10px;
     top: 30%;
+    transition: all 0.3s ease;
+}
+.menu-bar li.active .fa-angle-left{
+	transform: rotate(-90deg);
 }
 .sub-menu{
+	display: none;
+	border-left: 3px solid #5BC0EB;
 	font-size: 13px;
+}
+.sub-menu li>a .fa-angle-right{
+	font-size: 16px;
+	margin-right: 5px;
+}
+.sub-menu li>a:hover,.sub-menu li.active>a{
+	//border-left: 3px solid transparent;
+	background: #52616d;
+	color: #FFF;
+}
+.sub-menu li>a:hover .fa-angle-right{
+	margin-left: 5px;
+}
+.admin-home{
+	display: block;
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
+	background: #52616d;
+	border-bottom: 2px solid #5BC0EB;
 }

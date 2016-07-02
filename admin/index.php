@@ -17,6 +17,7 @@
 	<body class="admin-page">
 		<aside class="main-bar">
 			<div class="sidebar">
+				<a href="<?php echo $home;?>admin" class="admin-home">HOME</a>
 				<div class="user-panel">
 					<div class="avatar">
 						<img src="<?php echo $home.'img/mem1.jpg'; ?>"/>
@@ -28,23 +29,44 @@
 				</div>
 				<ul class="menu-bar">
 					<li class="label-header">Management</li>
-				    <li class="active">
-				    	<a href="">User<span class="fa fa-angle-left"></span></a>
-				    	
+				    <li id="menu-user" class="has-sub">
+				    	<a href="javascript:void(0)">User<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu">
-				    		<li><a href="">Info User</a></li>
-				    		<li><a href="">Group</a></li>
-				    		<li><a href="">Function</a></li>
+				    		<li><a href="<?php echo $home;?>admin/user/user.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/user/group.php"><span class="fa fa-angle-right"></span>Group</a></li>
+				    		<li><a href="<?php echo $home;?>admin/user/function.php"><span class="fa fa-angle-right"></span>Function</a></li>
 				    	</ul>
-
 				    </li>
-				    <li>
-				    	<a href="user/group.php">Group</a>
+				    <li id="menu-post" class="has-sub">
+				    	<a href="javascript:void(0)">Post<span class="fa fa-angle-left"></span></a>
+				    	<ul class="sub-menu">
+				    		<li><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href=""><span class="fa fa-angle-right"></span>Type</a></li>
+				    	</ul>
 				    </li>
+				    <li id="menu-product" class="has-sub">
+				    	<a href="javascript:void(0)">Product<span class="fa fa-angle-left"></span></a>
+				    	<ul class="sub-menu">
+				    		<li><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href=""><span class="fa fa-angle-right"></span>Type</a></li>
+				    	</ul>
+				    </li>
+				    <li class="label-header">Layout</li>
 				    <li>
-				    	<a href="user/function.php">Function</a>
+				    	<a href="user/function.php">Themes</a>
 				    </li>
 				</ul>
+				<script type="text/javascript">
+					$('.has-sub>a').click(function(){
+						if(!$(this).parent().hasClass('active')){
+							$('.has-sub').removeClass('active');
+							$('.has-sub .sub-menu').slideUp(300);
+						}
+						$(this).parent().toggleClass('active');
+						$(this).next().slideToggle(300);
+					});
+					
+				</script>
 			</div>	
 		</aside>
 		<div class="page-content">
