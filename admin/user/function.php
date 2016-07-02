@@ -193,7 +193,7 @@
 										<button type="button" class="btn-fit btn-inf" onclick="showformadd()">
 											<span class="fa fa-plus-square"></span>
 										</button>
-										<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa function này?');">
+										<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các function này?');">
 											<span class="fa fa-trash-o"></span>
 										</button>  	
 									</div>

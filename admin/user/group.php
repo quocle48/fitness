@@ -34,11 +34,11 @@
 		$check = $_GET["checkfunc"];
 		if($check!=null){
 			foreach ($check as $id) {
-				$result = $conn->prepare("delete from function where id =".$id."");
+				$result = $conn->prepare("delete from `group` where id =".$id."");
 				$result->execute();
 			}
 		}
-		header('Location: function.php');
+		header('Location: group.php');
 		disconnectDb($conn);
 	}
 ?>

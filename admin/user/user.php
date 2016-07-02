@@ -43,6 +43,18 @@
 		header('Location: user.php');
 		disconnectDb($conn);
 	}
+	if(isset($_GET["btn_delete"])==True ){
+		$conn=connectDb();
+		$check = $_GET["checkfunc"];
+		if($check!=null){
+			foreach ($check as $id) {
+				$result = $conn->prepare("delete from user where id =".$id."");
+				$result->execute();
+			}
+		}
+		header('Location: user.php');
+		disconnectDb($conn);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -237,7 +249,16 @@
 				<table class="table table-hover">
 			    	<thead>
 						<tr>
-							<th></th>
+							<th>
+								<div class="btn-group">
+									<button type="button" class="btn-fit btn-inf" onclick="showformadd()">
+										<span class="fa fa-plus-square"></span>
+									</button>
+									<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các user này?');">
+										<span class="fa fa-trash-o"></span>
+									</button>  	
+								</div>
+							</th>
 							<th>ID</th>
 							<th>USERNAME</th>
 							<th>EMAIL</th>
