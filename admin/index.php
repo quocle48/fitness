@@ -20,19 +20,28 @@
 			    <li><a href="logout.php">Logout</a></li>
 			  </ul>
 		</aside>
-		<div class="admin-content">
+		<div class="page-content">
 			<h2>QUẢN TRỊ HỆ THỐNG</h2>
 			
 			<div class="content">
 				<div class="row">
-				  <div class="col-xs-6 col-md-4 admin-banner"> 
-				  	<h3>Quản trị User </h3>
-				  	<div class="user-banner">
-				  		<p>Nội dung</p>
+					<div class="col-xs-6 col-md-4"> 
+				  		<h3>Quản trị User </h3>
+				  		<div class="admin-banner user-banner">
+				  			<div class="admin-inner">
+				  				<h4>1050</h4>
+				  				<p>User</p>
+				  			</div>
+				  			<div class="icon icon-admin">
+				  				<i class="fa fa-user" ></i>
+				  			</div>
+		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+		   
+				  		</div>
+				  		
+				  		
 				  	</div>
-				  	
-				  
-				  </div>
+
 				  <div class="col-xs-6 col-md-4"> 
 				  	<h3>Quản trị Group	</h3>
 				  	

@@ -1336,22 +1336,63 @@ hr{
 	border-top: solid 3px #c44741 ;
 	border-bottom: solid 10px #52616D  ;
 }
-.admin-banner h3{
-	background:   #52616D ;
+
+
+
+
+.admin-banner{
 	padding: 0px ;
 	margin:0px ;	
+	color: #fff;
+}
+.admin-banner h3{
+	background:   #52616D ;
 	height: 50px;
-	line-height: 50px;
+	line-height: 50px;	
 }
+.admin-inner{
+	text-align: left;
+	padding: 20px;
+	padding-bottom: 0px;
+}
+ .admin-inner h4{
+ 	font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+.admin-inner p{
+	margin-left: 5px;
+}
+.admin-box-footer {
+	padding: 5px 0;
+	color: rgba(255,255,255,0.8);
+	background: rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+.admin-box-footer:hover {
+	color: #fff;
+	background: rgba(0,0,0,0.15);
+	text-decoration: none;
+	 outline: none;
+}
+.admin-banner:hover .icon{
+	font-size: 95px;
+}  
+
+.icon{
+	transition: all .3s linear;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0,0,0,0.15);
+}
+
 .user-banner{
-	background:  #F3F3F3 ;
-	height: 300px;
-	padding: 10px;
-}
-.user-banner p{
-	background:  #fff;
-	height: 200px;
-	
+	background-color: #00c0ef !important;
 }
 
 
