@@ -2,6 +2,12 @@
 	include_once("../application/libraries/config.php"); 
 
 	if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: login.php");
+
+	$conn=connectDb();
+	$conn->exec("set names utf8");
+	$result1 = $conn->prepare("select * from user "); 
+	$result2 = $conn->prepare("select * from `group`"); 
+	$result3 = $conn->prepare("select * from function"); 
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -48,40 +54,58 @@
 					<div class="col-xs-6 col-md-4"> 
 				  		<div class="admin-banner user-banner">
 				  			<div class="admin-inner">
-				  				<h4>1050</h4>
+				  				<h4>
+				  					<?php 
+				  						$result1->execute();
+				  						echo $result1->rowCount() ;
+				  					 ?>
+				  				</h4>
 				  				<p>User</p>
 				  			</div>
 				  			<div class="icon icon-admin">
 				  				<i class="fa fa-user" ></i>
 				  			</div>
-		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+		            		<a href="user/user.php" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
 				  		</div>
 				  	</div>
 				  	<div class="col-xs-6 col-md-4"> 
 				  		<div class="admin-banner group-banner">
 				  			<div class="admin-inner">
-				  				<h4>1050</h4>
+				  				<h4>
+				  					<?php 
+				  						$result2->execute();
+				  						echo $result2->rowCount() ;
+				  					 ?>
+				  				</h4>
 				  				<p>Group</p>
 				  			</div>
 				  			<div class="icon icon-admin">
 				  				<i class="fa fa-users" ></i>
 				  			</div>
-		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+		            		<a href="user/group.php" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
 				  		</div>	
 					 </div>
 					<div class="col-xs-6 col-md-4"> 
 				  		<div class="admin-banner function-banner">
 				  			<div class="admin-inner">
-				  				<h4>1050</h4>
+				  				<h4>
+				  					<?php 
+				  						$result3->execute();
+				  						echo $result3->rowCount() ;
+				  					 ?>
+				  				</h4>
 				  				<p>Function</p>
 				  			</div>
 				  			<div class="icon icon-admin">
 				  				<i class="fa fa-magic" ></i>
 				  			</div>
-		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+		            		<a href="user/function.php" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
 				  		</div>
 					</div>
-					 </div>
+					<?php    
+						disconnectDb($conn);
+					?>
+				</div>
 				 
 			</div>
 		</div>

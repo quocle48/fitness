@@ -1359,8 +1359,8 @@ hr{
     font-weight: bold;
     margin: 0 0 10px 0;
 }
-.admin-inner p{
-	margin-left: 5px;
+.admin-inner p {
+	font-size: 15px;
 }
 .admin-box-footer {
 	padding: 5px 0;
@@ -1399,7 +1399,7 @@ hr{
 }
 .function-banner{
 	  
-	 background-color:   #F3F3F3   !important;
+	 background-color:  #00A896   !important;
 }
 /* -------------Đức --------------*/
 .admin-page a{

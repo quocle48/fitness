@@ -175,8 +175,7 @@
 								</th>
 								<th>ID</th>
 								<th>NAME</th>
-								<th>DESCRIPTION</th>
-								
+								<th>DESCRIPTION</th>	
 								<th>ACTION</th>
 							</tr>
 						</thead>
