@@ -31,11 +31,9 @@
 		</aside>
 		<div class="page-content">
 			<h2>QUẢN TRỊ HỆ THỐNG</h2>
-			<div class="content">
-				<h2>QUẢN TRỊ HỆ THỐNG</h2>				
+			<div class="content">		
 				<div class="row">
 					<div class="col-xs-6 col-md-4"> 
-				  		<h3>Quản trị User </h3>
 				  		<div class="admin-banner user-banner">
 				  			<div class="admin-inner">
 				  				<h4>1050</h4>
@@ -45,19 +43,34 @@
 				  				<i class="fa fa-user" ></i>
 				  			</div>
 		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
-		   
 				  		</div>
-				  		
-				  		
 				  	</div>
-				  </div>
-				  <div class="col-xs-6 col-md-4"> 
-				  	<h3>Quản trị Group	</h3>
-				  </div>
-				  <div class="col-xs-6 col-md-4"> 
-				  	<h3>Quản trị Function </h3>
-				  </div>
-				</div>
+				  	<div class="col-xs-6 col-md-4"> 
+				  		<div class="admin-banner group-banner">
+				  			<div class="admin-inner">
+				  				<h4>1050</h4>
+				  				<p>Group</p>
+				  			</div>
+				  			<div class="icon icon-admin">
+				  				<i class="fa fa-users" ></i>
+				  			</div>
+		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+				  		</div>	
+					 </div>
+					<div class="col-xs-6 col-md-4"> 
+				  		<div class="admin-banner function-banner">
+				  			<div class="admin-inner">
+				  				<h4>1050</h4>
+				  				<p>Function</p>
+				  			</div>
+				  			<div class="icon icon-admin">
+				  				<i class="fa fa-magic" ></i>
+				  			</div>
+		            		<a href="#" class="admin-box-footer" >More info <i class="fa fa-arrow-circle-right"></i></a>
+				  		</div>
+					</div>
+					 </div>
+				 
 			</div>
 		</div>
 	</body>

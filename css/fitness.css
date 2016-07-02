@@ -1344,8 +1344,8 @@ hr{
 	margin:0px ;	
 	color: #fff;
 }
-.admin-banner h3{
-	background:   #52616D ;
+.content h3{
+	color:  #52616D ;
 	height: 50px;
 	line-height: 50px;	
 }
@@ -1377,24 +1377,30 @@ hr{
 	 outline: none;
 }
 .admin-banner:hover .icon{
-	font-size: 95px;
+	font-size: 90px;
 }  
 
 .icon{
 	transition: all .3s linear;
     position: absolute;
-    top: 50px;
+    top: -5px;
     right: 50px;
     z-index: 0;
-    font-size: 90px;
+    font-size: 80px;
     color: rgba(0,0,0,0.15);
 }
 
 .user-banner{
 	background-color: #00c0ef !important;
 }
-
-
+.group-banner{
+	  
+	 background-color: #C44741  !important;
+}
+.function-banner{
+	  
+	 background-color:   #F3F3F3   !important;
+}
 /* -------------Đức --------------*/
 .admin-page a{
 	color: #FFF;
