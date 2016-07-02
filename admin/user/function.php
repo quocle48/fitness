@@ -34,10 +34,7 @@
 				$result = $conn->prepare("delete from function where id =".$id."");
 				$result->execute();
 			}
-
-		    echo "Delete successfully";
 		}
-		else echo "Chọn một function mà bạn muốn xóa";
 		header('Location: function.php');
 		disconnectDb($conn);
 	}
@@ -47,10 +44,10 @@
 	<head>
 		<?php include_once("../../head.html"); ?>
 	</head>
-	<body>
+	<body class="admin-page">
 		<aside class="menu-bar">
 			<ul class="nav nav-pills nav-stacked">
-			    <li class="active"><a href="function.php">Home</a></li>
+			    <li class="active"><a href="<?php echo $home.'admin' ?>">Home</a></li>
 			    <li><a onclick="showformadd()" >THÊM</a></li>
 			    <li><a href="#">Logout</a></li>
 		  	</ul>
