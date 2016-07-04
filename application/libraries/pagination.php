@@ -5,14 +5,21 @@
 - Phpandmysql.net
 */
 class Pagination{
-	
-	public $limit;  // số record hiển thị trên một trang
-	
+	private $_conn;
+	private $_limit;
+    public $_page;
+    private $_query;
+    private $_total;
 	protected $_baseUrl;
-	public function __construct(){
-		$this->limit=12;
+	public function __construct($query, $limit ){
+		$this->_conn = connectDb();
+		$this->_page = 1;
+		$this->_limit=$limit;
+		$this->_query=$query;
 		$this->_baseUrl = baseurl();
-		
+		$result = $this->_conn->prepare($query);
+		$result->execute();
+		$this->_total= ceil( $result->rowCount() / $this->_limit ) ;
 	}
 	/**
 	  - Tìm ra vị trí start
@@ -33,41 +40,78 @@ class Pagination{
 		if(isset($_GET['pages'])){
 			$totalPages = $_GET['pages'];
 		}else{
-			$totalPages = ceil($totalRecord/$this->limit);
+			$totalPages = ceil($totalRecord/$this->_limit);
 		}
 		return $totalPages;
 	}
-	
+	/**
+	  - Get Data
+	*/
+
+	public function getData( $page ) {
+	    $this->_page    = $page;
+	 
+	    if ( $this->_limit == 'all' ) {
+	        $query      = $this->_query;
+	    } else {
+	        $query      = $this->_query . " LIMIT " . ( ( $this->_page - 1 ) * $this->_limit ) . ", ".$this->_limit."";
+	    }
+	    $result = $this->_conn->query( $query );
+		$result->execute();
+	    return $result;
+	}
 	/**
 	  - Gọi ra list phân trang
 	*/
-	public function listPages($totalPages){
-		$start = $this->start();
-		$limit = $this->limit;
-		$listPage = '';
+	public function listPages(){
+		// $start = $this->start();
+		// $limit = $this->limit;
+
+		$listPage = '<div class="page-number"> <ul class="pagination">';
 		
-		if($totalPages > 1){ // số trang phải từ 2 trang trở lên
-			$current = ($start/$limit) + 1; // trang hiện tại
-			if($current != 1){ // Nút prev
-				$newstart = $start - $limit;
-				$listPage .= "<a href='".$this->_baseUrl."?pages=$totalPages&start=$newstart'>Prev</a>";
+		if($this->_total > 1){ // số trang phải từ 2 trang trở lên
+			if($this->_page > 1){ // Nút prev
+				$listPage .= '<li ><a href="?page='.($this->_page -1).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
 			}
-			
-			for($i=1;$i<=$totalPages;$i++){  // Tất cả các trang tìm được
-				$newstart = ($i - 1)*$limit;
-				if($i == $current){
-					$listPage .= "<span class='current'>".$i."</span>";
-				}else{
-					$listPage .= "<a href='".$this->_baseUrl."?pages=$totalPages&start=$newstart'>".$i."</a>";
+			else{
+				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
+			}
+			if($this->_total>10){
+				if($this->_page +5 >= $this->_total){
+					$start = $this->_total -9;
+					$end = $this->_total ;
+				}
+				else {
+					$start = ($this->_page - 4 >0) ? $this->_page - 4 : 1;
+					$end = $start +9;
+				}
+				for($i=$start;$i<= $end ;$i++){  // Tất cả các trang tìm được
+					if($i == $this->_page){
+						$listPage .= '<li class="active"><a href="#"><span > '.$i. '</span> </a></li>';
+					}else{
+						$listPage .= '<li ><a href="?page='.$i. '">'.$i.' </a></li>';
+					}
 				}
 			}
+			else{
+				for($i=1;$i<=$this->_total;$i++){  // Tất cả các trang tìm được
+					if($i == $this->_page){
+						$listPage .= '<li class="active"><a href="#"><span > '.$i. '</span> </a></li>';
+					}else{
+						$listPage .= '<li ><a href="?page='.$i. '">'.$i.' </a></li>';
+					}
+				}
+			}
+				
 			
-			if($current != $totalPages){ // Nút next
-				$newstart = $start + $limit;
-				$listPage .= "<a href='".$this->_baseUrl."?pages=$totalPages&start=$newstart'>Next</a>";
+			if($this->_page < $this->_total){ // Nút next
+				$listPage .= '<li ><a href="?page='.($this->_page +1).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
+			}
+			else {
+				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
 			}
 		}
-		
+		$listPage.=' </ul></div>';
 		return $listPage;
 	}
 }

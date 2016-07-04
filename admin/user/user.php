@@ -1,5 +1,6 @@
 <?php 
 	include_once("../../application/libraries/config.php"); 
+	include_once("../../application/libraries/pagination.php"); 
 	if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: ../login.php");
 	if(isset($_POST["btn_add"])){
 		$conn=connectDb();
@@ -243,67 +244,78 @@
 					echo "</div>";
 				}
 			?>
-		<div class="content">
-			<form action="user.php" method="get">
-				<h3>LIST USER </h3>
-				<table class="table table-hover">
-			    	<thead>
-						<tr>
-							<th>
-								<div class="btn-group">
-									<button type="button" class="btn-fit btn-inf" onclick="showformadd()">
-										<span class="fa fa-plus-square"></span>
-									</button>
-									<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các user này?');">
-										<span class="fa fa-trash-o"></span>
-									</button>  	
-								</div>
-							</th>
-							<th>ID</th>
-							<th>USERNAME</th>
-							<th>EMAIL</th>
-							<th>GROUP</th>
-							<th>ACTION</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							$conn=connectDb();
-							$conn->exec("set names utf8");
-							$result = $conn->prepare("select * from user"); 
-				            $result->execute();
-							if($result->rowCount()>0)
-					    	{
-					            while($row=$result->fetch(PDO::FETCH_ASSOC))
-					            {
-					            	echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
-									echo "<td>$row[id]</td>";
-									echo "<td>$row[username]</td>";
-									echo "<td>$row[email]</td>";
-									echo "<td>";
-									$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
-				            		$result2->execute();
-				            		$list_gr;
-				            		$x=0;
-				            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-				            			$list_gr[$x++]=$row2["name"];
-				            			$list_gr[$x++]=", ";
-				            		}
-				            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
-									echo "</td>";
-									echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-pencil-square-o"></span></button>';
-									echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-trash"></span></button></div></td>';									
-									echo '</tr>';
-					            }
-						    }
-						    else
-						        echo "<div class='notice'>No data!</div>";
-							disconnectDb($conn);
-						?>
-					</tbody>	
-				</table>
-			</form>
-		</div>
+			<div class="content">
+				<form action="user.php" method="get">
+					<h3>LIST USER </h3>
+					<table class="table table-hover">
+				    	<thead>
+							<tr>
+								<th>
+									<div class="btn-group">
+										<button type="button" class="btn-fit btn-inf" onclick="showformadd()">
+											<span class="fa fa-plus-square"></span>
+										</button>
+										<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các user này?');">
+											<span class="fa fa-trash-o"></span>
+										</button>  	
+									</div>
+								</th>
+								<th>ID</th>
+								<th>USERNAME</th>
+								<th>EMAIL</th>
+								<th>GROUP</th>
+								<th>ACTION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								// $conn=connectDb();
+								// $conn->exec("set names utf8");
+								// $result = $conn->prepare("select * from user");
+								$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
+								$listUser = new pagination("select * from user","2");
+					            $result = $listUser->getData($page);
+								if($result->rowCount()>0)
+						    	{
+						            while($row=$result->fetch(PDO::FETCH_ASSOC))
+						            {
+						            	echo '<td> <input  name="checkfunc[]" type="checkbox" value="'.$row['id'].'"> </td>';
+										echo "<td>$row[id]</td>";
+										echo "<td>$row[username]</td>";
+										echo "<td>$row[email]</td>";
+										echo "<td>";
+										$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
+					            		$result2->execute();
+					            		$list_gr;
+					            		$x=0;
+					            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+					            			$list_gr[$x++]=$row2["name"];
+					            			$list_gr[$x++]=", ";
+					            		}
+					            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
+										echo "</td>";
+										echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-pencil-square-o"></span></button>';
+										echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa user này?\');" value="'.$row['id'].'" formaction="user.php"><span class="fa fa-trash"></span></button></div></td>';									
+										echo '</tr>';
+						            }
+						     
+							    }
+							    else
+							        echo "<div class='notice'>No data!</div>";
+							    
+							     disconnectDb($conn);
+							?>
+
+						</tbody>	
+
+					</table>
+				</form>
+				<?php   
+					$listPage = $listUser->listPages();
+					echo $listPage;	
+				?>
+			</div>
+
 		</div>
 	</body>
 </html>
