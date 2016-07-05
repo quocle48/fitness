@@ -1,5 +1,6 @@
 <?php 
 	include_once("../../application/libraries/config.php"); 
+	include_once("../../application/libraries/pagination.php"); 
 	//if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: login.php");
 	if(isset($_POST["btn_addfunc"])==True){
 		$conn=connectDb();
@@ -207,11 +208,14 @@
 						</thead>
 						<tbody>
 							<?php
-								$conn=connectDb();
-								$conn->exec("set names utf8");
-								$result = $conn->prepare("select * from function"); 
-					            $result->execute();
-					          
+								// $conn=connectDb();
+								// $conn->exec("set names utf8");
+								// $result = $conn->prepare("select * from function"); 
+					   //          $result->execute();
+
+					          	$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
+								$listFunction = new pagination("select * from function","10");
+					            $result = $listFunction->getData($page);
 								if($result->rowCount()>0)
 						    	{
 						            while($row=$result->fetch(PDO::FETCH_ASSOC))
@@ -229,12 +233,17 @@
 							    }
 							    else
 							        echo "<div class='notice'>No data!</div>";
-								disconnectDb($conn);
 							?>
+
 						</tbody>
 					</table>
 				</form>
+				<?php   
+					echo $listFunction->listPages();	
+					$listFunction->closeConn();
+				?>
 			</div>
+
 		</div>
 		
 	</body>

@@ -13,6 +13,7 @@ class Pagination{
 	protected $_baseUrl;
 	public function __construct($query, $limit ){
 		$this->_conn = connectDb();
+		$this->_conn->exec("set names utf8");
 		$this->_page = 1;
 		$this->_limit=$limit;
 		$this->_query=$query;
@@ -22,29 +23,7 @@ class Pagination{
 		$this->_total= ceil( $result->rowCount() / $this->_limit ) ;
 	}
 	/**
-	  - Tìm ra vị trí start
-	*/
-	public function start(){
-		if(isset($_GET['start'])){
-			$start = $_GET['start'];
-		}else{
-			$start = 0;
-		}
-		return $start;
-	}
-	
-	/**
-	  - Tìm ra tổng số trang
-	*/
-	public function totalPages($totalRecord){
-		if(isset($_GET['pages'])){
-			$totalPages = $_GET['pages'];
-		}else{
-			$totalPages = ceil($totalRecord/$this->_limit);
-		}
-		return $totalPages;
-	}
-	/**
+
 	  - Get Data
 	*/
 
@@ -76,16 +55,17 @@ class Pagination{
 			else{
 				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
 			}
-			if($this->_total>10){
-				if($this->_page +5 >= $this->_total){
+			// Đoạn phân trang, chia ra các trường hợp
+			if($this->_total>10){ 
+				if($this->_page +4 >= $this->_total){ //Nếu trang ở phía cuối, hiển thị 10 trang cuối cùng
 					$start = $this->_total -9;
 					$end = $this->_total ;
 				}
 				else {
-					$start = ($this->_page - 4 >0) ? $this->_page - 4 : 1;
-					$end = $start +9;
+					$start = ($this->_page - 5 >0) ? $this->_page - 5 : 1;
+					$end = ($start==1) ? $start +9 : $this->_page +4;
 				}
-				for($i=$start;$i<= $end ;$i++){  // Tất cả các trang tìm được
+				for($i=$start;$i<= $end ;$i++){  // Các trang trong đoạn start - end
 					if($i == $this->_page){
 						$listPage .= '<li class="active"><a href="#"><span > '.$i. '</span> </a></li>';
 					}else{
@@ -113,5 +93,8 @@ class Pagination{
 		}
 		$listPage.=' </ul></div>';
 		return $listPage;
+	}
+	public function closeConn() {
+	    disconnectDb ($this->_conn ) ;
 	}
 }

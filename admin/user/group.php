@@ -1,5 +1,6 @@
 <?php
 	include_once("../../application/libraries/config.php");
+	include_once("../../application/libraries/pagination.php"); 
 	//CHECK ADMIN
 	if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: ../login.php");
 	//ADD
@@ -228,10 +229,10 @@
 						</thead>
 						<tbody>
 							<?php
-								$conn=connectDb();
-								$conn->exec("set names utf8");
-								$result = $conn->prepare("select * from `group`"); 
-					            $result->execute();
+
+					          	$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
+								$listGroup = new pagination("select * from `group`","10");
+					            $result = $listGroup->getData($page);
 								if($result->rowCount()>0)
 						    	{
 						            while($row=$result->fetch(PDO::FETCH_ASSOC))
@@ -258,11 +259,15 @@
 							    }
 							    else
 							        echo "No data!";
-								disconnectDb($conn);
+								
 							?>
 						</tbody>
 					</table>
 				</form>
+				<?php   
+					echo $listGroup->listPages();	
+					$listGroup->closeConn();
+				?>
 			</div>
 		</div>
 	</body>

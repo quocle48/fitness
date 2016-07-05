@@ -302,8 +302,7 @@
 							    }
 							    else
 							        echo "<div class='notice'>No data!</div>";
-							    
-							     disconnectDb($conn);
+
 							?>
 
 						</tbody>	
@@ -313,6 +312,7 @@
 				<?php   
 					$listPage = $listUser->listPages();
 					echo $listPage;	
+					$listUser->closeConn();
 				?>
 			</div>
 
