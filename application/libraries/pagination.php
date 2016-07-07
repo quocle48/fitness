@@ -28,6 +28,8 @@ class Pagination{
 	*/
 
 	public function getData( $page ) {
+		if($page <1) $page =1;
+		if($page > $this->_total) $page = $this->_total;
 	    $this->_page    = $page;
 	 
 	    if ( $this->_limit == 'all' ) {
@@ -49,29 +51,35 @@ class Pagination{
 		$listPage = '<div class="page-number"> <ul class="pagination">';
 		
 		if($this->_total > 1){ // số trang phải từ 2 trang trở lên
+
 			if($this->_page > 1){ // Nút prev
 				$listPage .= '<li ><a href="?page='.($this->_page -1).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
+
 			}
 			else{
 				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
+
 			}
 			// Đoạn phân trang, chia ra các trường hợp
-			if($this->_total>10){ 
-				if($this->_page +4 >= $this->_total){ //Nếu trang ở phía cuối, hiển thị 10 trang cuối cùng
-					$start = $this->_total -9;
+			if($this->_total>5){ 
+				if($this->_page +2 >= $this->_total){ //Nếu trang ở phía cuối, hiển thị 10 trang cuối cùng
+					$start = $this->_total -4;
 					$end = $this->_total ;
 				}
 				else {
-					$start = ($this->_page - 5 >0) ? $this->_page - 5 : 1;
-					$end = ($start==1) ? $start +9 : $this->_page +4;
+					$start = ($this->_page - 2 >0) ? $this->_page - 2 : 1;
+					$end = ($start==1) ? $start +4 : $this->_page +2;
 				}
+				if($start !=1) $listPage .= '<li class=""><a href="javascript:void(0)" aria-hidden="true"><span > .. </span> </a></li>';
 				for($i=$start;$i<= $end ;$i++){  // Các trang trong đoạn start - end
+
 					if($i == $this->_page){
-						$listPage .= '<li class="active"><a href="#"><span > '.$i. '</span> </a></li>';
+						$listPage .= '<li class="active"><a href="" aria-hidden="true"><span > '.$i. '</span> </a></li>';
 					}else{
 						$listPage .= '<li ><a href="?page='.$i. '">'.$i.' </a></li>';
 					}
 				}
+				if($end !=$this->_total) $listPage .= '<li class=""><a href="#" aria-hidden="true"><span > .. </span> </a></li>';
 			}
 			else{
 				for($i=1;$i<=$this->_total;$i++){  // Tất cả các trang tìm được
