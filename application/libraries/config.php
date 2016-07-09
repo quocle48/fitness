@@ -2,7 +2,6 @@
 	/*--------------Database--------------*/
 	session_start();
 	function connectDb(){
-		
 		$database = array(
 			'servername' => "localhost",
 			'username' => "root",
@@ -13,7 +12,7 @@
 		try {
 			$conn = new PDO("mysql:host={$database['servername']};dbname={$database['dbname']}",$database['username'],$database['password'] );
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   
+   			$conn->exec("set names utf8");
 			return $conn;
 			}
 		catch(PDOException $e)

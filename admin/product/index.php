@@ -89,14 +89,14 @@
 				    	<a href="javascript:void(0)">Post<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu">
 				    		<li ><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li><a href=""><span class="fa fa-angle-right"></span>Type</a></li>
+				    		<li><a href=""><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
 				    <li id="menu-product" class="has-sub active">
 				    	<a href="javascript:void(0)">Product<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu" style="display:block">
-				    		<li class="active"><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li><a href=""><span class="fa fa-angle-right"></span>Type</a></li>
+				    		<li class="active"><a href="<?php echo $home;?>admin/product"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/product/category.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
 				    <li class="label-header">Layout</li>
