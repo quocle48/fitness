@@ -1477,8 +1477,8 @@ hr{
 	margin: 0;
 }
 .label-header{
-	background: #52616d;
-	color: #f3f3f3;
+	color: #c44741;
+    border-bottom: 1px solid;
 }
 .label-header{
 	padding: 7px 5px 7px 15px;

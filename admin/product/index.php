@@ -261,7 +261,7 @@
 									</div>
 								</th>
 								<th>ID</th>
-								<th>USERNAME</th>
+								<th>NAME</th>
 								<th>EMAIL</th>
 								<th>GROUP</th>
 								<th>ACTION</th>
