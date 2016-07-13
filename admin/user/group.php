@@ -18,6 +18,13 @@
 		$conn->exec("set names utf8");
 		$result = $conn->prepare("update `group` set name ='".$_POST["txt_name"]."', description = '".$_POST["txt_description"]."' where id = '".$_POST["btn_edit"]."'"); 
         $result->execute();
+        $result = $conn->prepare("delete from group_function where group_id =".$_POST["btn_edit"]);
+		$result->execute();
+        $list_fc=$_POST['function'];
+        foreach ($list_fc as $id) {
+        	$result = $conn->prepare("insert into group_function(group_id, function_id) values('".$_POST["btn_edit"]."','".$id."')"); 
+        	$result->execute();
+        }
 	    header('Location: group.php');
 		disconnectDb($conn);
 	}
@@ -191,6 +198,27 @@
 										</div>
 									</div>
 
+									<div class="form-group">
+										<label class="control-label col-sm-3" >Function:</label>
+										<div class="col-sm-6"> 
+								  		<?php 
+								  			$conn=connectDb();
+											$result2 = $conn->prepare("SELECT * FROM function");
+											$result2->execute();
+											if($result2->rowCount()>0) {
+											while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
+												$result3 = $conn->prepare("SELECT function_id FROM `group_function` where group_id='".$_GET["edit"]."' and function_id='".$row2['id']."'");
+												$result3->execute();
+												$str="";
+												if($result3->rowCount()>0){ $str="checked"; }
+												echo '<label class="checkbox-inline"><input name="function[]" type="checkbox" value="'.$row2['id'].'" '.$str.'>'.$row2['name'].'</label>';
+											}
+										}
+										disconnectDb($conn);
+								  	?>
+								</div>
+							</div>
+
 									<div class="form-group"> 
 										<div class="col-sm-offset-4 col-sm-4">
 										  <button type="submit" class="btn-fit btn-pri" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
@@ -223,7 +251,8 @@
 								</th>
 								<th>ID</th>
 								<th>NAME</th>
-								<th>DESCRIPTION</th>	
+								<th>DESCRIPTION</th>
+								<th>FUNCTION</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
@@ -241,17 +270,17 @@
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[name]</td>";
 										echo "<td>$row[description]</th>";
-										/*echo "<td>";
-										$result2 = $conn->prepare("select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='".$row['id']."'"); 
+										echo "<td>";
+										$result2 = $conn->prepare("select b.name from `group_function` as a, function as b where a.function_id=b.id and a.group_id='".$row['id']."'"); 
 				            			$result2->execute();
-				            			$list_gr;
+				            			$list_fc;
 				            			$x=0;
 				            			while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-				            				$list_gr[$x++]=$row2["name"];
-				            				$list_gr[$x++]=", ";
+				            				$list_fc[$x++]=$row2["name"];
+				            				$list_fc[$x++]=", ";
 				            			}
-				            			for($i=0;$i<$x-1;$i++) echo $list_gr[$i];
-										echo "</td>"; */
+				            			for($i=0; $i<$x-1; $i++) echo $list_fc[$i];
+										echo "</td>";
 										echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-pencil-square-o"></span></button>';
 										echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa group này?\');" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-trash"></span></button></div></td>';									
 										echo '</tr>';

@@ -420,7 +420,7 @@ li.has-submenu:hover ul{
 .center{
 	background-color: #52616D;
 	padding: 0px 0px 20px 0px;
-	border-bottom: solid 2px #c44741;
+	margin: 0;
 }
 .center-info{
 	text-align: center;
@@ -520,9 +520,6 @@ li.has-submenu:hover ul{
 .footer-contact{
 	font-style: italic;
 	font-size: 18px;
-}
-ul{
-	line-height: 26px;
 }
 .uppercase{
 	padding: 0px;
@@ -746,7 +743,7 @@ ul{
 	color: #2C343B ;
 	text-decoration: none;
 }
-.categories ul {
+ul {
 	padding: 0px;
 	
 }
