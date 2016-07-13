@@ -6,7 +6,7 @@
 		$conn=connectDb();
 		$conn->exec("set names utf8");
 		$today = date("Y-m-d H:i:s");   
-		$result = $conn->prepare("insert into post(title,user_id,tag,time, level_id, category_id) values('".$_POST["txt_title"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."')"); 
+		$result = $conn->prepare("insert into post(title,user_id,tag,time, level_id, category_id, content) values('".$_POST["txt_title"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."','".$_POST['desc']."')"); 
         $result->execute();
 	    header('Location: index.php');
 		disconnectDb($conn);
@@ -180,6 +180,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-3" >Content:</label>
+					<div class="col-sm-6"> 
+					  	<textarea id="editor" name="desc" style="height: 200px; width: 100%;"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-3" ></label>
 					<div class="col-sm-6"> 
 					  	<button type="submit" class="btn-fit btn-pri"  name="btn_add">Submit</button>
@@ -262,7 +268,12 @@
 									</select>
 								</div>
 							</div>
-
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Content:</label>
+								<div class="col-sm-6"> 
+								  	<textarea id="editor" name="desc" style="height: 200px; width: 100%;"></textarea>
+								</div>
+							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" ></label>
 								<div class="col-sm-6"> 
@@ -280,7 +291,7 @@
 				}
 			?>
 			<div class="content">
-				<form action="user.php" method="get">
+				<form action="index.php" method="get">
 					<h3>LIST POST </h3>
 					<table class="table table-hover">
 				    	<thead>
@@ -346,5 +357,10 @@
 			</div>
 
 		</div>
+		<script type="text/javascript">
+			bkLib.onDomLoaded(function() {
+			var editor=new nicEditor({iconsPath : '<?php echo $home;?>js/nicEditorIcons.gif'}).('editor');
+		});
+	</script>
 	</body>
 </html>
