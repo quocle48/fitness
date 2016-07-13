@@ -11,6 +11,7 @@ class Pagination{
     private $_query;
     private $_total;
 	protected $_baseUrl;
+	private $row;
 	public function __construct($query, $limit ){
 		$this->_conn = connectDb();
 		$this->_conn->exec("set names utf8");
@@ -20,21 +21,22 @@ class Pagination{
 		$this->_baseUrl = baseurl();
 		$result = $this->_conn->prepare($query);
 		$result->execute();
+		$this->row = $result->rowCount();
+		
 		$this->_total= ceil( $result->rowCount() / $this->_limit ) ;
 	}
 	/**
 
 	  - Get Data
 	*/
-
 	public function getData( $page ) {
 		if($page <1) $page =1;
 		if($page > $this->_total) $page = $this->_total;
-	    $this->_page    = $page;
-	 
-	    if ( $this->_limit == 'all' ) {
+	    $this->_page    = $page; 
+	    if ( $this->_limit == 'all' || $this->row <= $this->_limit ) {
 	        $query      = $this->_query;
-	    } else {
+	    } 
+	    else {
 	        $query      = $this->_query . " LIMIT " . ( ( $this->_page - 1 ) * $this->_limit ) . ", ".$this->_limit."";
 	    }
 	    $result = $this->_conn->query( $query );
@@ -47,11 +49,8 @@ class Pagination{
 	public function listPages(){
 		// $start = $this->start();
 		// $limit = $this->limit;
-
-		$listPage = '<div class="page-number"> <ul class="pagination">';
-		
 		if($this->_total > 1){ // số trang phải từ 2 trang trở lên
-
+			$listPage = '<div class="page-number"> <ul class="pagination">';
 			if($this->_page > 1){ // Nút prev
 				$listPage .= '<li ><a href="?page='.($this->_page -1).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
 
@@ -98,9 +97,10 @@ class Pagination{
 			else {
 				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
 			}
+			$listPage.=' </ul></div>';
+			return $listPage;
 		}
-		$listPage.=' </ul></div>';
-		return $listPage;
+		
 	}
 	public function closeConn() {
 	    disconnectDb ($this->_conn ) ;

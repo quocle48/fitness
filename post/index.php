@@ -1,18 +1,30 @@
 <?php
 	include("../header.html"); 
-	include("../banner.html"); ?>
+	include("../banner.html"); 
+	include_once("../application/libraries/config.php"); 
+	include_once("../application/libraries/pagination.php"); 
+
+	?>
 <div class="container post">
 	<div class="col-xs-12 col-md-9 ">
 	<?php
-		$list=!isset($_GET["id"]);
-		if($list){
-			for($i=0;$i<4;$i++)
-				include("thum-post.html");
-			include("page-number.html");
-		}
-		else{
-			include("post-detail-1.html");
-		}
+		
+		
+		$list= (isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
+		$listPost = new pagination("select * from post","10");
+		$result = $listPost->getData($list);
+
+		if($result->rowCount()>0)
+    	{
+            while($row=$result->fetch(PDO::FETCH_ASSOC))
+            {
+            	include("thum-post.html");
+            }
+     
+	    }
+	    else
+	        echo "<div class='notice'>No data!</div>";
+		
 	?>
 	</div>
 	<div class="col-xs-6 col-md-3">
