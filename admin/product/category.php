@@ -127,6 +127,12 @@
 					<label class="control-label col-sm-3" >Description:</label>
 					<div class="col-sm-6"> 
 					  	<input type="text" class="form-control input-fit" name="desc" placeholder="Enter description">
+					  	<textarea id="editor" name="desc" style="height: 200px; width: 100%;"></textarea>
+					  	<script type="text/javascript">
+					  		bkLib.onDomLoaded(function() {
+					  			var editor=new nicEditor({iconsPath : '<?php echo $home;?>js/nicEditorIcons.gif'}).panelInstance('editor');
+					  		});
+					  	</script>
 					</div>
 				</div>
 				<div class="form-group">
