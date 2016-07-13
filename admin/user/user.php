@@ -272,7 +272,7 @@
 								// $conn->exec("set names utf8");
 								// $result = $conn->prepare("select * from user");
 								$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
-								$listUser = new pagination("select * from user","2");
+								$listUser = new pagination("select * from user","10");
 					            $result = $listUser->getData($page);
 								if($result->rowCount()>0)
 						    	{
