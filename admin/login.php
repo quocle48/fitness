@@ -12,17 +12,19 @@
         if($Err=="")
         {	
         	$conn=connectDb();
-            $sql="select password,level from user where username='".$user."' ";
+            $sql="select id,password,level from user where username='".$user."' ";
             $result= $conn->query($sql)->fetchAll();
             disconnectDb($conn);
             if(count($result)>0){
                 $account=$result[0];
+                $id=$account['id'];
                 $pw=$account['password'];
                 $lv=$account['level'];
                 if(password_verify($pass, $pw)){
                 	if($lv>0){
 	    				$_SESSION['username']=$user;
 	                    $_SESSION['level']=$lv;
+                        $_SESSION['id']=$id;
 	                    header("Location: index.php");
                 	}
                 	else

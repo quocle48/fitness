@@ -1,4 +1,7 @@
 <?php 
+    include_once("../application/libraries/config.php"); 
+    include_once("../application/libraries/pagination.php"); 
+
     $conn=connectDb();
     $conn->exec("set names utf8");
     $sProduct = $conn->prepare("select * from product p ,store s , type_product t_p where p.id = s.id and p.id = t_p.id "); 

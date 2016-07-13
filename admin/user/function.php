@@ -71,8 +71,8 @@
 				    <li id="menu-post" class="has-sub">
 				    	<a href="javascript:void(0)">Post<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu">
-				    		<li><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li><a href=""><span class="fa fa-angle-right"></span>Category</a></li>
+				    		<li><a href="<?php echo $home;?>admin/post"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/post/type.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
 				    <li id="menu-product" class="has-sub">
