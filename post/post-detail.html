@@ -1,21 +1,21 @@
 <div class="thum-post row">
 	<div class="title-post detail-post">
 		<a href="#">
-			<h2>Thay đổi bản thân bằng cách khởi động với các bài tập đơn giản</h2>
+			<h2><?php echo $row['title'] ;?></h2>
 		</a>
 	</div>
 	<div class="submit-post submit-post-detail">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-clock-o"></a>
-				<p>5/5/2016</p>
+				<p><?php echo date("d/m/Y", strtotime($row['time'])) ;?></p>
 			</div >
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-user"></a>
-				<p>admin</p>
+				<p><?php echo $row['username'] ;?></p>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-heart"></a>
-				<p>1012</p>
+				<p><?php echo $row['like'] ;?></p>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-comment"></a>
@@ -24,10 +24,7 @@
 	</div>
 	<div class="img-post-detail">img</div>
 	<div class="content-post-detail">
-		<p>Hướng dẫn kiến thức dành cho người mới tập gym, thể hình cả Nam và Nữ. Bài viết sẽ chỉ cho bạn từng bước chuẩn bị, nghiên cứu kiến thức nào để có thể đạt được mục tiêu đúng cách và hiệu quả nhất.</p>
-		<p>Bài viết sẽ rất chi tiết nên hãy dành chút thời gian đọc nhé, sẽ có rất nhiều thông tin bổ ích cho bạn đó.</p>
-		<p>Có lẽ đối với người bình thường, từ mong muốn đi tập gym cho đến lúc đến phòng tập và mua vé tập là khoảng thời gian khó khăn nhất, chiến đấu với chính mình là khó khăn nhất.</p>
-		<p>Tuần đầu tiên là khoảng thời gian khó khăn, đa số những người bỏ cuộc sẽ bỏ cuộc ngay trong tuần đầu này. Nhưng những người vượt qua được thời gian thử thách này, tình yêu và đam mê với môn thể thao này, với cơ thể đang dần trở nên đẹp hơn của mình sẽ bóp cổ mấy con quỷ kia không lên tiếng được nữa;). Hãy tạo cho mình mục tiêu phấn đấu, động lực để đếm Gym mỗi ngày, tập chăm chỉ để có body giống thần tượng.</p>
+		<?php echo $row['content'] ;?>
 	</div>
 	<div class="share-post">
 		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
