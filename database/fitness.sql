@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2016 at 04:44 PM
+-- Generation Time: Jul 14, 2016 at 05:46 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `category_post` (
 `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `category_post`
@@ -45,7 +45,8 @@ INSERT INTO `category_post` (`id`, `name`, `description`) VALUES
 (6, 'Tay sau', 'Các bài tập liên quan đến tay sau.'),
 (7, 'Bụng', 'Các bài tập liên quan đến bụng.'),
 (8, 'Cardio', 'Các bài tập giảm mỡ, cải thiện sức khỏe tim mạch.'),
-(9, 'Giáo án nữ', 'Các bài tập dành cho nữ.');
+(9, 'Giáo án nữ', 'Các bài tập dành cho nữ.'),
+(10, 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,15 @@ CREATE TABLE IF NOT EXISTS `level_post` (
 `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `level_post`
+--
+
+INSERT INTO `level_post` (`id`, `name`, `description`) VALUES
+(1, 'Cơ bản', 'Các bài viết cho người mới.'),
+(2, 'Nâng cao', 'Các bài viết về kiến thức nâng cao.');
 
 -- --------------------------------------------------------
 
@@ -160,7 +169,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `like` int(11) NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `disabled` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `user_id`, `tag`, `content`, `time`, `level_id`, `category_id`, `like`, `img`, `disabled`) VALUES
+(1, 'Barbell Bench Press', 30, '#Ngực #Đạ đòn #Đẩy', '<p>kalsdkalasldk</p>\r\n', '2016-07-14 16:19:33', '1', '2', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -353,7 +369,7 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `category_post`
 --
 ALTER TABLE `category_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `category_product`
 --
@@ -373,12 +389,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `level_post`
 --
 ALTER TABLE `level_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `product`
 --
