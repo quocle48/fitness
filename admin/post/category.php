@@ -195,7 +195,7 @@
 					}
 			?>
 			<div class="content">
-				<h3>LIST CATEGORY </h3>
+				<h3>LIST CATEGORY POST</h3>
 				<form action="category.php" method="get">
 					<table class="table table-hover">
 				    	<thead>
