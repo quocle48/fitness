@@ -11,7 +11,7 @@
 		
 		
 		$list= (isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
-		$listPost = new pagination("select * from post","10");
+		$listPost = new pagination("select a.id, a.title, a.like , a.time, d.username from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id","10");
 		$result = $listPost->getData($list);
 
 		if($result->rowCount()>0)

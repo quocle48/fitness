@@ -15,26 +15,18 @@
 	if(isset($_POST["btn_edit"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		if($_POST["txt_pass"]!="") $pass="password='".password_hash($_POST["txt_pass"], PASSWORD_BCRYPT)."',";
-		else $pass="";
-		$result = $conn->prepare("update user set username ='".$_POST["txt_username"]."',".$pass." email ='".$_POST["txt_email"]."' where id='".$_POST['btn_edit']."' "); 
+		$result = $conn->prepare("update post set title ='".$_POST["txt_title"]."', tag ='".$_POST["txt_tag"]."', level_id ='".$_POST["level"]."', category_id ='".$_POST["category"]."' where id='".$_POST['btn_edit']."' "); 
         $result->execute();
-        $result = $conn->prepare("delete from user_group where user_id =".$_POST["btn_edit"]);
-		$result->execute();
-        $list_group=$_POST['group'];
-        foreach ($list_group as $id) {
-        	$result = $conn->prepare("insert into user_group(user_id,group_id) values('".$_POST["btn_edit"]."','".$id."')"); 
-        	$result->execute();
-        }
-	    header('Location: user.php');
+      
+	    header('Location: index.php');
 		disconnectDb($conn);
 	}
 
 	if(isset($_GET["delete"])){
 		$conn=connectDb();
-		$result = $conn->prepare("delete from user where id =".$_GET["delete"]);
+		$result = $conn->prepare("delete from post where id =".$_GET["delete"]);
 		$result->execute();
-		header('Location: user.php');
+		header('Location: index.php');
 		disconnectDb($conn);
 	}
 	if(isset($_GET["btn_delete"])==True ){
@@ -42,11 +34,11 @@
 		$check = $_GET["checkfunc"];
 		if($check!=null){
 			foreach ($check as $id) {
-				$result = $conn->prepare("delete from user where id =".$id."");
+				$result = $conn->prepare("delete from post where id =".$id."");
 				$result->execute();
 			}
 		}
-		header('Location: user.php');
+		header('Location: index.php');
 		disconnectDb($conn);
 	}
 ?>
@@ -192,7 +184,7 @@
 					<label class="control-label col-sm-3" ></label>
 					<div class="col-sm-6"> 
 					  	<button type="submit" class="btn-fit btn-pri"  name="btn_add">Submit</button>
-						<a href="user.php" class="btn-fit btn-dan">Cancel</a>
+						<a href="index.php" class="btn-fit btn-dan">Cancel</a>
 					</div>
 				</div>
 			</form>
@@ -207,7 +199,7 @@
 					while($row=$result->fetch(PDO::FETCH_ASSOC))
 					{
 			?>
-						<form action ="user.php" method="post" class="form-horizontal" role="form" >
+						<form action ="index.php" method="post" class="form-horizontal" role="form" >
 							<h3> EDIT POST </h3>
 							<div class="form-group">
 								<label class="control-label col-sm-3">ID Post:</label>
@@ -224,7 +216,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-3" >Tag:</label>
 								<div class="col-sm-6"> 
-								  	<input type="text" class="form-control input-fit" name="txt_tag"  value="<?php echo $row['tag']; ?>" required >
+								  	<input type="text" class="form-control input-fit" name="txt_tag"  value="<?php echo $row['tag']; ?>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -285,7 +277,7 @@
 								<div class="col-sm-6"> 
 										<button type="submit" class="btn-fit btn-pri"  name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit
 										</button>
-										<a href="user.php" class="btn-fit btn-dan">Cancel</a>
+										<a href="index.php" class="btn-fit btn-dan">Cancel</a>
 								</div> 	
 							</div>
 						</form>
