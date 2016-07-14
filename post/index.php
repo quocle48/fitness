@@ -29,11 +29,11 @@
 			echo $listPages;	
 			$listPost->closeConn();
 		}
-		if(isset($_GET['id'])){
+		else if(isset($_GET['id'])){
 			$id = $_GET['id'];
 			$conn=connectDb();
 			$conn->exec("set names utf8");
-			$sql = "select a.id, a.title, a.like , a.time, a.level_id, d.username from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id and a.id=".$id;
+			$sql = "select a.id, a.title, a.like , a.time, a.level_id, d.username, a.content from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id and a.id=".$id;
 			$query = $conn->prepare($sql);
 			$query->execute();
 			if($query->rowCount()>0)
@@ -46,7 +46,27 @@
 		    else
 		        echo "<div class='notice'>No find data!</div>";
 		    disconnectDb($conn);
-			
+		}
+		else
+		{
+			$list= (isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
+			$sql = "select a.id, a.title, a.like , a.time, a.level_id, d.username from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id";
+			$listPost = new pagination($sql,"5");
+			$result = $listPost->getData($list);
+
+			if($result->rowCount()>0)
+	    	{
+	            while($row=$result->fetch(PDO::FETCH_ASSOC))
+	            {
+	            	include("thum-post.html");
+	            }
+		    }
+		    else
+		        echo "<div class='notice'>No data!</div>";
+			 
+			$listPages = $listPost->listPages();
+			echo $listPages;	
+			$listPost->closeConn();
 		}
 	?>
 	</div>

@@ -267,8 +267,12 @@
 								<label class="control-label col-sm-3" >Content:</label>
 								<div class="col-sm-8"> 
 								  	<textarea name="edit_editor"></textarea>
+								  	<?php
+					            		$content=$row["content"];
+						            ?>
 									<script>
 						            	CKEDITOR.replace('edit_editor');
+						            	CKEDITOR.instances['edit_editor'].setData('<?php echo str_replace("\n", "", $content); ?>');
 						        	</script>
 								</div>
 							</div>
@@ -355,8 +359,5 @@
 			</div>
 
 		</div>
-		<script>
-            CKEDITOR.replace('editor');
-        </script>
 	</body>
 </html>
