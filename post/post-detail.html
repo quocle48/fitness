@@ -1,21 +1,21 @@
 <div class="thum-post row">
 	<div class="title-post detail-post">
 		<a href="#">
-			<h2>Thay đổi bản thân bằng cách khởi động với các bài tập đơn giản</h2>
+			<h2><?php echo $row['title'] ;?></h2>
 		</a>
 	</div>
 	<div class="submit-post submit-post-detail">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-clock-o"></a>
-				<p>5/5/2016</p>
+				<p><?php echo date("d/m/Y", strtotime($row['time'])) ;?></p>
 			</div >
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-user"></a>
-				<p>admin</p>
+				<p><?php echo $row['username'] ;?></p>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-heart"></a>
-				<p>1012</p>
+				<p><?php echo $row['like'] ;?></p>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 status-post">
 				<a href="#" class="fa fa-comment"></a>
