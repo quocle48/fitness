@@ -7,33 +7,33 @@
 	if(isset($_POST["btn_add"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		$result = $conn->prepare("insert into `group`(name, description) values('".$_POST["txt_name"]."','".$_POST["txt_description"]."')"); 
+		$result = $conn->prepare("insert into category_post(name, description) values('".$_POST["txt_name"]."','".$_POST["txt_description"]."')"); 
         $result->execute();
-	    header('Location: group.php');
+	    header('Location: category.php');
 		disconnectDb($conn);
 	}
 	//EDIT
 	if(isset($_POST["btn_edit"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		$result = $conn->prepare("update `group` set name ='".$_POST["txt_name"]."', description = '".$_POST["txt_description"]."' where id = '".$_POST["btn_edit"]."'"); 
+		$result = $conn->prepare("update category_post set name ='".$_POST["txt_name"]."', description = '".$_POST["txt_description"]."' where id = '".$_POST["btn_edit"]."'"); 
         $result->execute();
-        $result = $conn->prepare("delete from group_function where group_id =".$_POST["btn_edit"]);
+        /*$result = $conn->prepare("delete from group_function where group_id =".$_POST["btn_edit"]);
 		$result->execute();
         $list_fc=$_POST['function'];
         foreach ($list_fc as $id) {
         	$result = $conn->prepare("insert into group_function(group_id, function_id) values('".$_POST["btn_edit"]."','".$id."')"); 
         	$result->execute();
-        }
-	    header('Location: group.php');
+        }*/
+	    header('Location: category.php');
 		disconnectDb($conn);
 	}
 	//DEL
 	if(isset($_GET["delete"])){
 		$conn=connectDb();
-		$result = $conn->prepare("delete from `group` where id =".$_GET["delete"]);
+		$result = $conn->prepare("delete from category_post where id =".$_GET["delete"]);
 		$result->execute();
-		header('Location: group.php');
+		header('Location: category.php');
 		disconnectDb($conn);
 	}
 	//DEL >1
@@ -42,11 +42,11 @@
 		$check = $_GET["checkfunc"];
 		if($check!=null){
 			foreach ($check as $id) {
-				$result = $conn->prepare("delete from `group` where id =".$id."");
+				$result = $conn->prepare("delete from category_post where id =".$id."");
 				$result->execute();
 			}
 		}
-		header('Location: group.php');
+		header('Location: category.php');
 		disconnectDb($conn);
 	}
 ?>
@@ -70,25 +70,25 @@
 				</div>
 				<ul class="menu-bar">
 					<li class="label-header">Management</li>
-				    <li id="menu-user" class="has-sub active">
+				    <li id="menu-user" class="has-sub">
 				    	<a href="javascript:void(0)">User<span class="fa fa-angle-left"></span></a>
-				    	<ul class="sub-menu" style="display:block">
+				    	<ul class="sub-menu">
 				    		<li><a href="<?php echo $home;?>admin/user/user.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li class="active"><a href="<?php echo $home;?>admin/user/group.php"><span class="fa fa-angle-right"></span>Group</a></li>
+				    		<li><a href="<?php echo $home;?>admin/user/group.php"><span class="fa fa-angle-right"></span>Group</a></li>
 				    		<li><a href="<?php echo $home;?>admin/user/function.php"><span class="fa fa-angle-right"></span>Function</a></li>
 				    	</ul>
 				    </li>
-				    <li id="menu-post" class="has-sub">
+				    <li id="menu-post" class="has-sub active">
 				    	<a href="javascript:void(0)">Post<span class="fa fa-angle-left"></span></a>
-				    	<ul class="sub-menu">
-				    		<li><a href="<?php echo $home;?>admin/post"><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li><a href="<?php echo $home;?>admin/post/type.php"><span class="fa fa-angle-right"></span>Category</a></li>
+				    	<ul class="sub-menu" style="display:block">
+				    		<li><a href="<?php echo $home;?>admin/post/index.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li class="active"><a href="<?php echo $home;?>admin/post/category.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
 				    <li id="menu-product" class="has-sub">
 				    	<a href="javascript:void(0)">Product<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu">
-				    		<li><a href="<?php echo $home;?>admin/product"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/product/index.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
 				    		<li><a href="<?php echo $home;?>admin/product/category.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
@@ -113,50 +113,32 @@
 
 		<script type="text/javascript">
 				function showformadd(){
-					$("#add-group").toggleClass("hide");
-					if(!$("#edit-group").hasClass("hide")) $("#edit-group").addClass("hide");
+					$("#add-cate").toggleClass("hide");
+					if(!$("#edit-cate").hasClass("hide")) $("#edit-cate").addClass("hide");
 				}
 				function showformedit(){
-					$("#edit-group").toggleClass("hide");
-					if(!$("#add-group").hasClass("hide")) $("#add-group").addClass("hide");
+					$("#edit-cate").toggleClass("hide");
+					if(!$("#add-cate").hasClass("hide")) $("#add-cate").addClass("hide");
 				}
 		</script>
 		
 		<!-- FORM THÊM -->
 		<div class="page-content">
 			<!-- Phần form thêm được ẩn -->
-			<div class="content hide" id="add-group">
-				<form  action ="group.php" method="post" class="form-horizontal" role="form" >
-					<h3> ADD GROUP </h3>
+			<div class="content hide" id="add-cate">
+				<form  action ="category.php" method="post" class="form-horizontal" role="form" >
+					<h3> ADD CATEGORY </h3>
 					<div class="form-group">
 						<label class="control-label col-sm-3">Name:</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control input-fit" name="txt_name" placeholder="Enter group's name" required>
+							<input type="text" class="form-control input-fit" name="txt_name" placeholder="Enter category's name" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-3">Description:</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control input-fit" name="txt_description" placeholder="Enter group's description" required>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3" >Function:</label>
-						<div class="col-sm-6"> 
-					  	<?php 
-					  		$conn=connectDb();
-					  		$conn->exec("set names utf8");
-							$result2 = $conn->prepare("SELECT * FROM function");
-							$result2->execute();
-							if($result2->rowCount()>0) {
-								while($row=$result2->fetch(PDO::FETCH_ASSOC)){
-									echo '<label class="checkbox-inline"><input name="function[]" type="checkbox" value="'.$row['id'].'">'.$row['name'].'</label>';
-								}
-							}
-							disconnectDb($conn);
-					  	?>
+							<input type="text" class="form-control input-fit" name="txt_description" placeholder="Enter category's description" required>
 						</div>
 					</div>
 
@@ -164,26 +146,26 @@
 						<label class="control-label col-sm-3"></label>
 						<div class="col-sm-6">
 							<button type="submit" class="btn-fit btn-pri" name="btn_add">Submit</button>
-							<a href="group.php" class="btn-fit btn-dan">Cancel</a>
+							<a href="category.php" class="btn-fit btn-dan">Cancel</a>
 						</div>
 					</div>
 				</form>
 			</div>
-			<!-- Phần form edit cho group có id= được ẩn -->
+			<!-- Phần form edit cho category có id= được ẩn -->
 			<?php 
 				if(isset($_GET["edit"])){	?>
-				<div class="content" id="edit-group">
+				<div class="content" id="edit-cate">
 				<?php
 					$conn=connectDb();
 					$conn->exec("set names utf8");
-					$result = $conn->prepare("select * from `group` where id =".$_GET["edit"].""); 
+					$result = $conn->prepare("select * from category_post where id =".$_GET["edit"].""); 
 					$result->execute();
 					if($result->rowCount()>0) {
 						while($row=$result->fetch(PDO::FETCH_ASSOC))
 						{
 							?>
-								<form action ="group.php" method="post" class="form-horizontal " role="form" >
-									<h3> EDIT GROUP </h3>
+								<form action ="category.php" method="post" class="form-horizontal " role="form" >
+									<h3> EDIT CATEGORY </h3>
 									<div class="form-group">
 										<label class="control-label col-sm-3">Name:</label>
 										<div class="col-sm-6">
@@ -198,31 +180,10 @@
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label class="control-label col-sm-3" >Function:</label>
-										<div class="col-sm-6"> 
-								  		<?php 
-								  			$conn=connectDb();
-											$result2 = $conn->prepare("SELECT * FROM function");
-											$result2->execute();
-											if($result2->rowCount()>0) {
-											while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-												$result3 = $conn->prepare("SELECT function_id FROM `group_function` where group_id='".$_GET["edit"]."' and function_id='".$row2['id']."'");
-												$result3->execute();
-												$str="";
-												if($result3->rowCount()>0){ $str="checked"; }
-												echo '<label class="checkbox-inline"><input name="function[]" type="checkbox" value="'.$row2['id'].'" '.$str.'>'.$row2['name'].'</label>';
-											}
-										}
-										disconnectDb($conn);
-								  	?>
-								</div>
-							</div>
-
 									<div class="form-group"> 
 										<div class="col-sm-offset-4 col-sm-4">
 										  <button type="submit" class="btn-fit btn-pri" name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
-										  <a href="group.php" class="btn-fit btn-dan" >Cancel</a>
+										  <a href="category.php" class="btn-fit btn-dan" >Cancel</a>
 										</div>
 									</div>
 								</form>
@@ -234,17 +195,17 @@
 					}
 			?>
 			<div class="content">
-				<h3>LIST GROUP </h3>
-				<form action="group.php" method="get">
+				<h3>LIST CATEGORY </h3>
+				<form action="category.php" method="get">
 					<table class="table table-hover">
 				    	<thead>
 							<tr>
 								<th>
-									<div class="btn-group">
+									<div class="btn-cate">
 										<button type="button" class="btn-fit btn-inf" onclick="showformadd()">
 											<span class="fa fa-plus-square"></span>
 										</button>
-										<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các group này?');">
+										<button type="submit" name ="btn_delete" class="btn-fit btn-dan" onclick="javascript: return confirm('Bạn muốn xóa các category này?');">
 											<span class="fa fa-trash-o"></span>
 										</button>  	
 									</div>
@@ -252,7 +213,6 @@
 								<th>ID</th>
 								<th>NAME</th>
 								<th>DESCRIPTION</th>
-								<th>FUNCTION</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
@@ -260,8 +220,8 @@
 							<?php
 
 					          	$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
-								$listGroup = new pagination("select * from `group`","10");
-					            $result = $listGroup->getData($page);
+								$listCate = new pagination("select * from category_post","10");
+					            $result = $listCate->getData($page);
 								if($result->rowCount()>0)
 						    	{
 						            while($row=$result->fetch(PDO::FETCH_ASSOC))
@@ -270,19 +230,9 @@
 										echo "<td>$row[id]</td>";
 										echo "<td>$row[name]</td>";
 										echo "<td>$row[description]</th>";
-										echo "<td>";
-										$result2 = $conn->prepare("select b.name from `group_function` as a, function as b where a.function_id=b.id and a.group_id='".$row['id']."'"); 
-				            			$result2->execute();
-				            			$list_fc;
-				            			$x=0;
-				            			while($row2=$result2->fetch(PDO::FETCH_ASSOC)){
-				            				$list_fc[$x++]=$row2["name"];
-				            				$list_fc[$x++]=", ";
-				            			}
-				            			for($i=0; $i<$x-1; $i++) echo $list_fc[$i];
-										echo "</td>";
-										echo '<td><div class="btn-group"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-pencil-square-o"></span></button>';
-										echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa group này?\');" value="'.$row['id'].'" formaction="group.php"><span class="fa fa-trash"></span></button></div></td>';									
+								
+										echo '<td><div class="btn-cate"><button type="submit" class="btn-fit btn-inf" name="edit" value="'.$row['id'].'" formaction="category.php"><span class="fa fa-pencil-square-o"></span></button>';
+										echo '<button type="submit" class="btn-fit btn-dan" name="delete" onclick="javascript: return confirm(\'Bạn muốn xóa category này?\');" value="'.$row['id'].'" formaction="category.php"><span class="fa fa-trash"></span></button></div></td>';									
 										echo '</tr>';
 						            }
 							    }
@@ -294,8 +244,8 @@
 					</table>
 				</form>
 				<?php   
-					echo $listGroup->listPages();	
-					$listGroup->closeConn();
+					echo $listCate->listPages();	
+					$listCate->closeConn();
 				?>
 			</div>
 		</div>
