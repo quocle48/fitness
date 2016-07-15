@@ -126,7 +126,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" >Descriptiom:</label>
+					<label class="control-label col-sm-3" >Description:</label>
 					<div class="col-sm-6"> 
 					  	<input type="text" class="form-control input-fit " name="txt_desc" placeholder="Enter description post" required>
 					</div>
@@ -228,7 +228,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-3" >Descriptiom:</label>
+								<label class="control-label col-sm-3" >Description:</label>
 								<div class="col-sm-6"> 
 								  	<input type="text" class="form-control input-fit " name="txt_desc" value=" <?php echo $row['description']; ?>" required>
 								</div>
@@ -302,12 +302,9 @@
 								<label class="control-label col-sm-3" >Content:</label>
 								<div class="col-sm-8"> 
 								  	<textarea name="edit_editor"></textarea>
-								  	<?php
-					            		$content=$row["content"];
-						            ?>
 									<script>
 						            	CKEDITOR.replace('edit_editor');
-						            	CKEDITOR.instances['edit_editor'].setData('<?php echo str_replace("\n", "", $content); ?>');
+						            	CKEDITOR.instances['edit_editor'].setData('<?php echo str_replace("\n","", str_replace("\r\n","", $row["content"])); ?>');
 						        	</script>
 								</div>
 							</div>
