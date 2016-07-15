@@ -6,7 +6,7 @@
 
 	?>
 <div class="container post">
-	<div class="col-xs-12 col-md-9 ">
+	<div class="col-xs-12 col-md-8 ">
 	<?php
 		if(isset( $_GET['level'])){
 			$level = (isset( $_GET['level'] ) ) ? $_GET['level'] : 1;	
@@ -70,11 +70,10 @@
 		}
 	?>
 	</div>
-	<div class="col-xs-6 col-md-3">
+	<div class="col-xs-6 col-md-4">
 	<?php
 		include("../categories.html");
-		include("../practice.html");
-		include("../statistical.html");
+		include("../right_favorite.html");
 	?>
 	</div>
 </div>

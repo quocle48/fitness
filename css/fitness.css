@@ -720,8 +720,7 @@ li.has-submenu:hover ul{
 .categories {
 	background: #fff;
 	font-size: 14px;
-	text-transform: uppercase;
-	border-top: solid 10px #2C343B ;
+	border-top: solid 5px #2C343B ;
 	border-bottom: solid 2px #c44741 ;
 	margin-bottom: 30px;
 	
@@ -729,7 +728,6 @@ li.has-submenu:hover ul{
 .title-categories {
 	padding-bottom:15px;
 	padding-top:15px;
-	width: 110px;
 	border-bottom: solid 3px #c44741;
 	text-align:center;
 	margin: auto;
@@ -743,10 +741,7 @@ li.has-submenu:hover ul{
 	color: #2C343B ;
 	text-decoration: none;
 }
-ul {
-	padding: 0px;
-	
-}
+
 .categories ul li {
 	list-style-type:none;
 	font-size:14px;
@@ -774,7 +769,88 @@ ul {
 	border-bottom: solid 2px #c44741 ;
 	
 }
-
+.right-box {
+	background: #fff;
+	font-size: 14px;
+	margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+.right-box h2 {
+	text-transform: uppercase;
+	text-align:center;
+	margin: 0px;
+	font-size: 18px;
+	background:  #F3F3F3 ;
+	color:  #5BC0EB;
+	padding-bottom: 10px;
+	font-weight: bold;
+	
+}
+.right-box a:hover {
+	text-decoration: none;
+}
+.right-box h2:hover {
+	color:  #2C343B ;
+}
+.right-list{
+	float: left ;	
+	height: 410px;
+	width: 100%;
+	overflow-y: scroll;
+	
+}
+.right-list-content:hover {
+	
+}
+ul {
+	padding: 5px;
+	text-decoration: none;
+	list-style-type:none;
+}
+.list-top-post{
+	float: left ;
+	width: 100%;
+	border-bottom: 3px solid #f3f3f3;
+}
+.list-top-post:hover img{
+	opacity: 0.8;
+}
+.list-top-post:hover .list-title{
+	color:  #52616D  ;
+}
+.list-top-post-thumb{
+	float:left;
+	padding: 5px;
+}
+.list-top-post-info{
+	float:left;
+	padding: 5px;
+	width: 220px;
+	display: block;
+}
+.list-top-post-info span {
+}
+.list-title{
+	float:left;
+	font-size: 14px;
+	font-weight: bold;
+	width: 100%;
+	color:  #5BC0EB ;
+	padding-bottom: 10px;
+}
+.list-user{
+	float:left;
+	width: 100%;
+	color:  #C44741 ;
+	padding-bottom: 10px;
+}
+.list-like{
+	float:left;
+	width: 100%;
+	color: #52616D ;
+}
 
 /*---- statistical---- */
 
