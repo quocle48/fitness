@@ -6,7 +6,7 @@
 		$conn=connectDb();
 		$conn->exec("set names utf8");
 		$today = date("Y-m-d H:i:s");   
-		$result = $conn->prepare("insert into post(title,user_id,tag,time, level_id, category_id, content) values('".$_POST["txt_title"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."','".$_POST['add_editor']."')"); 
+		$result = $conn->prepare("insert into post(title,description,user_id,tag,time, level_id, category_id,status, content) values('".$_POST["txt_title"]."','".$_POST["txt_desc"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."','".$_POST["status"]."','".$_POST['add_editor']."')"); 
         $result->execute();
 	    header('Location: index.php');
 		disconnectDb($conn);
@@ -15,7 +15,7 @@
 	if(isset($_POST["btn_edit"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		$result = $conn->prepare("update post set title ='".$_POST["txt_title"]."', tag ='".$_POST["txt_tag"]."', level_id ='".$_POST["level"]."', category_id ='".$_POST["category"]."' where id='".$_POST['btn_edit']."' "); 
+		$result = $conn->prepare("update post set title ='".$_POST["txt_title"]."', description='".$_POST["txt_desc"]."', tag ='".$_POST["txt_tag"]."', level_id ='".$_POST["level"]."', category_id ='".$_POST["category"]."', status='".$_POST["status"]."', content='".$_POST["edit_editor"]."' where id='".$_POST['btn_edit']."' "); 
         $result->execute();
       
 	    header('Location: index.php');
@@ -126,6 +126,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-3" >Descriptiom:</label>
+					<div class="col-sm-6"> 
+					  	<input type="text" class="form-control input-fit " name="txt_desc" placeholder="Enter description post" required>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Tag:</label>
 					<div class="col-sm-6"> 
 					  	<input type="text" class="form-control input-fit" name="txt_tag"  placeholder="Enter tag post" >
@@ -172,6 +178,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-3" >Status:</label>
+					<div class="col-sm-6"> 
+						<label class="checkbox-inline" ><input type="radio" name="status" value="0" checked> Public</label>
+					  	<label class="checkbox-inline" ><input type="radio" name="status" value="1"> Private</label>
+						<label class="checkbox-inline" ><input type="radio" name="status" value="2"> Protected</label>			
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Content:</label>
 					<div class="col-sm-8"> 
 					  	<textarea name="add_editor"></textarea>
@@ -211,6 +225,12 @@
 								<label class="control-label col-sm-3" >Title:</label>
 								<div class="col-sm-6"> 
 								  	<input type="text" class="form-control input-fit " name="txt_title" value=" <?php echo $row['title']; ?>" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Descriptiom:</label>
+								<div class="col-sm-6"> 
+								  	<input type="text" class="form-control input-fit " name="txt_desc" value=" <?php echo $row['description']; ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -261,6 +281,21 @@
 								  	?>
 						 
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Status:</label>
+								<div class="col-sm-6"> 
+									<?php 
+										$value = $row['status'];
+										$check = array("","","");
+										$check[$value] = "checked";
+										echo '<label class="checkbox-inline" ><input type="radio" name="status" value="0" '.$check[0].'> Public</label>';
+										echo '<label class="checkbox-inline" ><input type="radio" name="status" value="1" '.$check[1].'> Private</label>';
+										echo '<label class="checkbox-inline" ><input type="radio" name="status" value="2" '.$check[2].'> Protected</label>';
+
+									?>
+										
 								</div>
 							</div>
 							<div class="form-group">

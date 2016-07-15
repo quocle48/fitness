@@ -46,8 +46,6 @@
 		    else
 		        echo "<div class='notice'>No find data!</div>";
 		    disconnectDb($conn);
-<<<<<<< HEAD
-=======
 		}
 		else
 		{
@@ -69,7 +67,6 @@
 			$listPages = $listPost->listPages();
 			echo $listPages;	
 			$listPost->closeConn();
->>>>>>> 4d6948ec7faae573270b9779a0986d36c54245f1
 		}
 	?>
 	</div>
