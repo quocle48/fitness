@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2016 at 04:44 PM
+-- Generation Time: Jul 14, 2016 at 07:03 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `category_post` (
 `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `category_post`
@@ -45,7 +45,8 @@ INSERT INTO `category_post` (`id`, `name`, `description`) VALUES
 (6, 'Tay sau', 'Các bài tập liên quan đến tay sau.'),
 (7, 'Bụng', 'Các bài tập liên quan đến bụng.'),
 (8, 'Cardio', 'Các bài tập giảm mỡ, cải thiện sức khỏe tim mạch.'),
-(9, 'Giáo án nữ', 'Các bài tập dành cho nữ.');
+(9, 'Giáo án nữ', 'Các bài tập dành cho nữ.'),
+(10, 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -55,8 +56,18 @@ INSERT INTO `category_post` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `category_product` (
 `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `category_product`
+--
+
+INSERT INTO `category_product` (`id`, `name`, `description`) VALUES
+(6, 'Trang phục', 'Áo, quần thể thao.'),
+(7, 'Trang bị', 'Các trang bị, dụng cụ phục vụ cho tập luyện.'),
+(8, 'Thực phẩm bổ sung', 'Các loại thực phẩm bổ sung phục vụ cho tập luyện.');
 
 -- --------------------------------------------------------
 
@@ -140,7 +151,15 @@ CREATE TABLE IF NOT EXISTS `level_post` (
 `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `level_post`
+--
+
+INSERT INTO `level_post` (`id`, `name`, `description`) VALUES
+(1, 'Cơ bản', 'Các bài viết cho người mới.'),
+(2, 'Nâng cao', 'Các bài viết về kiến thức nâng cao.');
 
 -- --------------------------------------------------------
 
@@ -160,7 +179,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `like` int(11) NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `disabled` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `user_id`, `tag`, `content`, `time`, `level_id`, `category_id`, `like`, `img`, `disabled`) VALUES
+(1, 'Barbell Bench Press', 30, '#Ngực #Đạ đòn #Đẩy', '<p>kalsdkalasldk</p>\r\n', '2016-07-14 16:19:33', '1', '2', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -213,28 +239,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`) VALUES
-(14, '10', '123456', '10@gmail.com', 0),
-(15, '11', '123456', '11@gmail.com', 0),
-(16, '12', '123456', '12@gmail.com', 0),
-(17, '13', '123456', '13@gmail.com', 0),
-(18, '14', '123456', '14@gmail.com', 0),
-(19, '15', '123456', '15@gmail.com', 0),
-(20, '16', '123456', '16@gmail.com', 0),
-(21, '17', '123456', '17@gmail.com', 0),
-(22, '18', '123456', '18@gmail.com', 0),
-(23, '19', '123456', '19@gmail.com', 0),
-(6, '2', '$2y$10$nEqRdSaFpBzlOSs.mylqtOqomTJsIeBNf5uZX/bd5Z2DTguT931hm', '2@gmail.com', 0),
-(24, '20', '123456', '20@gmail.com', 0),
-(25, '21', '123456', '21@gmail.com', 0),
-(26, '22', '123456', '22@gmail.com', 0),
-(27, '23', '123456', '23@gmail.com', 0),
-(28, '24', '123456', '24@gmail.com', 0),
 (5, '3', '$2y$10$p9yhnYXSRpmgB8RZKJXy2.BWEkGXg0dS4CkHnPIEBdSD9IxyRVxGq', '3@gmail.com', 0),
 (8, '4', '$2y$10$6PsiEpVnbEhDOl4YO8xBh.DvtNbzn.ufb.VVb0QxOcUM6tD9bPmyy', '4@gmail.com', 0),
 (9, '5', '$2y$10$3hANshEN6TQiLMrq7aJm1uo/yGCCJlOBLfaM8lI1or4uW8405STX2', '5@gmail.com', 0),
-(10, '7', '', '7@gmail.com', 0),
-(12, '8', '123456', '8@gmail.com', 0),
-(13, '9', '123456', '9@gmail.com', 0),
 (2, 'dbom', '$2y$10$MOy4vCJ8wnQ2V6Pqhie99.f8mAuMSgD9ApZoIIfJjVfkrdITyylIy', 'dbom123@gmail.com', 1),
 (29, 'sdfxngchj,k', '$2y$10$Je1gDk6oSxb0Gc/93nZaW.XkurtmMfpIODaxd9ZpTvePeMTi/dXHG', 'dbom12123@gmail.com', 0),
 (4, 'user1', '$2y$10$mVv6R7Sb1ZFL.5RoNttTVeAKNo4DrBSlIiR6iqrrf59GakiLw1WTW', 'user1@gmail.com', 0),
@@ -267,7 +274,6 @@ INSERT INTO `user_group` (`user_id`, `group_id`) VALUES
 (30, 2),
 (2, 3),
 (5, 3),
-(6, 3),
 (9, 3),
 (29, 3),
 (30, 3),
@@ -353,12 +359,12 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `category_post`
 --
 ALTER TABLE `category_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `category_product`
 --
 ALTER TABLE `category_product`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `function`
 --
@@ -373,12 +379,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `level_post`
 --
 ALTER TABLE `level_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -392,12 +398,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `category_product`
---
-ALTER TABLE `category_product`
-ADD CONSTRAINT `category_product_ibfk_1` FOREIGN KEY (`id`) REFERENCES `product` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `group_function`
@@ -424,7 +424,7 @@ ADD CONSTRAINT `FK_post_comment_user` FOREIGN KEY (`id_user`) REFERENCES `user` 
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-ADD CONSTRAINT `FK_product_product_type` FOREIGN KEY (`category_id`) REFERENCES `type_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `FK_product_category_product` FOREIGN KEY (`category_id`) REFERENCES `category_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_group`

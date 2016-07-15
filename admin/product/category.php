@@ -14,7 +14,7 @@
 	if(isset($_POST["btn_edit"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		$result = $conn->prepare("update category_product set name ='".$_POST["name"]."',description ='".$_POST["desc"]."' where id='".$_POST['btn_edit']."' "); 
+		$result = $conn->prepare("update category_product set name ='".$_POST["name"]."', description = '".$_POST["desc"]."' where id = '".$_POST["btn_edit"]."'");
         $result->execute();
 	    header('Location: category.php');
 		disconnectDb($conn);
@@ -71,14 +71,14 @@
 				    <li id="menu-post" class="has-sub">
 				    	<a href="javascript:void(0)">Post<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu">
-				    		<li ><a href=""><span class="fa fa-angle-right"></span>Infomation</a></li>
-				    		<li><a href=""><span class="fa fa-angle-right"></span>Category</a></li>
+				    		<li><a href="<?php echo $home;?>admin/post/index.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/post/category.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
 				    <li id="menu-product" class="has-sub active">
 				    	<a href="javascript:void(0)">Product<span class="fa fa-angle-left"></span></a>
 				    	<ul class="sub-menu" style="display:block">
-				    		<li><a href="<?php echo $home;?>admin/product"><span class="fa fa-angle-right"></span>Infomation</a></li>
+				    		<li><a href="<?php echo $home;?>admin/product/index.php"><span class="fa fa-angle-right"></span>Infomation</a></li>
 				    		<li class="active"><a href="<?php echo $home;?>admin/product/category.php"><span class="fa fa-angle-right"></span>Category</a></li>
 				    	</ul>
 				    </li>
@@ -139,7 +139,7 @@
 					<label class="control-label col-sm-3" ></label>
 					<div class="col-sm-6"> 
 					  	<button type="submit" class="btn-fit btn-pri"  name="btn_add">Submit</button>
-						<a href="user.php" class="btn-fit btn-dan">Cancel</a>
+						<a href="category.php" class="btn-fit btn-dan">Cancel</a>
 					</div>
 				</div>
 			</form>
@@ -154,31 +154,30 @@
 				if($result->rowCount()>0) {
 					while($row=$result->fetch(PDO::FETCH_ASSOC))
 					{
-			?>
-						<form action ="" method="post" class="form-horizontal" role="form" >
-							<h3> EDIT CATEGORY </h3>
-							<div class="form-group">
-								<label class="control-label col-sm-3">Name:</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control input-fit" name="name" value="<?php echo $row['name']; ?>">
+						?>
+							<form action ="" method="post" class="form-horizontal" role="form" >
+								<h3> EDIT CATEGORY </h3>
+								<div class="form-group">
+									<label class="control-label col-sm-3">Name:</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control input-fit" name="name" value="<?php echo $row['name']; ?>">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-3" >Description:</label>
-								<div class="col-sm-6"> 
-								  	<input type="text" class="form-control input-fit" name="txt_email" value="<?php echo $row['description']; ?>">
+								<div class="form-group">
+									<label class="control-label col-sm-3" >Description:</label>
+									<div class="col-sm-6"> 
+									  	<input type="text" class="form-control input-fit" name="desc" value="<?php echo $row['description']; ?>">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-3" ></label>
-								<div class="col-sm-6"> 
-										<button type="submit" class="btn-fit btn-pri"  name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit
-										</button>
-										<a href="user.php" class="btn-fit btn-dan">Cancel</a>
-								</div> 	
-							</div>
-						</form>
-			<?php
+								<div class="form-group">
+									<label class="control-label col-sm-3" ></label>
+									<div class="col-sm-6"> 
+											<button type="submit" class="btn-fit btn-pri"  name="btn_edit" value ="<?php echo $row['id']; ?>" >Submit</button>
+											<a href="category.php" class="btn-fit btn-dan">Cancel</a>
+									</div> 	
+								</div>
+							</form>
+						<?php
 					}
 				}	    
 				disconnectDb($conn);
@@ -210,8 +209,8 @@
 						<tbody>
 							<?php
 								$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
-								$listUser = new pagination("select * from category_product","5");
-					            $result = $listUser->getData($page);
+								$listCate = new pagination("select * from category_product","5");
+					            $result = $listCate->getData($page);
 								if($result->rowCount()>0)
 						    	{
 						            while($row=$result->fetch(PDO::FETCH_ASSOC))
@@ -236,9 +235,9 @@
 					</table>
 				</form>
 				<?php   
-					$listPage = $listUser->listPages();
+					$listPage = $listCate->listPages();
 					echo $listPage;	
-					$listUser->closeConn();
+					$listCate->closeConn();
 				?>
 			</div>
 
