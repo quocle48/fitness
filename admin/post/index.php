@@ -126,6 +126,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-3" >Image:</label>
+					<div class="col-sm-6"> 
+					    <input type="file" name="image" required/>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-3" >Description:</label>
 					<div class="col-sm-6"> 
 					  	<input type="text" class="form-control input-fit " name="txt_desc" placeholder="Enter description post" required>
