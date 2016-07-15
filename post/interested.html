@@ -1,11 +1,24 @@
 <div id="slider-interested-post">
 	<?php 
-	for($i=0;$i<6;$i++){
-		echo '<div class="item">';
-		include("interested-post.html"); 
-		echo '</div>';
-		}
-	?>
+	$conn=connectDb();
+	$conn->exec("set names utf8");
+	$sql = "select *, a.id as id_post from post a, level_post b, category_post c where b.id = a.level_id and c.id = a.category_id and a.status=0 and a.level_id=".$level." and a.category_id = ".$category;
+	$query = $conn->prepare($sql);
+	$query->execute();
+	if($query->rowCount()>0)
+	{
+        while($row=$query->fetch(PDO::FETCH_ASSOC))
+        {
+        	echo '<div class="item">';
+			include("interested-post.html"); 
+			echo '</div>';
+			
+        }
+    }
+    else
+        echo "<div class='notice'> No find data!</div>";
+    disconnectDb($conn);
+ 	?>
 </div>
 
 <script type="text/javascript">

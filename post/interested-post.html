@@ -1,8 +1,8 @@
 <div class="interested-post">
-	<a href="#">
+	<a href="<?php echo baseurl().'index.php?id='.$row['id_post'] ;?>">
 		<img src="<?php echo $home; ?>img/interested.jpg">
 	</a>
 	<div class="info-item">
-		<a href="#" title="Bài viết 2"> Bài viết 2:  this is title Đây là demo thôi</a>
+		<a href="#" title=""> <?php echo $row['title'] ;?></a>
 	</div>
 </div>

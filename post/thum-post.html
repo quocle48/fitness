@@ -1,6 +1,6 @@
 <div class="thum-post">
 	<div class="title-post"> 
-		<a href="<?php echo baseurl().'index.php?id='.$row['id'] ;?>">
+		<a href="<?php echo baseurl().'index.php?id='.$row['id_post'] ;?>">
 			<h3><?php echo $row['title'] ;?></h3>
 		</a>
 	</div>
@@ -8,8 +8,7 @@
 		<img src="<?php echo $home; ?>img/slider1.jpg">
 	</div>
 	<div class="content-post"> 
-	<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua</p>
+	<p> <?php echo $row['description_post'];?></p>
 	</div>
 	<div class="submit-post"> 
 	  	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
@@ -32,7 +31,7 @@
 			</div>
 	  	</div>
 	  	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 read-more">
-	   		<a href="<?php echo baseurl().'index.php?id='.$row['id'] ;?>">Read more >></a>
+	   		<a href="<?php echo baseurl().'index.php?id='.$row['id_post'] ;?>">Read more >></a>
 	   	</div>
 	</div>
 </div>
