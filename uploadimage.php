@@ -15,8 +15,8 @@
               processData: false,  // tell jQuery not to process the data
               contentType: false   // tell jQuery not to set contentType
             }).done(function(data) {
-               $("#uploadimage .imageupload").html("<img style='max-height:300px' src="+data+">");
-               $("#uploadimage  input[name='urlimage']").val(data);
+               $(".imageupload").html("<img style='max-height:300px' src="+data+">");
+               $("input[name='urlimage']").val(data);
             });
             return false;
         }
@@ -27,8 +27,7 @@
         <label>Select a image:</label>
         <input type="text" name="urlimage" class="form-control">
         <div class="imageupload"></div>
-        <input type="file" name="image" onchange="return submitForm();" required/>
-        
+        <input type="file" name="image" onchange="return submitForm();" required/>  
     </form>
     <div id="output"></div>
 </body>

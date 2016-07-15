@@ -6,7 +6,7 @@
 		$conn=connectDb();
 		$conn->exec("set names utf8");
 		$today = date("Y-m-d H:i:s");   
-		$result = $conn->prepare("insert into post(title,description,user_id,tag,time, level_id, category_id,status, content) values('".$_POST["txt_title"]."','".$_POST["txt_desc"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."','".$_POST["status"]."','".$_POST['add_editor']."')"); 
+		$result = $conn->prepare("insert into post(title,description,user_id,tag,time, level_id, category_id,status, content,img) values('".$_POST["txt_title"]."','".$_POST["txt_desc"]."','".$_SESSION['id']."','".$_POST["txt_tag"]."','".$today."','".$_POST["level"]."','".$_POST['category']."','".$_POST["status"]."','".$_POST['add_editor']."','".$_POST['urlimage']."')"); 
         $result->execute();
 	    header('Location: index.php');
 		disconnectDb($conn);
@@ -114,6 +114,7 @@
 			</script>
 		<!-- FORM THÊM -->
 		<div class="page-content">
+		<form method="post" id="uploadimage" name="uploadimage"></form>
 		<div class="content hide" id="add-user">
 
 			<!-- Phần form thêm được ẩn -->
@@ -128,7 +129,9 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3" >Image:</label>
 					<div class="col-sm-6"> 
-					    <input type="file" name="image" required/>
+					    <input type="text" name="urlimage" class="form-control input-fit">
+				        <div class="imageupload"></div>
+				        <input type="file" name="image" form="uploadimage" onchange="return submitForm();" required/> 
 					</div>
 				</div>
 				<div class="form-group">
