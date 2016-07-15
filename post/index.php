@@ -46,7 +46,6 @@
 		    else
 		        echo "<div class='notice'>No find data!</div>";
 		    disconnectDb($conn);
-			
 		}
 	?>
 	</div>

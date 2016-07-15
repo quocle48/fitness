@@ -1,4 +1,7 @@
 <?php 
+	include_once("../../application/libraries/config.php"); 
+	include_once("../../application/libraries/pagination.php"); 
+	
 	Class Post{
 		var $idPost;
 		var $title; //Thuộc tính
@@ -22,7 +25,19 @@
 			$this->tag = $tag;
 			$this->like = $like;
 			
-			}
+		}
+		function __construct($id_post, $title, $id_user, $time, $lesson, $category, $content, $tag, $like){
+			$this->idPost = $id_post;
+			$this->title = $title;
+			$this->idUser= $id_user;
+			$this->timePost = $time;
+			$this->lesson = $lesson;
+			$this->category = $category;
+			$this->content = $content;
+			$this->tag = $tag;
+			$this->like = $like;
+			
+		}
 		//Hàm getset cho các thuộc tính
 		function setIdPost(var $idPost){ 
 			$this->idPost = $idPost;
