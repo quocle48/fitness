@@ -24,14 +24,14 @@ class Pagination{
 		// because the position of 'a' is 0. The statement (0 != false) evaluates 
 		// to false.
 		if ($pos !== false) {
-			if(strpos($url, "?page")!== false){
-				$url= str_replace("?page=","", $url);
+			if(strpos($url, "page")!== false){
+				$url= substr($url,0,strpos($url,"page"));
 			}
-		    $this->_baseUrl = $url."&";
+		    else $url.="&";
 		} else {
-		    $this->_baseUrl = $url."?";;
+		    $url.="?";;
 		}
-
+		$this->_baseUrl=$url;
 		$this->_query=$query;
 		$result = $this->_conn->prepare($query);
 		$result->execute();

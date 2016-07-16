@@ -11,7 +11,7 @@
 			$level = (isset( $_GET['level'] ) ) ? $_GET['level'] : 1;	
 			$list= (isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
 			$sql = "select  *,a.id as id_post, a.description as description_post from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id and a.status=0 and a.level_id=".$level;
-			$listPost = new pagination($sql,"5");
+			$listPost = new pagination($sql,"2");
 			$result = $listPost->getData($list);
 
 			if($result->rowCount()>0)
@@ -35,7 +35,7 @@
 			$conn=connectDb();
 			$conn->exec("set names utf8");
 			$sql = "select  *,a.id as id_post, a.description as description_post from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id and a.status=0 and a.level_id=".$id;
-			$listPost = new pagination($sql,"5");
+			$listPost = new pagination($sql,"2");
 			$result = $listPost->getData($list);
 			if($result->rowCount()>0)
 	    	{
@@ -74,7 +74,7 @@
 		{
 			$list= (isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
 			$sql = "select  *,a.id as id_post, a.description as description_post from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id";
-			$listPost = new pagination($sql,"5");
+			$listPost = new pagination($sql,"2");
 			$result = $listPost->getData($list);
 
 			if($result->rowCount()>0)
@@ -88,7 +88,7 @@
 		        echo "<div class='notice'>No data!</div>";
 			 
 			$listPages = $listPost->listPages();
-			echo $listPages;	
+			echo $listPages;
 			$listPost->closeConn();
 		}
 	?>

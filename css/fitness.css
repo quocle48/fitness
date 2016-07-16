@@ -539,6 +539,7 @@ li.has-submenu:hover ul{
 	text-align:center;
 	margin:5px;
 	z-index: 100;
+	display: none;
 }
 .go-top a{
 	font-size: 20px;
