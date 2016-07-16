@@ -362,7 +362,7 @@
 								// $conn->exec("set names utf8");
 								// $result = $conn->prepare("select * from user");
 								$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; 
-								$listPost = new pagination("select a.id, a.title, d.username , b.name as levelname, c.name from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id",10);
+								$listPost = new pagination("select a.id, a.title, d.username , b.name as levelname, c.name from post a, level_post b, category_post c , user d where a.user_id=d.id and b.id = a.level_id and c.id = a.category_id",10 );
 					            $result = $listPost->getData($page);
 								if($result->rowCount()>0)
 						    	{

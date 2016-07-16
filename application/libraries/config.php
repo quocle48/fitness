@@ -35,10 +35,10 @@
 	$home="http://".$_SERVER['SERVER_NAME']."/"; 
 	function baseurl() 
 	{
-		$currentPath = $_SERVER['PHP_SELF']; 
-		$pathInfo = pathinfo($currentPath); 
-		$hostName = $_SERVER['HTTP_HOST']; 
-		$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
-		return $protocol.$hostName.$pathInfo['dirname']."/";
+		// $currentPath = $_SERVER['PHP_SELF']; 
+		// $pathInfo = pathinfo($currentPath); 
+		// $hostName = $_SERVER['HTTP_HOST']; 
+		// $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
+		return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";;
 	}
 ?>

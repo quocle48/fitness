@@ -10,20 +10,37 @@ class Pagination{
     public $_page;
     private $_query;
     private $_total;
-	protected $_baseUrl;
+	private $_baseUrl;
 	private $row;
-	public function __construct($query, $limit ){
+	public function __construct($query, $limit){
 		$this->_conn = connectDb();
 		$this->_conn->exec("set names utf8");
 		$this->_page = 1;
 		$this->_limit=$limit;
+
+		$url = baseurl();
+		$pos = strpos($url, "?");
+		// The !== operator can also be used.  Using != would not work as expected
+		// because the position of 'a' is 0. The statement (0 != false) evaluates 
+		// to false.
+		if ($pos !== false) {
+			if(strpos($url, "?page")!== false){
+				$url= str_replace("?page=","", $url);
+			}
+		    $this->_baseUrl = $url."&";
+		} else {
+		    $this->_baseUrl = $url."?";;
+		}
+
 		$this->_query=$query;
-		$this->_baseUrl = baseurl();
 		$result = $this->_conn->prepare($query);
 		$result->execute();
 		$this->row = $result->rowCount();
 		
 		$this->_total= ceil( $result->rowCount() / $this->_limit ) ;
+	}
+	public function getUrl(){
+		return $this->_baseUrl;
 	}
 	/**
 
@@ -52,11 +69,10 @@ class Pagination{
 		if($this->_total > 1){ // số trang phải từ 2 trang trở lên
 			$listPage = '<div class="page-number"> <ul class="pagination">';
 			if($this->_page > 1){ // Nút prev
-				$listPage .= '<li ><a href="?page='.($this->_page -1).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
-
+				$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.($this->_page -1).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
 			}
 			else{
-				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
+				$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.($this->_page).'"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>';
 
 			}
 			// Đoạn phân trang, chia ra các trường hợp
@@ -75,7 +91,7 @@ class Pagination{
 					if($i == $this->_page){
 						$listPage .= '<li class="active"><a href="" aria-hidden="true"><span > '.$i. '</span> </a></li>';
 					}else{
-						$listPage .= '<li ><a href="?page='.$i. '">'.$i.' </a></li>';
+						$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.$i. '">'.$i.' </a></li>';
 					}
 				}
 				if($end !=$this->_total) $listPage .= '<li class=""><a href="#" aria-hidden="true"><span > .. </span> </a></li>';
@@ -85,17 +101,17 @@ class Pagination{
 					if($i == $this->_page){
 						$listPage .= '<li class="active"><a href="#"><span > '.$i. '</span> </a></li>';
 					}else{
-						$listPage .= '<li ><a href="?page='.$i. '">'.$i.' </a></li>';
+						$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.$i. '">'.$i.' </a></li>';
 					}
 				}
 			}
 				
 			
 			if($this->_page < $this->_total){ // Nút next
-				$listPage .= '<li ><a href="?page='.($this->_page +1).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
+				$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.($this->_page +1).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
 			}
 			else {
-				$listPage .= '<li ><a href="?page='.($this->_page).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
+				$listPage .= '<li ><a href="'.$this->_baseUrl.'page='.($this->_page).'"><span class="fa fa-chevron-right"  aria-hidden="true"></span></a></li>';
 			}
 			$listPage.=' </ul></div>';
 			return $listPage;

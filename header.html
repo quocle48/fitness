@@ -83,10 +83,9 @@
 						            while($row=$query->fetch(PDO::FETCH_ASSOC))
 						            {
 						            	?>
-						           
-								
-									<li><a href="#"><span class="fa fa-chevron-right"></span><?php echo $row['name'] ;?></a></li>	
-								<?php 
+
+									<li><a href="<?php echo $home.'post/index.php?category='.$row['id'] ; ?>"><span class="fa fa-chevron-right"></span><?php echo $row['name'] ;?></a></li>	
+									<?php 
 									 	}
 								    }
 								    else
