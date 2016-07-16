@@ -168,6 +168,7 @@ a.glyphicon:hover, a.fa:hover{
 .main-menu{
 	margin-top: 30px;
 	display: none;
+	text-transform: uppercase;
 }
 .main-menu.nav-pills li.active a{
 	background-color:transparent;
@@ -198,8 +199,9 @@ a.glyphicon:hover, a.fa:hover{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .main-menu.nav-pills .submenu a{
-	padding: 0 10px 0 5px;
+	padding: 5px 10px ;
 	color: #52616D;
+
 }
 li.has-submenu{
 	position: static;
@@ -776,27 +778,29 @@ li.has-submenu:hover ul{
     overflow: hidden;
     position: relative;
     display: block;
+    left: 10px;
 }
 .right-box h2 {
 	text-transform: uppercase;
 	text-align:center;
 	margin: 0px;
-	font-size: 18px;
+	font-size: 16px;
 	background:  #F3F3F3 ;
-	color:  #5BC0EB;
+	color:  #2C343B;
 	padding-bottom: 10px;
 	font-weight: bold;
+	padding: 15px;
 	
 }
 .right-box a:hover {
 	text-decoration: none;
 }
 .right-box h2:hover {
-	color:  #2C343B ;
+	color:  #5BC0EB ;
 }
 .right-list{
 	float: left ;	
-	height: 410px;
+	height: 310px;
 	width: 100%;
 	overflow-y: scroll;
 	
@@ -804,7 +808,7 @@ li.has-submenu:hover ul{
 .right-list-content:hover {
 	
 }
-ul {
+.right-list ul {
 	padding: 5px;
 	text-decoration: none;
 	list-style-type:none;
@@ -812,38 +816,42 @@ ul {
 .list-top-post{
 	float: left ;
 	width: 100%;
-	border-bottom: 3px solid #f3f3f3;
+	border-bottom: 2px solid #f3f3f3;
+}
+.list-top-post img{
+	width: 120px;height: 100px;
 }
 .list-top-post:hover img{
+	
 	opacity: 0.8;
 }
 .list-top-post:hover .list-title{
-	color:  #52616D  ;
+	color:  #5BC0EB ;
 }
 .list-top-post-thumb{
 	float:left;
 	padding: 5px;
 }
 .list-top-post-info{
-	float:left;
-	padding: 5px;
-	width: 220px;
+	float:right;
+	width: 200px;
+	padding: 5px 2px;
 	display: block;
+
 }
 .list-top-post-info span {
 }
 .list-title{
 	float:left;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: bold;
-	width: 100%;
-	color:  #5BC0EB ;
+	color:  #C44741;
 	padding-bottom: 10px;
 }
 .list-user{
 	float:left;
 	width: 100%;
-	color:  #C44741 ;
+	color:  #52616D ;
 	padding-bottom: 10px;
 }
 .list-like{

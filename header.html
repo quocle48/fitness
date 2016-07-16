@@ -41,15 +41,59 @@
 					<button type="button" class="navbar-toggle">
 							MENU
 					</button>
+
 					<ul class="main-menu nav nav-pills right">
 						<li><a href="#">HOME</a></li>
-						<li class="active"><a href="#">LESSON</a></li>
+						<li class="has-submenu "><a href="<?php echo $home.'post/index.php?level=1'; ?>">LESSON</a>
+							<ul class="submenu nav nav-pills nav-stacked">
+							<?php
+								$conn=connectDb();
+								$conn->exec("set names utf8");
+								$sql = "select * from level_post ";
+								$query = $conn->prepare($sql);
+								$query->execute();
+								if($query->rowCount()>0)
+						    	{
+						            while($row=$query->fetch(PDO::FETCH_ASSOC))
+						            {
+						            	?>
+						           
+								
+									<li><a href="<?php echo $home.'post/index.php?level='.$row['id'] ; ?>"><span class="fa fa-chevron-right"></span><?php echo $row['name'] ;?></a></li>	
+								<?php 
+									 	}
+								    }
+								    else
+								        echo "<div class='notice'>No find data!</div>";
+								    disconnectDb($conn);
+								?>
+								</ul>
+						</li>
+							
 						<li class="has-submenu"><a href="#">PRACTICE<span class="fa fa-chevron-down"></a>
 							<ul class="submenu nav nav-pills nav-stacked">
-								<li><a href="#"><span class="fa fa-chevron-right"></span>CƠ NGỰC</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right"></span>CƠ TAY TRƯỚC</a></li>
-								<li><a href="#"><span class="fa fa-chevron-right"></span>CƠ BỤNG</a></li>
-							</ul>
+							<?php
+								$conn=connectDb();
+								$conn->exec("set names utf8");
+								$sql = "select * from category_post ";
+								$query = $conn->prepare($sql);
+								$query->execute();
+								if($query->rowCount()>0)
+						    	{
+						            while($row=$query->fetch(PDO::FETCH_ASSOC))
+						            {
+						            	?>
+						           
+								
+									<li><a href="#"><span class="fa fa-chevron-right"></span><?php echo $row['name'] ;?></a></li>	
+								<?php 
+									 	}
+								    }
+								    else
+								        echo "<div class='notice'>No find data!</div>";
+								    disconnectDb($conn);
+								?>
+								</ul>
 						</li>
 						<li class="has-submenu">
 							<a href="#">NUTRITION<span class="fa fa-chevron-down"></a>

@@ -1,12 +1,11 @@
 <?php
 	include("../header.html"); 
-	include("../banner.html"); 
 	include_once("../application/libraries/config.php"); 
 	include_once("../application/libraries/pagination.php"); 
 
 	?>
 <div class="container post">
-	<div class="col-xs-12 col-md-8 ">
+	<div class="col-xs-12 col-lg-8 ">
 	<?php
 		if(isset( $_GET['level'])){
 			$level = (isset( $_GET['level'] ) ) ? $_GET['level'] : 1;	
@@ -70,7 +69,7 @@
 		}
 	?>
 	</div>
-	<div class="col-xs-6 col-md-4">
+	<div class="col-xs-6 col-lg-4 ">
 	<?php
 		include("../categories.html");
 		include("../right_favorite.html");

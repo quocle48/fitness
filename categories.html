@@ -1,5 +1,5 @@
 <div class="right-box">
-	<a href="#" ><h2>Bài viết mới nhất </h2></a>
+	<a href="#" ><h2> <i class="fa fa-list-alt" ></i>  Bài viết mới nhất </h2></a>
 	<div  class="right-list">
 		<ul class="right-list-content" >
 			<?php 
@@ -14,9 +14,9 @@
 			        {
 				
 				?>
-			<li class="list-top-post">
+			<li class="list-top-post"> 
 				<a href="<?php echo baseurl().'index.php?id='.$row['id_post'] ;?>">
-					<img class="list-top-post-thumb" src="../img/johncena.jpg" style="width: 100px;height: 100px;" >
+					<img class="list-top-post-thumb " src="../img/johncena.jpg" >
 					<div class="list-top-post-info">
 						<span class="list-title "> <?php echo $row['title'] ;?> </span>
 						<span class="list-user fa fa-user"> <?php echo $row['username'] ;?> </span>
