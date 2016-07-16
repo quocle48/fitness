@@ -1,7 +1,7 @@
 <div class="right-box">
-	<a href="#" ><h2><i class="fa fa-list-alt" ></i>   Nội dung được yêu thích </h2></a>
-	<div  class="right-list">
-		<ul class="right-list-content" >
+	<a href="#" ><h3><i class="fa fa-list-alt" ></i>   Nội dung được yêu thích </h3></a>
+	<div class="right-list">
+		<div class="right-list-content" >
 			<?php 
 				$conn=connectDb();
 				$conn->exec("set names utf8");
@@ -14,21 +14,28 @@
 			        {
 				
 				?>
-			<li class="list-top-post">
-				<a href="<?php echo $home.'post/index.php?id='.$row['id_post'] ;?>">
-					<img class="list-top-post-thumb" src="../img/johncena.jpg" >
-					<div class="list-top-post-info">
-						<span class="list-title "> <?php echo $row['title'] ;?> </span>
+			<div class="list-top-post clearfix">
+				<div class="list-post-thumb">
+					<a href="<?php echo $home.'post/index.php?id='.$row['id_post'] ;?>">
+						<img class="list-top-post-thumb " src="../img/lesson2.jpg" >
+					</a>
+				</div>
+				<div class="list-top-post-info">
+					<a href="<?php echo $home.'post/index.php?id='.$row['id_post'] ;?>">
+						<?php echo $row['title'] ;?>
+					</a>
+					<div class="">
+						<span class="list-user fa fa-user"> <?php echo $row['username'] ;?> </span>
 						<span class="list-like fa fa-heart"> <?php echo $row['like'] ;?></span>
 					</div>
-				</a>
-			</li>
+				</div>
+			</div>
 			<?php 	
 			        }
 			    }
 			    else
 			        echo "<div class='notice'> No find data!</div>";
 			    disconnectDb($conn); ?>
-		</ul>
+		</div>
 	</div>
 </div>
