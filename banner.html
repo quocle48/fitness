@@ -1,12 +1,60 @@
 <div class="container-fluid banner">
 	<div class="container">
-		<div class=" row ">
-
-			<div class="title-banner">
-				<h1>Lesson</h1>
-				<p>"Nói với chúng tôi những gì bạn chưa hài lòng, để cộng đồng ngày càng lớn mạnh hơn! "</p>
-			</div>
+		<div class="title-banner">
+			<h1>
+			<?php
+				function printtype($typename){
+					if($typename=="post") echo "BÀI VIẾT";
+					else if($typename=="product") echo "SẢN PHẨM";
+					else echo "FITNESS";
+				}
+				$name=baseurl();
+				$name=str_replace($home,"",$name);
+				$typename=strtolower(substr($name,0,strpos($name,"/")));
+				if(strpos($name,"?")){
+					$subname=substr($name,strpos($name,"?")+1,strpos($name,"=")-strpos($name,"?")-1);
+					if($subname!="id"){
+						$id=substr($name,strpos($name,$subname."=")+strlen($subname)+1);
+						if(strpos($id,"&"))
+							$id=substr($id,0,strpos($id,"&"));
+						$conn=connectDb();
+						$result = $conn->prepare("select * from ".$subname."_".$typename." where id=".$id);
+						$result->execute();
+						if($result->rowCount()>0){
+							while($row=$result->fetch(PDO::FETCH_ASSOC)){
+								echo $row["name"];
+							}
+						}
+						else{
+							printtype($typename);
+						}
+						disconnectDb($conn);
+					}
+					else	printtype($typename);
+				}
+				else	printtype($typename);
+				
+			?>
+			</h1>
+			<p>"
+			<?php
+				$conn=connectDb();
+				$result = $conn->prepare("select content from slogan order by RAND() limit 1");
+				$result->execute();
+				if($result->rowCount()>0){
+					while($row=$result->fetch(PDO::FETCH_ASSOC)){
+						echo $row["content"];
+					}
+				}
+				disconnectDb($conn);
+			?>
+			"</p>
 		</div>
+		<!-- <div class="home-logo col-xs-4">
+			<a href="<?php echo $home; ?>">
+				<img src="<?php echo $home.'img/fitness-logo.png';?>">
+			</a>
+		</div> -->
 </div>
 </div>
 

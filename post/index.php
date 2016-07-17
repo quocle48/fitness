@@ -1,9 +1,9 @@
 <?php
-	include("../header.html"); 
 	include_once("../application/libraries/config.php"); 
 	include_once("../application/libraries/pagination.php"); 
-
-	?>
+	include("../header.html"); 
+	include("../banner.html");
+?>
 <div class="container post">
 	<div class="col-xs-12 col-lg-8 ">
 	<?php

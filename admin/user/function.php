@@ -1,7 +1,7 @@
 <?php 
 	include_once("../../application/libraries/config.php"); 
 	include_once("../../application/libraries/pagination.php"); 
-	//if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: login.php");
+	if(!isset($_SESSION['username']) || $_SESSION['level']==0) header("Location: ../login.php");
 	if(isset($_POST["btn_addfunc"])==True){
 		$conn=connectDb();
 		$conn->exec("set names utf8");

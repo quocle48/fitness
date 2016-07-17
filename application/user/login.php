@@ -21,6 +21,7 @@
                 if(password_verify($pass, $p)){
     				$_SESSION['username']=$user;
                     $_SESSION['level']=$account['level'];
+                    $_SESSION['id']=$account['id'];
     			}
                 else $Err="Mật khẩu";  
             }
