@@ -1,11 +1,12 @@
 <div class="right-box">
+	
 	<div class="title-box"><a href="#" ><i class="fa fa-list-alt" ></i> MỚI NHẤT </a></div>
 	<div  class="right-list">
 		<div class="right-list-content" >
 			<?php 
 				$conn=connectDb();
 				$conn->exec("set names utf8");
-				$sql ="select  * ,a.id as id_post from post a, user b where a.user_id = b.id order by time DESC limit 5 ";
+				$sql ="select  * ,a.id as id_post from post a, user b where a.user_id = b.id order by time DESC limit 10 ";
 				$query = $conn->prepare($sql);
 				$query->execute();
 				if($query->rowCount()>0)
@@ -37,5 +38,5 @@
 			        echo "<div class='notice'> No find data!</div>";
 			    disconnectDb($conn); ?>
 		</div>
-	</div>
+	</div>	
 </div>

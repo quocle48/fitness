@@ -15,7 +15,7 @@
 	if(isset($_POST["btn_edit"])){
 		$conn=connectDb();
 		$conn->exec("set names utf8");
-		$result = $conn->prepare("update post set title ='".$_POST["txt_title"]."', description='".$_POST["txt_desc"]."', tag ='".$_POST["txt_tag"]."', level_id ='".$_POST["level"]."', category_id ='".$_POST["category"]."', status='".$_POST["status"]."', content='".$_POST["edit_editor"]."' where id='".$_POST['btn_edit']."' "); 
+		$result = $conn->prepare("update post set title ='".$_POST["txt_title"]."', description='".$_POST["txt_desc"]."', tag ='".$_POST["txt_tag"]."', level_id ='".$_POST["level"]."', category_id ='".$_POST["category"]."', status='".$_POST["status"]."', content='".$_POST["edit_editor"]."', img='".$_POST["urlimage"]."' where id='".$_POST['btn_edit']."' "); 
         $result->execute();
       
 	    header('Location: index.php');
@@ -234,6 +234,14 @@
 								<label class="control-label col-sm-3" >Title:</label>
 								<div class="col-sm-6"> 
 								  	<input type="text" class="form-control input-fit " name="txt_title" value=" <?php echo $row['title']; ?>" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" >Image:</label>
+								<div class="col-sm-6"> 
+								    <input type="text" name="urlimage" class="form-control input-fit" value=" <?php echo $row['img']; ?>" required>
+							        <div class="imageupload"></div>
+							        <input type="file" name="image" form="uploadimage" onchange="return submitForm();" /> 
 								</div>
 							</div>
 							<div class="form-group">

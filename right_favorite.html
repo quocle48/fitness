@@ -5,7 +5,7 @@
 			<?php 
 				$conn=connectDb();
 				$conn->exec("set names utf8");
-				$sql ="select  * ,a.id as id_post from post a, user b where a.user_id = b.id order by a.like DESC limit 5";
+				$sql ="select  * ,a.id as id_post from post a, user b where a.user_id = b.id order by a.like DESC limit 10";
 				$query = $conn->prepare($sql);
 				$query->execute();
 				if($query->rowCount()>0)
