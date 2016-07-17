@@ -12,7 +12,7 @@
         if($Err=="")
         {
             $conn=connectDb();
-            $stmt = $conn->prepare("SELECT password,level FROM user where username='".$user."' "); 
+            $stmt = $conn->prepare("SELECT id,password,level FROM user where username='".$user."' "); 
             $stmt->execute();
             $result = $stmt->fetchAll();
             if(count($result)>0){
