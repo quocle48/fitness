@@ -1,438 +1,266 @@
--- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Jul 14, 2016 at 07:03 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.1.13-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win32
+-- HeidiSQL Version:             9.3.0.4984
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
---
--- Database: `fitness`
---
+-- Dumping database structure for fitness
+CREATE DATABASE IF NOT EXISTS `fitness` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `fitness`;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `category_post`
---
-
+-- Dumping structure for table fitness.category_post
 CREATE TABLE IF NOT EXISTS `category_post` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `category_post`
---
-
-INSERT INTO `category_post` (`id`, `name`, `description`) VALUES
-(1, 'Chân - Mông - Đùi', 'Các bài tập liên quan đến chân - mông - đùi.'),
-(2, 'Ngực', 'Các bài tập liên quan đến ngực.'),
-(3, 'Lưng - Xô', 'Các bài tập liên quan đến lưng - xô.'),
-(4, 'Vai', 'Các bài tập liên quan đến vai.'),
-(5, 'Tay trước', 'Các bài tập liên quan đến tay trước.'),
-(6, 'Tay sau', 'Các bài tập liên quan đến tay sau.'),
-(7, 'Bụng', 'Các bài tập liên quan đến bụng.'),
-(8, 'Cardio', 'Các bài tập giảm mỡ, cải thiện sức khỏe tim mạch.'),
-(9, 'Giáo án nữ', 'Các bài tập dành cho nữ.'),
-(10, 'test', 'test');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category_product`
---
-
-CREATE TABLE IF NOT EXISTS `category_product` (
-`id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `category_product`
---
-
-INSERT INTO `category_product` (`id`, `name`, `description`) VALUES
-(6, 'Trang phục', 'Áo, quần thể thao.'),
-(7, 'Trang bị', 'Các trang bị, dụng cụ phục vụ cho tập luyện.'),
-(8, 'Thực phẩm bổ sung', 'Các loại thực phẩm bổ sung phục vụ cho tập luyện.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `function`
---
-
-CREATE TABLE IF NOT EXISTS `function` (
-`id` int(11) NOT NULL,
-  `name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `function`
---
-
-INSERT INTO `function` (`id`, `name`, `description`) VALUES
-(6, 'Quản trị hệ thống', 'Cho phép quản trị hệ thống'),
-(7, 'Quản lý bài viết', 'Cho phép quản lý các bài viết'),
-(8, 'Quản lý bán hàng', 'Cho phép quản lý bán hàng'),
-(9, 'Post bài', 'Cho phép đăng bài');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `group`
---
-
-CREATE TABLE IF NOT EXISTS `group` (
-`id` int(11) NOT NULL,
-  `name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `group`
---
-
-INSERT INTO `group` (`id`, `name`, `description`) VALUES
-(1, 'admin', 'Quản trị hệ thống'),
-(2, 'viper', 'Siêu nhân'),
-(3, 'seller', 'Người bán hàng'),
-(4, 'poster', 'Người quản lý bài viết'),
-(5, 'member', 'Thành viên chính thức'),
-(6, 'newbie', 'Trẻ trâu mới đăng ký');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `group_function`
---
-
-CREATE TABLE IF NOT EXISTS `group_function` (
-  `group_id` int(11) NOT NULL,
-  `function_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `group_function`
---
-
-INSERT INTO `group_function` (`group_id`, `function_id`) VALUES
-(1, 6),
-(2, 6),
-(2, 7),
-(4, 7),
-(2, 8),
-(3, 8),
-(1, 9),
-(4, 9),
-(5, 9);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `level_post`
---
-
-CREATE TABLE IF NOT EXISTS `level_post` (
-`id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `level_post`
---
+-- Dumping data for table fitness.category_post: ~2 rows (approximately)
+DELETE FROM `category_post`;
+/*!40000 ALTER TABLE `category_post` DISABLE KEYS */;
+INSERT INTO `category_post` (`id`, `name`, `description`) VALUES
+	(1, 'Cơ tay', ''),
+	(2, 'Cơ Ngực', '');
+/*!40000 ALTER TABLE `category_post` ENABLE KEYS */;
 
+
+-- Dumping structure for table fitness.category_product
+CREATE TABLE IF NOT EXISTS `category_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.category_product: ~3 rows (approximately)
+DELETE FROM `category_product`;
+/*!40000 ALTER TABLE `category_product` DISABLE KEYS */;
+INSERT INTO `category_product` (`id`, `name`, `description`) VALUES
+	(9, 'Trang Phục', 'Áo, quần thể thao'),
+	(10, 'Trang thiết bị', 'Các dụng cụ, thiết bị để chơi thể thao, tập thể hình'),
+	(11, 'Thực phẩm bổ sung', 'Nguồn thực phẩm bổ sung cho thể thao');
+/*!40000 ALTER TABLE `category_product` ENABLE KEYS */;
+
+
+-- Dumping structure for table fitness.function
+CREATE TABLE IF NOT EXISTS `function` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.function: ~3 rows (approximately)
+DELETE FROM `function`;
+/*!40000 ALTER TABLE `function` DISABLE KEYS */;
+INSERT INTO `function` (`id`, `name`, `description`) VALUES
+	(6, 'Quản trị user', 'Cho phép quản trị user'),
+	(7, 'Quản trị Function', 'Cho phép quản trị Function'),
+	(8, 'Quản trị Group', 'Chong phép quản trị group');
+/*!40000 ALTER TABLE `function` ENABLE KEYS */;
+
+
+-- Dumping structure for table fitness.group
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.group: ~4 rows (approximately)
+DELETE FROM `group`;
+/*!40000 ALTER TABLE `group` DISABLE KEYS */;
+INSERT INTO `group` (`id`, `name`, `description`) VALUES
+	(1, 'admin', NULL),
+	(2, 'vip', NULL),
+	(3, 'seller', NULL),
+	(4, 'poster', NULL);
+/*!40000 ALTER TABLE `group` ENABLE KEYS */;
+
+
+-- Dumping structure for table fitness.group_function
+CREATE TABLE IF NOT EXISTS `group_function` (
+  `group_id` int(11) NOT NULL,
+  `function_id` int(11) NOT NULL,
+  PRIMARY KEY (`group_id`,`function_id`),
+  KEY `group_function_ibfk_2` (`function_id`),
+  CONSTRAINT `group_function_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `group_function_ibfk_2` FOREIGN KEY (`function_id`) REFERENCES `function` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.group_function: ~0 rows (approximately)
+DELETE FROM `group_function`;
+/*!40000 ALTER TABLE `group_function` DISABLE KEYS */;
+/*!40000 ALTER TABLE `group_function` ENABLE KEYS */;
+
+
+-- Dumping structure for table fitness.level_post
+CREATE TABLE IF NOT EXISTS `level_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.level_post: ~3 rows (approximately)
+DELETE FROM `level_post`;
+/*!40000 ALTER TABLE `level_post` DISABLE KEYS */;
 INSERT INTO `level_post` (`id`, `name`, `description`) VALUES
-(1, 'Cơ bản', 'Các bài viết cho người mới.'),
-(2, 'Nâng cao', 'Các bài viết về kiến thức nâng cao.');
+	(1, 'Cơ bản', ''),
+	(2, 'Nâng cao', ''),
+	(3, 'Chuyên nghiệp', '');
+/*!40000 ALTER TABLE `level_post` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `post`
---
-
+-- Dumping structure for table fitness.post
 CREATE TABLE IF NOT EXISTS `post` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `tag` text COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `time` datetime NOT NULL,
-  `level_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `category_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `level_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `like` int(11) NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `disabled` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `status` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_post_user` (`user_id`),
+  KEY `FK_post_level_post` (`level_id`),
+  KEY `FK_post_category_post` (`category_id`),
+  CONSTRAINT `FK_post_category_post` FOREIGN KEY (`category_id`) REFERENCES `category_post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_post_level_post` FOREIGN KEY (`level_id`) REFERENCES `level_post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `post`
---
+-- Dumping data for table fitness.post: ~5 rows (approximately)
+DELETE FROM `post`;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` (`id`, `title`, `user_id`, `tag`, `content`, `time`, `level_id`, `category_id`, `like`, `img`, `status`, `description`) VALUES
+	(14, '   Bài tập tay cơ bản', 2, 'tay, cơ bản', '<p>ABC Duhjaskjkd qwihdoahsansj jsdajsljd &aacute;</p>\r\n', '2016-07-14 13:04:59', 1, 1, 0, 'http://fitness.com/uploads/logo_2016_with_title_white.png', 0, '  '),
+	(15, '  Bài tập chân nâng cao', 2, '', '<p>B&agrave;i tập ch&acirc;n n&agrave;y cải thiện nhiều cơ tay cho c&aacute;c bạn</p>\r\n\r\n<blockquote>\r\n<p>Đừng tin bố con thằng n&agrave;o</p>\r\n</blockquote>\r\n\r\n<ol>\r\n	<li>Tập đ&uacute;ng động t&aacute;c</li>\r\n	<li>Tập hết sức c&oacute; thể</li>\r\n</ol>\r\n\r\n<p><a href="http://fitness.com" target="_blank">http://fitness.com</a></p>\r\n', '2016-07-14 16:23:59', 1, 1, 0, 'http://fitness.com/uploads/slider3.jpg', 0, '  '),
+	(16, '   Dbom', 2, '123123', '<p>ầgasdasdas</p>\r\n\r\n<p>&nbsp;</p>\r\n', '2016-07-14 17:42:34', 1, 1, 0, 'http://fitness.com/uploads/lesson1.jpg', 0, '   '),
+	(17, '  ávdxzc ávdxzc ávdxzc ávdxzc ávdxzc ávdxzc ávdxzc', 2, 'đâsdasdas', '<p>gca&nbsp;</p>\r\n\r\n<p>asfhis;d&nbsp;</p>\r\n\r\n<p>&aacute;dhasjdopaskljdasd</p>\r\n\r\n<p>asgdahsdkla;s</p>\r\n', '2016-07-15 11:07:36', 1, 1, 0, 'http://fitness.com/uploads/np1.jpg', 0, '  da'),
+	(18, ' Liên minh huyền thoại', 2, 'lol, atrox', '<p>avbhsa</p>\r\n\r\n<p>hftg</p>\r\n\r\n<p>hdasdyasdyasd</p>\r\n\r\n<p>fad</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&aacute;gasd</p>\r\n\r\n<p>a]sdkjajsd[aksf</p>\r\n\r\n<p>&aacute;d<img alt="" src="http://fitness.com/uploads/Aatrox_Splash_1.jpg" style="height:717px; width:1215px" /></p>\r\n', '2016-07-15 18:26:05', 1, 1, 0, 'http://fitness.com/uploads/slider2.jpg', 0, ' LMHT');
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
-INSERT INTO `post` (`id`, `title`, `user_id`, `tag`, `content`, `time`, `level_id`, `category_id`, `like`, `img`, `disabled`) VALUES
-(1, 'Barbell Bench Press', 30, '#Ngực #Đạ đòn #Đẩy', '<p>kalsdkalasldk</p>\r\n', '2016-07-14 16:19:33', '1', '2', 0, '', 0);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `post_comment`
---
-
+-- Dumping structure for table fitness.post_comment
 CREATE TABLE IF NOT EXISTS `post_comment` (
   `id_cmt` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_post` int(11) NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `like` int(11) NOT NULL,
-  `super_cmt` int(11) NOT NULL
+  `super_cmt` int(11) NOT NULL,
+  PRIMARY KEY (`id_cmt`),
+  KEY `FK_post_comment_user` (`id_user`),
+  KEY `FK_post_comment_post` (`id_post`),
+  KEY `FK_post_comment_post_comment` (`super_cmt`),
+  CONSTRAINT `FK_post_comment_post` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`),
+  CONSTRAINT `FK_post_comment_post_comment` FOREIGN KEY (`super_cmt`) REFERENCES `post_comment` (`id_cmt`),
+  CONSTRAINT `FK_post_comment_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
+-- Dumping data for table fitness.post_comment: ~0 rows (approximately)
+DELETE FROM `post_comment`;
+/*!40000 ALTER TABLE `post_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `post_comment` ENABLE KEYS */;
 
---
--- Table structure for table `product`
---
 
+-- Dumping structure for table fitness.product
 CREATE TABLE IF NOT EXISTS `product` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
   `brand` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `tag` text COLLATE utf8_unicode_ci NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `disabled` int(11) NOT NULL DEFAULT '0'
+  `disabled` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `FK_product_product_type` (`category_id`),
+  CONSTRAINT `FK_product_product_type` FOREIGN KEY (`category_id`) REFERENCES `category_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
+-- Dumping data for table fitness.product: ~0 rows (approximately)
+DELETE FROM `product`;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
---
--- Table structure for table `user`
---
 
+-- Dumping structure for table fitness.slogan
+CREATE TABLE IF NOT EXISTS `slogan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table fitness.slogan: ~3 rows (approximately)
+DELETE FROM `slogan`;
+/*!40000 ALTER TABLE `slogan` DISABLE KEYS */;
+INSERT INTO `slogan` (`id`, `content`) VALUES
+	(1, 'Nói với chúng tôi những gì bạn chưa hài lòng, để cộng đồng ngày càng lớn mạnh hơn!'),
+	(2, 'Hãy thay đổi bản thân ngay hôm nay, dù xuất phát điểm của bạn là số 0!'),
+	(3, 'Đừng bao giờ dậm chân tại chỗ, luôn luôn vận động để thay đổi bản thân!'),
+	(4, 'Kỹ năng, kinh nghiệm của bạn chính là bài học cho tất cả mọi người trong cộng đồng, hãy chia sẻ cùng chúng tôi!');
+/*!40000 ALTER TABLE `slogan` ENABLE KEYS */;
+
+
+-- Dumping structure for table fitness.user
 CREATE TABLE IF NOT EXISTS `user` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `level` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `level` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`),
+  UNIQUE KEY `email` (`email`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `user`
---
-
+-- Dumping data for table fitness.user: ~2 rows (approximately)
+DELETE FROM `user`;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`) VALUES
-(5, '3', '$2y$10$p9yhnYXSRpmgB8RZKJXy2.BWEkGXg0dS4CkHnPIEBdSD9IxyRVxGq', '3@gmail.com', 0),
-(8, '4', '$2y$10$6PsiEpVnbEhDOl4YO8xBh.DvtNbzn.ufb.VVb0QxOcUM6tD9bPmyy', '4@gmail.com', 0),
-(9, '5', '$2y$10$3hANshEN6TQiLMrq7aJm1uo/yGCCJlOBLfaM8lI1or4uW8405STX2', '5@gmail.com', 0),
-(2, 'dbom', '$2y$10$MOy4vCJ8wnQ2V6Pqhie99.f8mAuMSgD9ApZoIIfJjVfkrdITyylIy', 'dbom123@gmail.com', 1),
-(29, 'sdfxngchj,k', '$2y$10$Je1gDk6oSxb0Gc/93nZaW.XkurtmMfpIODaxd9ZpTvePeMTi/dXHG', 'dbom12123@gmail.com', 0),
-(4, 'user1', '$2y$10$mVv6R7Sb1ZFL.5RoNttTVeAKNo4DrBSlIiR6iqrrf59GakiLw1WTW', 'user1@gmail.com', 0),
-(3, 'xuanbac216', '$2y$10$27YQ91Qc9BxkHcvUouZ9AODUYZUUy3PZfVwN9DVDmQqjfd0xJOcoC', 'xuanbac216@gmail.com', 1),
-(30, 'zboy', '$2y$10$pIXW4gs.33KvO9SlIVkDL.e32/sJ77XU/UFNLSGztgyQoln12dlYu', 'zboy@gmail.com', 1);
+	(2, 'dbom', '$2y$10$MOy4vCJ8wnQ2V6Pqhie99.f8mAuMSgD9ApZoIIfJjVfkrdITyylIy', 'dbom123@gmail.com', 1),
+	(3, 'xuanbac216', '$2y$10$27YQ91Qc9BxkHcvUouZ9AODUYZUUy3PZfVwN9DVDmQqjfd0xJOcoC', 'xuanbac216@gmail.com', 1);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `user_group`
---
-
+-- Dumping structure for table fitness.user_group
 CREATE TABLE IF NOT EXISTS `user_group` (
   `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`group_id`),
+  KEY `user_group_ibfk_2` (`group_id`),
+  CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `user_group`
---
-
+-- Dumping data for table fitness.user_group: ~4 rows (approximately)
+DELETE FROM `user_group`;
+/*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
 INSERT INTO `user_group` (`user_id`, `group_id`) VALUES
-(2, 1),
-(3, 1),
-(29, 1),
-(30, 1),
-(4, 2),
-(5, 2),
-(29, 2),
-(30, 2),
-(2, 3),
-(5, 3),
-(9, 3),
-(29, 3),
-(30, 3),
-(2, 4),
-(8, 4),
-(30, 4);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `category_post`
---
-ALTER TABLE `category_post`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `category_product`
---
-ALTER TABLE `category_product`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `function`
---
-ALTER TABLE `function`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `group`
---
-ALTER TABLE `group`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `group_function`
---
-ALTER TABLE `group_function`
- ADD PRIMARY KEY (`group_id`,`function_id`), ADD KEY `group_function_ibfk_2` (`function_id`);
-
---
--- Indexes for table `level_post`
---
-ALTER TABLE `level_post`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `post`
---
-ALTER TABLE `post`
- ADD PRIMARY KEY (`id`), ADD KEY `FK_post_user` (`user_id`);
-
---
--- Indexes for table `post_comment`
---
-ALTER TABLE `post_comment`
- ADD PRIMARY KEY (`id_cmt`), ADD KEY `FK_post_comment_user` (`id_user`), ADD KEY `FK_post_comment_post` (`id_post`), ADD KEY `FK_post_comment_post_comment` (`super_cmt`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
- ADD PRIMARY KEY (`id`), ADD KEY `FK_product_product_type` (`category_id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
- ADD PRIMARY KEY (`username`), ADD UNIQUE KEY `email` (`email`), ADD KEY `id` (`id`);
-
---
--- Indexes for table `user_group`
---
-ALTER TABLE `user_group`
- ADD PRIMARY KEY (`user_id`,`group_id`), ADD KEY `user_group_ibfk_2` (`group_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `category_post`
---
-ALTER TABLE `category_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `category_product`
---
-ALTER TABLE `category_product`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `function`
---
-ALTER TABLE `function`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `group`
---
-ALTER TABLE `group`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `level_post`
---
-ALTER TABLE `level_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `post`
---
-ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `group_function`
---
-ALTER TABLE `group_function`
-ADD CONSTRAINT `group_function_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `group_function_ibfk_2` FOREIGN KEY (`function_id`) REFERENCES `function` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `post`
---
-ALTER TABLE `post`
-ADD CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `post_comment`
---
-ALTER TABLE `post_comment`
-ADD CONSTRAINT `FK_post_comment_post` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`),
-ADD CONSTRAINT `FK_post_comment_post_comment` FOREIGN KEY (`super_cmt`) REFERENCES `post_comment` (`id_cmt`),
-ADD CONSTRAINT `FK_post_comment_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `product`
---
-ALTER TABLE `product`
-ADD CONSTRAINT `FK_product_category_product` FOREIGN KEY (`category_id`) REFERENCES `category_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_group`
---
-ALTER TABLE `user_group`
-ADD CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+	(2, 1),
+	(2, 3),
+	(2, 4),
+	(3, 1);
+/*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

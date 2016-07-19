@@ -13,7 +13,7 @@
 				$typename=strtolower(substr($name,0,strpos($name,"/")));
 				if(strpos($name,"?")){
 					$subname=substr($name,strpos($name,"?")+1,strpos($name,"=")-strpos($name,"?")-1);
-					if($subname!="id" && $subname!="page"){
+					if($subname=="level" || $subname=="category"){
 						$id=substr($name,strpos($name,$subname."=")+strlen($subname)+1);
 						if(strpos($id,"&"))
 							$id=substr($id,0,strpos($id,"&"));
