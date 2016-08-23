@@ -1,0 +1,685 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cate",
+				"category_post"
+			],
+			[
+				"form-c",
+				"form-cate"
+			],
+			[
+				"C",
+				"CATEGORY"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"group_",
+				"group_function"
+			],
+			[
+				"btn",
+				"btn_edit"
+			],
+			[
+				"txt",
+				"txt_description"
+			],
+			[
+				"btn-",
+				"btn-pri"
+			],
+			[
+				"input",
+				"input-fit"
+			],
+			[
+				"sty",
+				"list-style"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"bs3",
+				"bs3-navbar	bs3-navbar"
+			],
+			[
+				"bs3-css",
+				"bs3-cdn:css	bs3-cdn-css"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"bs3-",
+				"bs3-select	bs3-select"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"tran",
+				"transition"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"ou",
+				"outline-offset"
+			],
+			[
+				"on",
+				"outline-color"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bs3-input",
+				"bs3-input:text	bs3-input-text"
+			],
+			[
+				"bs3-inpu",
+				"bs3-input:url	bs3-input-url"
+			],
+			[
+				"bs3inpu",
+				"bs3-input-group	bs3-input-group"
+			],
+			[
+				"bsbut",
+				"bs3-button:danger	bs3-button-danger"
+			],
+			[
+				"bs3-but",
+				"bs3-button:info	bs3-button-info"
+			],
+			[
+				"bs3-bu",
+				"bs3-block-button	bs3-block-button"
+			],
+			[
+				"bs3-nav",
+				"bs3-navbar	bs3-navbar"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"ai",
+				"animation"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"Ope",
+				"OpenSans-Regular"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bs3-htm",
+				"bs3-template:html5	bs3-html5-template"
+			],
+			[
+				"next",
+				"nextchoosetag"
+			],
+			[
+				"cut",
+				"cutstyle"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"sta",
+				"statue_side_"
+			],
+			[
+				"cu",
+				"current"
+			],
+			[
+				"nextch",
+				"nextchooseside"
+			],
+			[
+				"nex",
+				"nextstatueengrave"
+			],
+			[
+				"st",
+				"stonecolor"
+			],
+			[
+				"has",
+				"hasClass"
+			],
+			[
+				"J",
+				"jQuery"
+			],
+			[
+				"arr",
+				"arrcharm"
+			],
+			[
+				"ste",
+				"step"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"fin",
+				"fingerprint"
+			],
+			[
+				"fi",
+				"fingerprint"
+			],
+			[
+				"chil",
+				"childback"
+			],
+			[
+				"stone",
+				"stonecolor"
+			],
+			[
+				"ston",
+				"stonecolor"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"da",
+				"dataoption"
+			],
+			[
+				"ima",
+				"imagename"
+			],
+			[
+				"bir",
+				"birth"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"ele",
+				"else"
+			],
+			[
+				"no",
+				"notag"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"bs3na",
+				"bs3-navbar:responsive	bs3-navbar-responsive"
+			],
+			[
+				"bs3nav",
+				"bs3-navbar:inverse	bs3-navbar-inverse"
+			],
+			[
+				"bs3tabs",
+				"bs3-tabs	bs3-tabs"
+			],
+			[
+				"bs3img",
+				"bs3-image	bs3-image"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<?php \n	include_once(\"../../application/libraries/config.php\"); \n	include_once(\"../../application/libraries/pagination.php\"); \n	if(!isset($_SESSION['username']) || $_SESSION['level']==0) header(\"Location: ../login.php\");\n	if(isset($_POST[\"btn_add\"])){\n		$conn=connectDb();\n		$conn->exec(\"set names utf8\");\n		$result = $conn->prepare(\"insert into user(username,password,email) values('\".$_POST[\"txt_username\"].\"','\".password_hash($_POST[\"txt_pass\"], PASSWORD_BCRYPT).\"','\".$_POST[\"txt_email\"].\"')\"); \n        	\n        $result = $conn->prepare(\"select id from user where username='\".$_POST[\"txt_username\"].\"'\"); \n        $result->execute();\n        $user_id=$result->fetchAll()[0]['id'];\n        $list_group=$_POST['group'];\n        foreach ($list_group as $id) {\n        	$result = $conn->prepare(\"insert into user_group(user_id,group_id) values('\".$user_id.\"','\".$id.\"')\"); \n        	$result->execute();\n        }\n	    header('Location: user.php');\n		disconnectDb($conn);\n	}\n\n	if(isset($_POST[\"btn_edit\"])){\n		$conn=connectDb();\n		$conn->exec(\"set names utf8\");\n		if($_POST[\"txt_pass\"]!=\"\") $pass=\"password='\".password_hash($_POST[\"txt_pass\"], PASSWORD_BCRYPT).\"',\";\n		else $pass=\"\";\n		$result = $conn->prepare(\"update user set username ='\".$_POST[\"txt_username\"].\"',\".$pass.\" email ='\".$_POST[\"txt_email\"].\"' where id='\".$_POST['btn_edit'].\"' \"); \n        $result->execute();\n        $result = $conn->prepare(\"delete from user_group where user_id =\".$_POST[\"btn_edit\"]);\n		$result->execute();\n        $list_group=$_POST['group'];\n        foreach ($list_group as $id) {\n        	$result = $conn->prepare(\"insert into user_group(user_id,group_id) values('\".$_POST[\"btn_edit\"].\"','\".$id.\"')\"); \n        	$result->execute();\n        }\n	    header('Location: user.php');\n		disconnectDb($conn);\n	}\n\n	if(isset($_GET[\"delete\"])){\n		$conn=connectDb();\n		$result = $conn->prepare(\"delete from user where id =\".$_GET[\"delete\"]);\n		$result->execute();\n		header('Location: user.php');\n		disconnectDb($conn);\n	}\n	if(isset($_GET[\"btn_delete\"])==True ){\n		$conn=connectDb();\n		$check = $_GET[\"checkfunc\"];\n		if($check!=null){\n			foreach ($check as $id) {\n				$result = $conn->prepare(\"delete from user where id =\".$id.\"\");\n				$result->execute();\n			}\n		}\n		header('Location: user.php');\n		disconnectDb($conn);\n	}\n?>\n<!DOCTYPE html>\n<html lang=\"\">\n	<head>\n		<?php include(\"../../head.html\"); ?>\n	</head>\n	<body class=\"admin-page\">\n		<aside class=\"main-bar\">\n			<div class=\"sidebar\">\n				<a href=\"<?php echo $home;?>admin\" class=\"admin-home\">HOME</a>\n				<div class=\"user-panel\">\n					<div class=\"avatar\">\n						<img src=\"<?php echo $home.'img/mem1.jpg'; ?>\"/>\n					</div>\n					<div class=\"user-info\">\n						<div><?php echo $_SESSION['username'];?></div>\n						<a href=\"logout.php\">Logout</a>\n					</div>\n				</div>\n				<ul class=\"menu-bar\">\n					<li class=\"label-header\">Management</li>\n				    <li id=\"menu-user\" class=\"has-sub\">\n				    	<a href=\"javascript:void(0)\">User<span class=\"fa fa-angle-left\"></span></a>\n				    	<ul class=\"sub-menu\">\n				    		<li><a href=\"<?php echo $home;?>admin/user/user.php\"><span class=\"fa fa-angle-right\"></span>Infomation</a></li>\n				    		<li><a href=\"<?php echo $home;?>admin/user/group.php\"><span class=\"fa fa-angle-right\"></span>Group</a></li>\n				    		<li><a href=\"<?php echo $home;?>admin/user/function.php\"><span class=\"fa fa-angle-right\"></span>Function</a></li>\n				    	</ul>\n				    </li>\n				    <li id=\"menu-post\" class=\"has-sub\">\n				    	<a href=\"javascript:void(0)\">Post<span class=\"fa fa-angle-left\"></span></a>\n				    	<ul class=\"sub-menu\">\n				    		<li><a href=\"<?php echo $home;?>admin/post/index.php\"><span class=\"fa fa-angle-right\"></span>Infomation</a></li>\n				    		<li><a href=\"<?php echo $home;?>admin/post/category.php\"><span class=\"fa fa-angle-right\"></span>Category</a></li>\n				    	</ul>\n				    </li>\n				    <li id=\"menu-product\" class=\"has-sub active\">\n				    	<a href=\"javascript:void(0)\">Product<span class=\"fa fa-angle-left\"></span></a>\n				    	<ul class=\"sub-menu\" style=\"display:block\">\n				    		<li class=\"active\"><a href=\"<?php echo $home;?>admin/product/index.php\"><span class=\"fa fa-angle-right\"></span>Infomation</a></li>\n				    		<li><a href=\"<?php echo $home;?>admin/product/category.php\"><span class=\"fa fa-angle-right\"></span>Category</a></li>\n				    	</ul>\n				    </li>\n				    <li class=\"label-header\">Layout</li>\n				    <li>\n				    	<a href=\"user/function.php\">Themes</a>\n				    </li>\n				</ul>\n				<script type=\"text/javascript\">\n					$('.has-sub>a').click(function(){\n						if(!$(this).parent().hasClass('active')){\n							$('.has-sub').removeClass('active');\n							$('.has-sub .sub-menu').slideUp(300);\n						}\n						$(this).parent().toggleClass('active');\n						$(this).next().slideToggle(300);\n					});\n					\n				</script>\n			</div>	\n		</aside>\n		<script type=\"text/javascript\">\n				function showformadd(){\n					$(\"#add-user\").toggleClass(\"hide\");\n					if(!$(\"#edit-user\").hasClass(\"hide\")) $(\"#edit-user\").addClass(\"hide\");\n				}\n				function showformedit(){\n					$(\"#edit-user\").toggleClass(\"hide\");\n					if(!$(\"#add-user\").hasClass(\"hide\")) $(\"#add-user\").addClass(\"hide\");\n				}\n			</script>\n		<!-- FORM THÊM -->\n		<div class=\"page-content\">\n		<div class=\"content hide\" id=\"add-user\">\n\n			<!-- Phần form thêm được ẩn -->\n			<form  action =\"user.php\" method=\"post\" class=\"form-horizontal\" role=\"form\" >\n				<h3> ADD USER </h3>\n				<div class=\"form-group\">\n					<label class=\"control-label col-sm-3\">Username:</label>\n					<div class=\"col-sm-6\">\n						<input type=\"text\" class=\"form-control input-fit \" name=\"txt_username\" placeholder=\"Enter username\" required>\n					</div>\n				</div>\n				<div class=\"form-group\">\n					<label class=\"control-label col-sm-3\" >Password:</label>\n					<div class=\"col-sm-6\"> \n					  	<input type=\"password\" class=\"form-control input-fit \" name=\"txt_pass\" placeholder=\"Enter password\" required>\n					</div>\n				</div>\n				<div class=\"form-group\">\n					<label class=\"control-label col-sm-3\" >Email:</label>\n					<div class=\"col-sm-6\"> \n					  	<input type=\"email\" class=\"form-control input-fit\" name=\"txt_email\" placeholder=\"Enter email\" required>\n					</div>\n				</div>\n				<div class=\"form-group\">\n					<label class=\"control-label col-sm-3\" >Group:</label>\n					<div class=\"col-sm-6\"> \n					  	<?php \n					  		$conn=connectDb();\n							$result2 = $conn->prepare(\"SELECT * FROM `group`\");\n							$result2->execute();\n							if($result2->rowCount()>0) {\n								while($row=$result2->fetch(PDO::FETCH_ASSOC)){\n									echo '<label class=\"checkbox-inline\"><input name=\"group[]\" type=\"checkbox\" value=\"'.$row['id'].'\">'.$row['name'].'</label>';\n								}\n							}\n							disconnectDb($conn);\n					  	?>\n					</div>\n				</div>\n				<div class=\"form-group\">\n					<label class=\"control-label col-sm-3\" ></label>\n					<div class=\"col-sm-6\"> \n					  	<button type=\"submit\" class=\"btn-fit btn-pri\"  name=\"btn_add\" value =\"<?php echo $row['id']; ?>\" >Submit\n						</button>\n						<a href=\"user.php\" class=\"btn-fit btn-dan\">Cancel</a>\n					</div>\n				</div>\n			</form>\n		</div>\n		<?php if(isset($_GET[\"edit\"])){ ?>\n		<div class=\"content\" id=\"edit-user\">\n			<?php\n				$conn=connectDb();\n				$result = $conn->prepare(\"select * from user where id =\".$_GET[\"edit\"].\"\"); \n				$result->execute();\n				if($result->rowCount()>0) {\n					while($row=$result->fetch(PDO::FETCH_ASSOC))\n					{\n			?>\n						<form action =\"user.php\" method=\"post\" class=\"form-horizontal\" role=\"form\" >\n							<h3> EDIT USER </h3>\n							<div class=\"form-group\">\n								<label class=\"control-label col-sm-3\">Username:</label>\n								<div class=\"col-sm-6\">\n									<input type=\"text\" class=\"form-control input-fit\" name=\"txt_username\" value=\"<?php echo $row['username']; ?>\">\n								</div>\n							</div>\n							<div class=\"form-group\">\n								<label class=\"control-label col-sm-3\" >New password:</label>\n								<div class=\"col-sm-6\"> \n								  	<input type=\"password\" class=\"form-control input-fit\" name=\"txt_pass\" placeholder=\"Enter new password\" >\n								</div>\n							</div>\n							<div class=\"form-group\">\n								<label class=\"control-label col-sm-3\" >Email:</label>\n								<div class=\"col-sm-6\"> \n								  	<input type=\"email\" class=\"form-control input-fit\" name=\"txt_email\" value=\"<?php echo $row['email']; ?>\" required>\n								</div>\n							</div>\n							<div class=\"form-group\">\n								<label class=\"control-label col-sm-3\" >Group:</label>\n								<div class=\"col-sm-6\"> \n								  	<?php \n								  		$conn=connectDb();\n										$result2 = $conn->prepare(\"SELECT * FROM `group`\");\n										$result2->execute();\n										if($result2->rowCount()>0) {\n											while($row2=$result2->fetch(PDO::FETCH_ASSOC)){\n												$result3 = $conn->prepare(\"SELECT group_id FROM `user_group` where user_id='\".$_GET[\"edit\"].\"' and group_id='\".$row2['id'].\"'\");\n												$result3->execute();\n												$str=\"\";\n												if($result3->rowCount()>0){ $str=\"checked\"; }\n												echo '<label class=\"checkbox-inline\"><input name=\"group[]\" type=\"checkbox\" value=\"'.$row2['id'].'\" '.$str.'>'.$row2['name'].'</label>';\n											}\n										}\n										disconnectDb($conn);\n								  	?>\n								</div>\n							</div>\n							<div class=\"form-group\">\n								<label class=\"control-label col-sm-3\" ></label>\n								<div class=\"col-sm-6\"> \n										<button type=\"submit\" class=\"btn-fit btn-pri\"  name=\"btn_edit\" value =\"<?php echo $row['id']; ?>\" >Submit\n										</button>\n										<a href=\"user.php\" class=\"btn-fit btn-dan\">Cancel</a>\n								</div> 	\n							</div>\n						</form>\n			<?php\n					}\n				}	    \n				disconnectDb($conn);\n					echo \"</div>\";\n				}\n			?>\n			<div class=\"content\">\n				<form action=\"index.php\" method=\"get\">\n					<h3>LIST PRODUCT</h3>\n					<table class=\"table table-hover\">\n				    	<thead>\n							<tr>\n								<th>\n									<div class=\"btn-group\">\n										<button type=\"button\" class=\"btn-fit btn-inf\" onclick=\"showformadd()\">\n											<span class=\"fa fa-plus-square\"></span>\n										</button>\n										<button type=\"submit\" name =\"btn_delete\" class=\"btn-fit btn-dan\" onclick=\"javascript: return confirm('Bạn muốn xóa các sản phẩm này?');\">\n											<span class=\"fa fa-trash-o\"></span>\n										</button>  	\n									</div>\n								</th>\n								<th>ID</th>\n								<th>NAME</th>\n								<th>EMAIL</th>\n								<th>GROUP</th>\n								<th>ACTION</th>\n							</tr>\n						</thead>\n						<tbody>\n							<?php\n								// $conn=connectDb();\n								// $conn->exec(\"set names utf8\");\n								// $result = $conn->prepare(\"select * from user\");\n								$page   = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1; \n								$listUser = new pagination(\"select * from user\",10);\n					            $result = $listUser->getData($page);\n								if($result->rowCount()>0)\n						    	{\n						            while($row=$result->fetch(PDO::FETCH_ASSOC))\n						            {\n						            	echo '<td> <input  name=\"checkfunc[]\" type=\"checkbox\" value=\"'.$row['id'].'\"> </td>';\n										echo \"<td>$row[id]</td>\";\n										echo \"<td>$row[username]</td>\";\n										echo \"<td>$row[email]</td>\";\n										echo \"<td>\";\n										$result2 = $conn->prepare(\"select b.name from `user_group` as a, `group` as b where a.group_id=b.id and a.user_id='\".$row['id'].\"'\"); \n					            		$result2->execute();\n					            		$list_gr;\n					            		$x=0;\n					            		while($row2=$result2->fetch(PDO::FETCH_ASSOC)){\n					            			$list_gr[$x++]=$row2[\"name\"];\n					            			$list_gr[$x++]=\", \";\n					            		}\n					            		for($i=0;$i<$x-1;$i++) echo $list_gr[$i];\n										echo \"</td>\";\n										echo '<td><div class=\"btn-group\"><button type=\"submit\" class=\"btn-fit btn-inf\" name=\"edit\" value=\"'.$row['id'].'\" formaction=\"user.php\"><span class=\"fa fa-pencil-square-o\"></span></button>';\n										echo '<button type=\"submit\" class=\"btn-fit btn-dan\" name=\"delete\" onclick=\"javascript: return confirm(\\'Bạn muốn xóa user này?\\');\" value=\"'.$row['id'].'\" formaction=\"user.php\"><span class=\"fa fa-trash\"></span></button></div></td>';									\n										echo '</tr>';\n						            }\n						     \n							    }\n							    else\n							        echo \"<div class='notice'>No data!</div>\";\n\n							?>\n\n						</tbody>	\n\n					</table>\n				</form>\n				<?php   \n					$listPage = $listUser->listPages();\n					echo $listPage;	\n					$listUser->closeConn();\n				?>\n			</div>\n\n		</div>\n	</body>\n</html>",
+			"file": "admin/product/index.php",
+			"file_size": 12791,
+			"file_write_time": 131129893288962761,
+			"settings":
+			{
+				"buffer_size": 12426,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "admin/post/index.php",
+			"settings":
+			{
+				"buffer_size": 16245,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Snippet: ",
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"bs3h",
+				"Snippet: bs3-html5-template"
+			],
+			[
+				"package con",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/WORK/fitness2",
+		"/E/WORK/fitness2/admin",
+		"/E/WORK/fitness2/admin/post",
+		"/E/WORK/fitness2/admin/product"
+	],
+	"file_history":
+	[
+		"/E/WORK/fitness2/admin/product/category.php",
+		"/E/WORK/fitness2/admin/post/category.php",
+		"/E/WORK/fitness2/css/fitness.css",
+		"/E/WORK/fitness2/content.html",
+		"/E/WORK/fitness2/admin/post/index.php",
+		"/E/WORK/fitness2/fitness-center.html",
+		"/E/WORK/fitness2/admin/user/function.php",
+		"/E/WORK/fitness2/admin/user/group.php",
+		"/E/WORK/fitness2/admin/user/user.php",
+		"/E/WORK/fitness2/admin/index.php",
+		"/E/WORK/fitness2/application/libraries/config.php",
+		"/D/Study/Fitness/content.phtml",
+		"/D/Study/Fitness/index.php",
+		"/D/Study/Fitness/css/bootstrap.css",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/options/size.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/options/color.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/code/local/DTCustom/Customize/sql/customize_setup/mysql4-upgrade-0.1.5-0.1.6.php",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/customize.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/js.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/options/engrave_statue.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/code/local/DTCustom/Customize/controllers/Adminhtml/Catalog/ProductController.php",
+		"/D/Study/Xampp/htdocs/cjproject/app/code/local/DTCustom/Customize/etc/config.xml",
+		"/D/Study/Xampp/htdocs/cjproject/app/design/frontend/arw_leka/default/template/customize/catalog/product/view/options/engrave_tag.phtml",
+		"/D/Study/Xampp/htdocs/cjproject/app/code/local/DTCustom/Customize/Block/Customize/Tag.php",
+		"/D/Study/Xampp/htdocs/cjproject/app/code/local/DTCustom/Customize/sql/customize_setup/mysql4-upgrade-0.1.4-0.1.5.php",
+		"/D/Softwares/Sublime Text 3/123",
+		"/D/Softwares/Sublime Text 3/test",
+		"/D/Softwares/Sublime Text 3/1.html",
+		"/C/Users/Administrator/Desktop/Shop/1/Home.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"user",
+			"post/category",
+			"active",
+			"post/category",
+			"post/cate",
+			"dm.com",
+			".center",
+			"center",
+			"ul",
+			"-40",
+			"div",
+			"group_id",
+			"th",
+			"group",
+			"user",
+			"min",
+			"footer",
+			"span",
+			"li",
+			"div",
+			"img",
+			"logo",
+			"span",
+			"right",
+			"div",
+			"nextstonecolor",
+			"nextchooseside",
+			"nextstatue",
+			"nextstone",
+			"numbercharm",
+			"choosenum",
+			"nextstatue",
+			"nextstonecolor",
+			"nextcolor",
+			".engrave",
+			"engrave",
+			"type_statue",
+			"$collectionStatue",
+			"collectionStatue",
+			"nextchooseside",
+			"nextstatue",
+			"nextstatueengrave",
+			"nextstatue",
+			"backsidehandnext",
+			"handnext",
+			"cutstyle",
+			"nextstatue()",
+			"cons",
+			"statue_side_",
+			"clear(",
+			"setStatue",
+			"clear(",
+			"clear",
+			"clearchild",
+			"clear",
+			"div",
+			"backtocharm",
+			"CustomizeCJ.step[CustomizeCJ.step.length-1].includes('statue_engrave_')",
+			"mizeCJ.step.length-1].includes",
+			"edit",
+			"backsidehandnext()",
+			"backsidenext",
+			"stonecolor",
+			"goback()",
+			"edit",
+			"<?php",
+			"<?php ",
+			"div",
+			"CustomizeCJ.arrcharm[i].backside",
+			"nextengrave()",
+			"nextcharm",
+			"nextchooseside",
+			"nextcharm",
+			"backsidenext",
+			"clear",
+			"nextcharm()",
+			"nextcharm",
+			"nextstatueengrave()",
+			"CustomizeCJ.arrcharm[i].backside",
+			"backside",
+			"gobackengrave",
+			"nextcharm",
+			"backtocharm",
+			"step2",
+			"gobackengrave",
+			"stone",
+			"arrcharm.",
+			"charm",
+			"push",
+			"summary",
+			"nextstatueengrave",
+			"CustomizeCJ.summary",
+			"colorvisited",
+			"visited",
+			"nextchoosetag",
+			"nextstatueengrave",
+			"backtocharm",
+			"step",
+			"&& CustomizeCJ.arrcharm[i].child.name=='handwriting'",
+			"nextcharm",
+			"handimage",
+			"stonecolorsummary",
+			"id",
+			"cjColor",
+			"nextsummary",
+			"nextchoosetag",
+			"choose_tag",
+			"nexttag",
+			"choose_tag",
+			"sumprice",
+			"setfont",
+			"addClass",
+			"removeClass",
+			"cleartag"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "admin/product/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12426,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								509,
+								509
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "admin/post/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16245,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "fitness.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Administrator\\Desktop\\oCoder\\oCoder_.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 194.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
